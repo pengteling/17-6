@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 摇一摇</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $(function() {
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+        } else {
+            alert("您的手机浏览器不支持DeviceMotionEvent事件");
+        }
+        var speed = 30; //速度
+        var x = y = z = lastX = lastY = lastZ = 0;
+
+        function deviceMotionHandler(eventData) {
+            var acceleration = eventData.accelerationIncludingGravity;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            $("#content").html("x:" + x + " y:" + y + " z:" + z);
+            if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
+                //简单的摇一摇触发代码
+                alert('触发了重力感应');
+            }
+            lastX = x;
+            lastY = y;
+            lastZ = z;
+        }
+
+
+    })
+    </script>
+</head>
+
+<body>
+    <div><img src="http://img.blog.csdn.net/20130608194449734" alt="" /></div>
+    <div id="content"></div>
+</body>
+
+</html>
