@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 重力感应测试</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $(function() {
+        window.addEventListener("deviceorientation", function(event) {
+            // 处理event.alpha、event.beta及event.gamma
+            $("#content").html(event.alpha);
+            $("#content2").html(event.beta);
+            $("#content3").html(event.gamma);
+        }, true);
+    })
+    </script>
+</head>
+
+<body>
+    <div><img src="http://img.blog.csdn.net/20130608194449734" alt="" /></div>
+    alpha: <span id="content"></span>
+    <br /> beta: <span id="content2"></span>
+    <br /> gamma: <span id="content3"></span>
+</body>
+
+</html>
