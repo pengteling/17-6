@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>div布局</title>
+    <style>
+    div {
+        position: absolute;
+        color: #fff;
+        text-align: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 30px;
+        background: #00f;
+    }
+
+    .footer {
+        width: 100%;
+        height: 50px;
+        background: #00eeff;
+    }
+
+    .nav {
+        width: 100%;
+        height: 30px;
+        background: #00ee00;
+    }
+
+    .section {
+        width: 80%;
+        height: 400px;
+        background: #dd00dd
+    }
+
+    .aside {
+        width: 20%;
+        height: 400px;
+        background: #440044
+    }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	$("div").each(function(i,obj){
+			console.log(obj)
+			drag(obj,obj)
+    	})
+    })
+    function drag(dragDiv, tagDiv) { //传入拖拽发生id和被拖拽id，如果相同，则本体就是按钮和拖拽对象
+
+        //var dragDiv = document.getElementById(dragDiv);
+        //var tagDiv = document.getElementById(tagDiv);
+        var tagContainer = document;
+        var e, offsetT, offsetL, downX, downY, moveX, moveY;
+
+        dragDiv.onmouseover = function(e) {
+            this.style.cursor = "move";
+        }
+
+        dragDiv.onmousedown = function(e) {
+            e = e || window.event;
+            offsetT = tagDiv.offsetTop;
+            offsetL = tagDiv.offsetLeft;
+            downX = e.clientX;
+            downY = e.clientY;
+
+            dragDiv.onmouseup = function(e) {
+                tagContainer.onmousemove = function() { return false; }
+            }
+
+            tagContainer.onmousemove = function(e) {
+                e = e || window.event;
+                moveX = e.clientX;
+                moveY = e.clientY;
+                tagDiv.style.top = offsetT + (moveY - downY) + "px";
+                tagDiv.style.left = offsetL + (moveX - downX) + "px";
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="header">头部</div>
+    <div class="nav">导航</div>
+    <!-- 主体内容 begin -->
+    <div class="section">
+        <div class="acticle">主体内容</div>
+        <div class="aside">侧边栏</div>
+    </div>
+    <!-- 主体内容 end -->
+    <div class="footer">底部</div>
+</body>
+
+</html>
