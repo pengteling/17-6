@@ -28,8 +28,12 @@
         height: 30px;
         background: #00ee00;
     }
+    .section{
+    	width: 100%;
+    	height: 0
+    }
 
-    .section {
+    .acticle {
         width: 80%;
         height: 400px;
         background: #dd00dd
@@ -44,7 +48,7 @@
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
     $(function(){
-    	$("div").each(function(i,obj){
+    	$("div:not('.section')").each(function(i,obj){
 			console.log(obj)
 			drag(obj,obj)
     	})
