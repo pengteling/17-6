@@ -16,17 +16,17 @@
 
 	</style>
 	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-    $(function() {
-        var url = window.location.search;
-        //console.log(url)
-        var key = url.substring(4)
-        console.log(key)
-        $("#ifr1").attr("src", "https://www.baidu.com/s?wd=" + key)
-        $("#ifr2").attr("src", "https://www.so.com/s?q=" + key)
-        $(document).attr("title", "组合搜索：" + decodeURI(key))
-    })
-    </script>
+	<script>
+	    $(function() {
+		var url = window.location.search;
+		//console.log(url)
+		var key = url.substring(4)
+		console.log(key)
+		$("#ifr1").attr("src", "https://www.baidu.com/s?wd=" + key)
+		$("#ifr2").attr("src", "https://www.so.com/s?q=" + key)
+		$(document).attr("title", "组合搜索：" + decodeURI(key))
+	    })
+	 </script>
 </head>
 <body>
 
