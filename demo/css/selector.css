@@ -1,0 +1,56 @@
+p{
+	color:red;
+}
+/* id选择器 */
+/* #fy{
+	color:green;
+}
+
+#frontend{
+	color:#ff00ff;
+}
+#inner-p{
+	color: yellow
+} */
+
+/* 类选择器 */
+/* .fanyi{
+	color:green;
+}
+
+.frontend{
+	color:#ff00ff;
+}
+.inner-p{
+	color: yellow
+} */
+
+/* 分组选择器 */
+/* .fanyi , #frontend {
+	color:#f0f;
+} */
+
+/* #fy, .frontend , #inner-p{
+	color:#f0f;
+}
+ */
+
+/* 后代选择器 */
+
+/* .container .inner .txt p .link{
+	color:#f0f
+} */
+/* .container .link{
+	color:#f0f
+} */
+/* a.link.link2{
+	color:#f0f
+} */
+
+
+.container .link{
+	color: #f0f;
+}
+.container-2 .link{
+	color: #0f0
+}
