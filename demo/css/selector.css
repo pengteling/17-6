@@ -1,6 +1,6 @@
-p{
+/* p{
 	color:red;
-}
+} */
 /* id选择器 */
 /* #fy{
 	color:green;
@@ -48,9 +48,82 @@ p{
 } */
 
 
-.container .link{
+/* .container .link{
 	color: #f0f;
 }
 .container-2 .link{
 	color: #0f0
+} */
+
+/* 属性选择器*/
+
+/* [href="http://www.fydesigner.com"]{
+	color:#f00;
+}
+[href="http://www.fydesigner-frontend.com"]{
+	color:#0f0;
+}
+
+[type=text]{
+	color:#f00
+}
+[data-name=fy]{
+	color:#f00
+} */
+
+/* [class~=important]{
+	color:#f00
+} */
+
+/* [class~=important] ===  .important
+
+[class~=important]{
+	color:#f00
+} 
+.important{
+	color:#f00
+} */
+
+
+/* [data-str~=important]{
+	color:#f00
+} */
+
+/* [class^=important]{
+	color:#f00
+} */
+
+/* [class$=important]{
+	color:#f00
+} */
+
+/* [class*=important]{
+	color:#f00
+} */
+
+/* [class|=important]{
+	color:#f00
+}
+ */
+
+/*  .container > p > a{
+	color:#f00
+} */
+
+/*  p+p{
+	color:#f00;
+} 
+*/
+/*  p ~ p{
+	color:#f00;
+}  */
+
+.p6 a{
+	color:#f00;
+}
+.p6 a:hover{
+	color:yellow;
+}
+.p6 a:visited{
+	color:#f0f;
 }
