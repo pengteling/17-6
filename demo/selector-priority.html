@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS优先级的运算</title>
+	<link rel="stylesheet" href="css/priority.css">
+	<style>
+		/* .link{
+			color:#f00;
+		}
+		#link{
+			color: #0f0;
+		}
+		a{
+			color: #00f;
+		} */
+
+		/* 0,0,5,0 */
+		/* .container .inner .big .small .link{
+			color: #f00;
+		}
+		0,0,2,0
+		.container .link{
+			color: #0f0;
+		} */
+		/* 0,2,6,2 */
+		div.container .inner.item #big.big p.small #link.link{
+			color: #0f0;
+		}
+		/* 0,2,6,2 */
+		/* div.container #inner.inner.item #big.big .small a[href]{
+			color: #f00;
+		} */
+		
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="inner item" id="inner">
+			<div class="big" id="big">
+				<p class="small" id="small">
+					<a href="http://www1223.fydesigner.com" id="link" class="link">泛艺学苑</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

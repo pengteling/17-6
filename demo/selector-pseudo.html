@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS伪元素</title>
+    <style>
+    	/* p::first-letter{
+    		color: #f00;
+    		font-size: 30px;
+    	}
+    	p .first-letter{
+    		color: #f00;
+    		font-size: 30px;
+    	} */
+    	/* p::first-line{
+    		color: #f00;
+    	} */
+
+    	.p6::before{
+    		/* content: "before"; */
+    		/* content: url(images/icon_link.png); */
+    		content: attr(data-item);
+    		color: #f00
+    	}
+    	.p6::after{
+    		content: "after";
+    		color: #f00
+    	}
+    </style>
+</head>
+
+<body>
+    <p class="important-us p6" data-item="前端2">
+        <!-- 这是第6行 -->
+        <!-- ::before -->
+        <!-- <span class="before"></span> -->
+        <span class="first-letter">泛</span>艺学苑是<b>颐筠</b>（上海）信息技术有限公司旗下为学员提供设计师技能培训、帮助其实现就业的在线教育企业，拥有多项帮助学员获得高薪的核心优势。<a href="http://www.fydesigner.com1">www.fydesigner.com</a>
+        <!-- <span class="after"></span> -->
+        <!-- ::after -->
+    </p>
+</body>
+
+</html>
