@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒子的嵌套</title>
+	<style type="text/css">
+		.div1 img{
+			width: 200px;
+		}
+		.div1{
+
+			/* float: left; */
+			box-shadow: 0 0 0 40px #f9cc9d;
+
+
+			padding: 30px;			
+			border: 20px #FDDD9B solid;
+			background: #c2cf8a;
+			margin: 40px;
+
+
+		}
+		.div2{
+			/* float: left; */
+
+			padding: 30px;			
+			border: 20px #FDDD9B solid;
+			background: #c2cf8a;
+			margin: 40px;
+			box-shadow: 0 0 0 40px #f9cc9d;
+
+			padding-top: 0;
+			border-top: 0;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="div2">
+		<div class="div1">
+			<img src="images/1.jpg" alt="">
+		</div>
+	</div>
+	
+</body>
+</html>

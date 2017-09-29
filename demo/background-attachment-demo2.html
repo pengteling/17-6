@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>background-attachment:fixed 实现滚动视差效果</title>
+    <style>
+    body,h2,p{
+    	margin: 0;
+    }
+    body,
+    html,
+    .main {
+        /* important */
+        height: 100%;
+    }
+
+    .cd-fixed-bg {
+    	position: relative;
+        min-height: 100%;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;        
+    }
+
+    .cd-fixed-bg.cd-bg-1 {
+        background-image: url("./images/cd-background-1.jpg");
+    }
+
+    .cd-fixed-bg.cd-bg-2 {
+        background-image: url("./images/cd-background-2.jpg");
+    }
+
+    .cd-fixed-bg.cd-bg-3 {
+        background-image: url("./images/cd-background-3.jpg");
+    }
+
+    .cd-fixed-bg.cd-bg-4 {
+        background-image: url("./images/cd-background-4.jpg");
+    }
+
+    .cd-scrolling-bg {
+    	position: relative;
+        min-height: 100%;        
+    }
+    .cd-fixed-bg h2{
+    	position: absolute;
+    	width: 50%;
+    	height: 50px;
+    	left: 0;
+    	right: 0;
+    	top: 0;
+    	bottom: 0;
+    	margin: auto;
+    	text-align: center;
+    	color: #fff;
+    	font-size: 48px;
+
+    }
+    .cd-color-1{
+    	background: #99a478;
+    }
+    .cd-color-2{
+    	background: #b4d7a8;
+    }
+    .cd-color-3{
+    	background: #3d3536;
+    }
+    
+    p{    	
+    	position: absolute;
+    	width: 50%;
+    	height: 50px;
+    	left: 0;
+    	right: 0;
+    	top: 0;
+    	bottom: 0;
+    	margin: auto;
+    	text-align: center;
+    	color: #fff;
+    	font-size: 48px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="cd-fixed-bg cd-bg-1">
+            <h2>滚动视差</h2>
+        </div>
+        <div class="cd-scrolling-bg cd-color-1">
+            <div class="cd-container">
+                <p>
+                    其实就是用background-attachment:fixed 这个属性就可以实现高逼格的滚动视差...
+                </p>
+            </div>
+        </div>
+        <div class="cd-fixed-bg cd-bg-2">
+            <h2>滚动视差</h2>
+        </div>
+        <div class="cd-scrolling-bg cd-color-2">
+            <div class="cd-container">
+                <p>
+                    其实就是用background-attachment:fixed 这个属性就可以实现高逼格的滚动视差...
+                </p>
+            </div>
+        </div>
+
+        <div class="cd-fixed-bg cd-bg-3">
+            <h2>滚动视差</h2>
+        </div>
+        <div class="cd-scrolling-bg cd-color-3">
+            <div class="cd-container">
+                <p>
+                    其实就是用background-attachment:fixed 这个属性就可以实现高逼格的滚动视差...
+                </p>
+            </div>
+        </div>
+
+        <div class="cd-fixed-bg cd-bg-4">
+            <h2>滚动视差</h2>
+        </div>
+        
+
+    </div>
+</body>
+
+</html>

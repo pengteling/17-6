@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒模型</title>
+	<style>
+		body{
+			margin: 0;
+		}
+		.container{
+			width: 500px;
+			/* height: 360px; */
+
+			border: 30px solid #f00;
+
+			/* border-top:30px solid #f00; 
+			border-right: 20px dashed #0f0;
+			border-bottom: 10px dotted #f0f;
+			border-left: 40px double #00f;	 */
+
+			border-width: 30px 20px 10px  ;
+			border-color: #f00 #0f0  ;
+			border-style: solid dashed;
+
+			padding-top: 30px;
+			padding-right: 20px;
+
+			padding: 40px 30px 20px 10px;
+
+			margin: 30px 50px;
+
+
+		}
+		.container img{
+			display: block;
+		}
+		.container{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="images/1.jpg" alt="">
+	</div>
+	
+	<div class="container">
+		<img src="images/2.jpg" alt="">
+	</div>
+</body>
+</html>
