@@ -46,7 +46,7 @@
 			var clonediv = $(".child").clone();
 			clonediv.attr("class","of-type");
 			$("body").append(clonediv);
-			$(".source").html( $(clonediv)[0].outerHTML.replace(/</g,"&lt;").replace(/>/,"&gt;") );
+			$(".source").html( $(clonediv)[0].innerHTML.replace(/</g,"&lt;").replace(/>/,"&gt;") );
 
 			prettyPrint();
 		})
@@ -117,6 +117,12 @@
 
 		.of-type.nth-last p:nth-last-of-type(2){
 			color: #f00;
+		}
+		.attrs a{
+			margin: 0 10px;
+			font-size: 20px;
+			font-weight: bolder;
+			text-decoration: none;
 		}
 	</style>
 </head>
