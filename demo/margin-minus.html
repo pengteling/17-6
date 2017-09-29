@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>负外边距</title>
+	<style>
+		html{
+			background: #fff;
+		}
+		body{
+			height: 600px;
+			margin: 0;
+			border-top: #fff 1px solid;
+			/* direction: rtl;
+			writing-mode: vertical-lr; */
+			background: #ccc;
+		}
+		.container{
+			width: 1000px;
+			height: 300px;
+			margin:150px auto;	
+			background: #00f;
+		}
+		.inner{
+			height: 200px;
+			margin-left:-1px ;
+			background: #f00;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="inner">
+			
+		</div>
+	</div>
+	
+</body>
+</html>
