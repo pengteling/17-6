@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>background-clip  background-origin  background-size</title>
+	<style>
+		.container{
+			width: 1000px;
+			height: 500px;
+			padding: 30px;
+			margin: 40px;
+			border:transparent 30px solid;
+			background-color: #00f;
+			background-image:url(images/2.jpg), url(images/1.jpg);
+			background-repeat: no-repeat;
+			/*
+			background-clip: border-box;
+			
+			background-origin: border-box;
+			
+			background-size:  auto 100%;
+			background-size: contain;
+			 */
+			background-size: 100% 100%;
+			background-size: cover;
+			background-size: contain,cover;
+			color: #fff;
+			font-size: 50px;	
+			/* 决定了背景 的绘制区域 */
+			background-clip: border-box;	
+			/* 决定 背景图片的定位 */
+			background-origin: border-box;	
+
+			/* border-color: #f00; */
+
+
+
+		}
+		span{
+			margin-left: -100px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<span>文字</span>
+	</div>
+</body>
+</html>

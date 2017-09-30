@@ -5,33 +5,56 @@
     <meta charset="UTF-8">
     <title>inline-block</title>
     <style>
-    	div{
-    		/* display: inline; */
+    	/* div{
+    		display: inline;
     		width: 300px;
     		height: 100px;
     		background: #f00
     	}
     	span{
-    		/* display: block; */
+    		display: block;
     		width: 300px;
     		height: 100px;
     		padding: 30px 0;
     		border-top: #0f0 30px solid;
     		margin-top: 20px;
-    		/* line-height: 100px; */
+    		line-height: 100px;
     		background: #00f;
-    	}
+    	} */
+    	.div1,.span1{
+			display: inline-block;
+		}
+		.div1{
+			width: 200px;
+			height: 100px;
+			background: #f00;
+			padding: 20px 0;
+			border: 20px #333 solid;
+			margin: 20px 0;
+		}
+		.span1{
+			width: 400px;
+			height: 150px;
+			background: #00f;
+			padding: 20px 0;
+			border: 20px #333 solid;
+			margin: 20px 0;
+		}
     </style>
 </head>
 
 <body>
-    <div>
+    <!-- <div>
         div1
     </div>
     <div>div2</div>
-
+    
     <span>span1span1span1span1span1</span>
-    <span>span2</span>
+    <span>span2</span> -->
+	<img src="images/1.jpg" alt="">
+	<div class="div1">这个div实际是个inline-block元素</div>
+	<span class="span1">这个span实际是个inline-block元素</span>
+
 </body>
 
 </html>
