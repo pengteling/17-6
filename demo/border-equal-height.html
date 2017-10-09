@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>border实现等高布局</title>
+	<style>
+		/* .left,.right{
+			width: 200px;		
+			float: left;
+			display: inline-block;
+		}
+		.left{
+			background: #f00;
+		}
+		.right{
+			background: #0f0;
+		} */
+
+		.container{
+			/* 清除浮动 */
+			float: left; 
+			width: 200px;
+			border-top: transparent 1px solid;
+			border-left: #f00 200px solid;
+			background: #0f0;
+		}
+		.left{
+			float: left;
+			margin-left: -200px;
+		}
+		/* .container::after{
+			content: "";
+			display: block;
+			clear: both;
+		} */
+
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+		</div>
+		<div class="right">
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>		
+		</div>
+	</div>
+	
+</body>
+</html>

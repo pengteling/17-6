@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位元素的高度</title>
+	<style>
+		.container{
+			position: relative;	
+			width: 1000px;
+			height: 500px;
+			/* padding: 20px; */
+			border: #f00 1px solid;
+		}
+		.container .inner{
+			position: absolute;
+			
+			/* 计算高度 */
+			top: 20px;
+			margin-top: 20px;
+
+			height:  300px;
+			border: 20px #000 solid;
+			border-left: none;	
+			border-right: none;	
+			padding: 20px 0px;
+
+			
+			margin-bottom: 20px;
+			bottom: 60px;
+			
+			/* 1 */
+			/* top: auto;
+			height: auto;
+			bottom: 50px; */
+
+			/* top: auto;	
+			bottom: auto;
+			height: 50px; */
+
+			/* height: auto;
+			bottom: auto;
+			top: 20px; */
+
+			/* top: auto;
+			height: 50px;
+			bottom: 20px; */
+
+			/* height: auto;
+			top: 20px;
+			bottom: 20px; */
+
+			bottom: 20px;
+			top: 20px;
+			height: 30px;
+			margin-top: auto;
+			margin-bottom: auto;
+
+			background: #ddd;
+		}
+		.inner{
+			line-height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="inner">绝对定位元素</div>
+	</div>
+</body>
+</html>

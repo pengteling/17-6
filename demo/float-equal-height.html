@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>border实现等高布局</title>
+	<style>
+		.container{
+			overflow: hidden;
+		}
+		.left,.right{
+			width: 200px;		
+			float: left;
+			display: inline-block;
+			padding-bottom: 999999px;
+			margin-bottom:-999999px;
+		}
+		.left{
+			background: #f00;
+		}
+		.right{
+			background: #0f0;
+		}
+
+		
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+			<p>左侧一行</p>
+		</div>
+		<div class="right">
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>
+			<p>右侧一行</p>		
+		</div>
+	</div>
+	
+</body>
+</html>

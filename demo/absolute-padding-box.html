@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位  定位原点 </title>
+	<style>
+		/* 绝对定位元素偏移坐标值的计算 参考原点是定位上下文的 padding-box的四个顶点  IE6 却是 content-box 兼容性问题*/
+		.container{
+			position: relative;
+			width: 1000px;
+			height: 500px;
+			border: 20px solid ;
+			/* border: transparent 20px solid; */
+			padding: 30px;
+
+		}
+		.container img{
+			position: absolute;
+			left: 0;
+			top: 0;
+			/* right: 0;
+			bottom: 0 */
+
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="images/1.jpg" alt="">
+	</div>
+	
+</body>
+</html>

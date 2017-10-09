@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位的宽度 深入理解 - 绝对定位的盒模型</title>
+	<style>
+		.container{
+			position: relative;	
+			width: 1000px;
+			height: 500px;			
+			border: #f00 1px solid;
+		}
+		.container .inner{
+			position: absolute;
+			
+			/* 左半部分 */
+			left: 0;
+			margin-left: auto;			
+			border-left: 20px #000 solid;
+			padding-left: 20px;
+
+			/* 宽度 */
+			width: 300px;
+
+			/* 右半部分 */
+			padding-right: 20px;	
+			border-right: 20px #000 solid;
+			margin-right: auto;
+			right: 0;			
+			
+			background: #ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="inner">绝对定位元素</div>
+	</div>
+</body>
+</html>

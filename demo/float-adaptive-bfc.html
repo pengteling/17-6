@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>浮动的自适应布局-bfc</title>
+    <style>
+    	.cotainer{
+
+    	}
+    	.container .left{
+    		float: right;        
+    	}
+    	.container img{
+    		width: 200px;
+    	}
+    	.container .right{	
+            
+            /* overflow: hidden; */
+           /* overflow: auto; */
+           
+            
+
+            /* position: absolute;
+            padding-right: 220px; */
+
+
+           /* position: absolute;
+           margin-right: 200px; */
+            
+
+            
+
+            /* display: inline-block;
+            margin-right: 200px;
+            margin-top: -144px; */
+
+           /* display: inline-block;
+           margin-right: 200px;
+           margin-top: -144px; */
+
+           /* float: right;
+           width: calc(100% - 220px);
+           padding-right: 220px;
+           margin-top: -144px; */
+           /* float: right;
+           margin-right: 200px;
+           margin-top: -144px; */
+
+           /* float: right;
+           width: calc(100% - 200px);
+           margin-left: -100px; */
+    	}
+        .right p {
+            /* position: relative; */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"><img src="images/1.jpg" alt=""></div>
+        <div class="right"><p>Out of normal: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi esse impedit autem praesentium magni culpa, amet corporis, veniam consequatur voluptates temporibus. Voluptates eius similique asperiores cupiditate fugit hic atque quisquam? Normal Content Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum praesentium nam tempora beatae quis nobis laboriosam alias aliquid, tenetur exercitationem. Odio, aperiam, illo! Eveniet natus dignissimos architecto velit eligendi id! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem reprehenderit velit nam delectus distinctio at unde aliquid officia illo, tempore vitae et incidunt non, ut eos nesciunt quaerat. Enim, minus.</p></div>
+
+        
+    </div>
+</body>
+
+</html>

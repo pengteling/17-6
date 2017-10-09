@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绝对定位实现三列自适应布局</title>
+    <style>
+    html,
+    body {
+        margin: 0;
+        height: 100%;
+    }
+    
+    #left,
+    #right {
+        position: absolute;
+        top: 0;
+        width: 200px;
+        height: 100%;
+    }
+    
+    #left {
+        left: 0;
+        background: #a0b3d6;
+    }
+    
+    #right {
+        right: 0;
+        background: #a0b3d6;
+    }
+    
+    #main {
+        margin: 0 200px ; /* padding也可以 */
+        background: #ffe6b8;
+        height: 100%;
+        /* 思考 这里的 #main 可以为绝对定位吗，如果绝对定位怎么写CSS？ */
+    }
+    </style>
+</head>
+
+<body>
+	<div id="main">这是正文</div>
+    <div id="left"></div>    
+    <div id="right"></div>
+</body>
+
+</html>

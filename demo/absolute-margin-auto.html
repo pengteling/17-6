@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位实现垂直水平居中</title>
+	<style>
+		.container{
+			position: relative;	
+			width: 1000px;
+			height: 500px;
+			/* padding: 20px; */
+			border: #f00 1px solid;
+		}
+		.container .inner{
+			position: absolute;
+			/* 这里的宽度要小于定位上下文的宽度 可以理解成 margin平分剩余宽度 但前提是 剩余margin>0 如果剩余为负 则只能重置右外边距为负值 （改变书写方向 direction:rtl 则是重置左边）但是高度方向却可以平分负外边距*/
+			width: 1000px;
+			height: 200px;
+			left: 0px;
+			top: 0px;
+			right: 0px;
+			bottom: 0px;		
+			margin: auto;		
+			background: #ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="inner">绝对定位元素</div>
+	</div>
+</body>
+</html>
