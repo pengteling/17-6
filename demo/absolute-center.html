@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位 水平垂直居中</title>
+	<style>
+		.container{
+			position: relative;
+			width: 1000px;
+			height: 500px;
+			border: 2px #f00 solid;
+		}
+		.container img{
+			position: absolute;
+			/* left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 500px;
+					height: 360px;		
+			margin: auto; */
+
+			/* margin-left: 250px;
+			margin-top: 70px; */
+
+			left: 50%;
+			margin-left: -250px;
+			top: 50%;
+			margin-top: -180px;
+
+			/* transform: translate(-50%, -50%) */
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="images/1.jpg" alt="">
+	</div>
+</body>
+</html>
