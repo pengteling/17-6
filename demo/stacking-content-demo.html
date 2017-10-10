@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>层叠上下文 演示</title>
+</head>
+<body>
+	<style>
+	html{
+		background: #333;
+	}
+    div{    	
+    	/* display: inline-block; */
+        width:1200px;
+        height:400px;
+        font-size: 200px;
+        font-weight: bolder;
+    }
+    .item1{
+        color:red;
+        background-color:pink;
+    }
+    .item2{
+        margin-top:-305px;
+        margin-left:130px ;
+		
+
+
+
+
+        /* margin-left: -130px; */
+        /* 
+        float: left; */
+        /* position: absolute;
+        z-index: auto;   */  
+ 		    
+		background-color:orange;
+
+	}
+	/* .item2 span{
+		background: #0f0;
+		position: absolute;
+	} */
+
+	/* body{
+		background: #fff;
+	}
+     */
+	</style>
+	
+	<div class="item1">item11111</div>
+	<div class="item2">item22222</div>
+	
+	
+
+</body>
+</html>

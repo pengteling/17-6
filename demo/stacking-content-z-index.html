@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>z-index</title>
+    <style>
+    .container,
+    .container-2 {
+        position: relative;
+        width: 1000px;
+        height: 600px;
+        margin: 100px auto;
+        border: #0f0 5px solid;
+    }
+
+    .container div {
+        position: absolute;
+    }
+
+    .container .div-1 {
+        z-index: 4;
+    }
+
+    .container .div-2 {
+        margin-left: 100px;
+        margin-top: 50px;
+        z-index: 3;
+    }
+
+    .container .div-3 {
+        margin-left: 200px;
+        margin-top: 100px;
+        z-index: 2;
+    }
+
+    .container .div-4 {
+        margin-left: 300px;
+        margin-top: 150px;
+        z-index: -1;
+    }
+
+    .container-2 div {
+        position: absolute;
+    }
+
+    .container-2 .div-1 {
+        top: -370px;
+        left: 800px;
+        z-index: -2;
+    }
+
+    .container {
+        /* z-index: auto; */
+    }
+
+    .container-2 {
+        /* z-index: auto; */
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="div-1"><img src="images/1.jpg" alt=""></div>
+        <div class="div-2"><img src="images/2.jpg" alt=""></div>
+        <div class="div-3"><img src="images/3.jpg" alt=""></div>
+        <div class="div-4"><img src="images/4.jpg" alt=""></div>
+    </div>
+    <div>
+    	<div class="container-2">
+    	    <div class="div-1"><img src="images/mm1.jpg" alt=""></div>
+    	    <!-- <div class="div-2"><img src="images/mm2.jpg" alt=""></div> -->
+    	</div>
+    </div>
+</body>
+
+</html>

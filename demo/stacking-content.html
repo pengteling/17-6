@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>层叠上下文之层叠顺序演示</title>
+    <style>
+    .container {
+        position: relative;
+        z-index: 0;
+        /* 创建层叠上下文 */
+        
+        background: #B475C1;
+        border: #0f0 1px solid;
+    }
+
+    .container>div {
+        width: 200px;
+        height: 200px;
+        border: #f00 1px solid;
+        color: #fff;
+        font-weight: bolder;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner-2" style="margin-left:30px;margin-top:30px; z-index: -1;position: relative; background: #8275C1">负的z-index
+        </div>
+        <div class="inner-3" style="display: block; margin-left: 60px; margin-top: -170px; margin-bottom: -100px;
+        background: #4E80C4">Block</div>
+        <div class="inner-4" style="float:left; margin-left: 90px; margin-top: -60px; background: #4EC4AC">FLOAT</div>
+        <div class="inner-5" style="display: inline-block; margin-left: -170px; margin-top: -370px; background: #A4C443">inline level</div>
+        <div class="inner-6" style="position:relative;z-index:0; margin-left: 170px; margin-top: -170px; background: #EA9632">z-index=0 / auto</div>
+        <div class="inner-7" style="position: relative; z-index: 9; margin-top: -140px; margin-left: 200px; background: #EA3F32">z-index>0</div>
+    </div>
+</body>
+
+</html>
