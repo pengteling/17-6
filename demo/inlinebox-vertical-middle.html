@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>行内框盒子模型垂直居中的总结</title>
+	<style>
+		.container{
+			width: 550px;
+			margin: 20px;
+			border: #f00 1px solid;
+		}
+		
+		#container3{
+			word-spacing: -6px;
+		}
+		#container3 i{
+			display: inline-block;			
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+		}
+		#container4{
+			word-spacing: -6px;
+		}
+		#container4::after{
+			content: "";
+			display: inline-block;			
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" style="line-height: 100px">
+		单行文本
+	</div>
+
+	<div class="container" style="line-height: 100px;">
+		<span style="display: inline-block; vertical-align: middle; line-height: 24px;">多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本</span>
+	</div>
+
+	
+
+
+	<div class="container" id="container3" style="height: 200px">
+		<span style="display: inline-block; vertical-align: middle; line-height: 24px; ">多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本</span>
+		<i></i>
+		
+	</div>
+
+	<div class="container" id="container4" style="height: 200px">
+		<span style="display: inline-block; vertical-align: middle; line-height: 24px; ">多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本</span>
+		
+		
+	</div>
+
+	<div class="container" style="display: table-cell; vertical-align: middle;height: 200px">
+		<span style=" ">多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本多行行文本</span>
+		
+		
+	</div>
+	
+</body>
+</html>

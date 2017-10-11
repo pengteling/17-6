@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>层叠顺序演示</title>
+	<style>
+		body{
+			background:  #aaa;
+		}
+		.guan{
+			position: relative;
+			width: 500px;
+			z-index: 0;
+			border: #ff0 10px solid;
+		}
+		.pm{
+			margin-top: -300px;
+			margin-left: 100px;			
+		}
+		.pm-guan{
+			position: absolute;
+			z-index: -1;
+			margin-top: 30px;
+			border: #0f0 10px solid;
+		}
+		.pm-pm{
+			display: block;
+			width: 500px;
+			margin-top: 200px;
+			margin-left: 100px;
+			border: #f00 10px solid;	
+			
+		}
+		.pm-2{
+			/* position: relative; */
+			/* float: left; */
+			width: 500px;
+			margin-left: 300px;
+			margin-top: -326px;
+			border: #00f 10px solid;
+			
+			
+		}
+		.pm-2 img{
+			
+			/* float: left; */
+		}
+
+	</style>
+</head>
+<body>
+	
+	<div class="guan">
+		<img src="images/1.jpg" alt="">
+	</div>
+	<div class="pm">
+		<div class="pm-guan">
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="pm-pm">
+			<img src="images/3.jpg" alt="">
+		</div>
+
+	</div>
+	<div class="pm-2">
+		<img src="images/4.jpg" alt="">
+	</div>
+		
+	
+</body>
+</html>

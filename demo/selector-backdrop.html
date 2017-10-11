@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    window.onload = function() {
+        document.querySelector('#show').onclick = function() {
+
+            var i = document.querySelector("#h1");
+
+            // go full-screen
+            if (i.requestFullscreen) {
+                i.requestFullscreen();
+            } else if (i.webkitRequestFullscreen) {
+                i.webkitRequestFullscreen();
+            } else if (i.mozRequestFullScreen) {
+                i.mozRequestFullScreen();
+            } else if (i.msRequestFullscreen) {
+                i.msRequestFullscreen();
+            }
+
+            //document.querySelector("#h1").webkitRequestFullscreen();
+            //document.querySelector("#h1").msRequestFullscreen();
+        }
+    }
+    </script>
+    <style>
+    /* h1:-webkit-full-screen{
+      width: 100vw;
+      height: 100vh;
+    } */
+    h1:-webkit-full-screen::-webkit-backdrop{
+      color: #f00;
+      background: #f00
+    }
+    h1:-webkit-full-screen::backdrop{
+      color: #f00;
+      background: #f00
+    }
+
+    h1:-ms-fullscreen::-ms-backdrop {
+        background-color: #0f0;
+        /* dark blue */
+    }
+    </style>
+</head>
+
+<body>
+    <h1 id="h1">泛艺学苑</h1>
+    <button id="show">测试</button>
+</body>
+
+</html>

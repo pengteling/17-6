@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>行内框盒子模型之基线</title>
+    <style>
+    .containing-box {
+        position: relative;
+        /* height: 500px; */
+        /* line-height: 500px; */
+        top: 100px;
+        /* font-size: 0; */
+        outline: #333 2px dotted;
+    }
+
+    .container {
+        display: inline-block;
+        position: relative;
+        background: yellow;  
+        font-size: 50px;
+        line-height: normal;   
+        /* vertical-align: middle; */
+    }
+
+    span {
+        /*  border: solid 1px red; */
+        font-size: 50px;
+        line-height: normal;
+        /*  background: #ddd; */
+    }
+
+    .line {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+    }
+
+    .middleline {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #f0f
+    }
+
+    .baseline {
+        bottom: calc(536/2703 *100%);
+        background: #00f;
+    }
+
+    .topline {
+        top: 0;
+        background: #f00;
+    }
+
+    .bottomline {
+        bottom: 0;
+        background: #f00;
+    }
+
+    .c2 {
+
+        vertical-align: middle;
+    }
+
+    .c2 span {
+        font-size: 124px;
+    }
+
+    i {
+        font-style: normal;
+        display: inline-block;
+        background: #0f0;
+        /* line-height: 1; */
+        /* font-size: 200px; */
+        /* display: inline-block;
+        height: 100%; */
+        /* vertical-align: middle; */
+    }
+
+    /* img {
+        vertical-align: middle;
+    } */
+    </style>
+</head>
+
+<body>
+    <div class="containing-box">
+        x
+        <div class="container">
+            <span>xYZ微软雅黑</span>
+            <div class="line middleline"></div>
+            <div class="line baseline"></div>
+            <div class="line topline"></div>
+            <div class="line bottomline"></div>
+        </div>
+         x
+                <i style="font-family: 'SimSun'">x</i>
+                <i style="font-family: 'Microsoft Yahei'">x</i>
+                <i style="font-family: 'Arial'">x</i> 
+                <img src="images/1-middleline.jpg" alt="">
+        <!-- <i>x</i> -->
+        
+
+        
+    </div>
+</body>
+
+</html>
