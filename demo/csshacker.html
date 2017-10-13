@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS hacker技术</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if gt IE 9]>
+		<link rel="stylesheet" href="css/style-ie8.css">
+		<script></script>
+	<![endif]-->
+    <style>
+    div {
+        min-width: 100px;
+        max-width: 200px;
+        display: inline-block;
+        /* IE7会把min-width当成width设置 */
+        *+min-width: auto;
+        *+width: expression(this.offsetWidth > 100 ? (this.offsetWidth < 200 ? 'auto': '200px'): '100px');  /* ie7 hacker */
+        _width: expression(this.offsetWidth > 100 ? (this.offsetWidth < 200 ? 'auto': '200px'): '100px');  /* ie6 hacker */
+        overflow: hidden;
+    }
+    /* ie9+ 现代浏览器*/
+    :root div{
+
+    }
+    div:nth-child(1){
+
+    }
+
+    *html div{
+		/* 只对IE6- 以下有效 */
+    }
+    *+html div{
+		/* 只对IE7生效 */
+    }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

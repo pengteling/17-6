@@ -1,0 +1,226 @@
+ /*CSS重置代码 */
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+ul,li{
+	margin: 0;
+	padding: 0;
+}
+
+/* CSS通用代码 */
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /* IE/7/6 */
+}
+
+.main{
+	width: 1100px;
+	margin:0 auto;
+}
+
+
+/*  */
+body {
+	max-width: 1500px;
+	margin:0 auto;
+    font-family: "Aleo";
+}
+
+/* 头部 */
+.header{
+	height: 110px;
+	/* padding-top: 40px; */
+	/* overflow: auto; */
+}
+.header .logo{
+	 float: left; 
+	 margin-top: 40px; 
+}
+.header .nav{
+	float: right;
+	line-height: 110px;
+	font-size:0;
+}
+.header .nav a{
+	display: inline-block;
+	vertical-align: middle;
+	/* height: 50px; */
+	line-height: 50px;
+	/* padding: 20px 0; */
+	margin-left: 40px;	
+	font-size: 14px;
+	color: #3b3b3b;
+}
+
+/* banner */
+.banner{
+	/* max-width: 1500px; */
+	height: 356px;
+	/* margin:0 auto; */
+	padding-top: 214px;
+	border-bottom: #f00 4px solid;
+	background: url(../images/banner.jpg) center top no-repeat;
+}
+.banner .banner-txt{
+	width: 776px;
+	height: 117px;
+	margin:0 auto;
+	background: url(../images/banner-txt.png);
+}
+.banner .banner-intro{
+	margin-top: 16px;
+	text-align: center;
+	/* letter-spacing: 1px; */
+	color:#fff;
+}
+.banner .banner-intro i{
+	display: inline-block;
+	/* vertical-align: middle; */
+	vertical-align: 4px;
+	width: 40px;
+	height: 1px;
+	margin: 0 24px;
+	background: #fff;
+}
+
+/* 主要内容 */
+.imain .menu-list .themenu{
+	width: 155px;
+	height: 57px;
+	padding-top: 18px;
+	margin:0 auto;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	background: url(../images/themenu.png);
+}
+.imain .menu-list .main{
+	overflow: hidden;
+}
+
+.imain .menu-list ul{
+	/* width: 1210px; */
+	/* width: 1300px; */
+	margin-top: 80px;
+	margin-right: -110px;
+
+}
+
+.imain .menu-list ul li {
+	float: left;
+	width: 495px;
+	height: 94px;	
+	margin-right: 110px;
+}
+.imain .menu-list ul li::before{
+	position: absolute;
+	z-index: -1;
+	margin-top: 8px;
+	content: "";
+	width: 420px;
+	height: 1px;
+	background: #e3e1e1;
+}
+
+/* .imain .menu-list ul li:nth-child(even){
+	margin-right:0
+} 
+*/
+.imain .menu-list ul li .tit{
+	float: left;
+	padding-right: 46px;
+	color:#555;
+	background: #fff;
+}
+.imain .menu-list ul li .price{
+	float: right;
+	color:#555;
+}
+/* .imain .menu-list ul li .price::before{
+	position: absolute;
+	content:"";
+	width: 100px;
+	height: 1px;
+	background: #e3e1e1;
+} */
+.imain .menu-list ul li .description{
+	clear:both;
+	line-height: 30px;
+	color:#b7b7b7;
+	font-size: 12px;
+	font-weight: lighter; 
+	font-style: italic;
+}
+.imain .menu-list .btn-loadmore{
+	width: 133px;
+	height: 34px;
+	margin: 8px auto 200px;
+	cursor: pointer;
+	background: url(../images/btn-loadmore.png);
+}
+
+
+/* 图片轮播区 */
+.imain .subtit{
+	font-size: 20px;
+	color: #3b3b3b;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.imain .subtit::after{
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 40px;
+	content: "";
+	width: 196px;
+	height: 1px;
+	background: #e3e1e1
+
+}
+.imain .featured-dishes .slider{
+	position: relative;
+	margin-top: 75px;
+	
+}
+.imain .featured-dishes .slider .slider-circles{
+	position: absolute;
+	top: -93px;
+	right: 0;
+
+	
+}
+.imain .featured-dishes .slider .slider-circles i{
+	display: inline-block;
+	width: 9px;
+	height: 9px;
+	margin-left: 12px;
+	background: url(../images/icon-cycle.png);
+
+}
+.imain .featured-dishes .slider .slider-circles i.cur{
+	background: url(../images/icon-cycle-black.png);
+}
+.imain .featured-dishes .slider .slidercontent{	
+	overflow: hidden;
+}
+.imain .featured-dishes .slider .slider-content{
+	width: 6000px;
+}
+.imain .featured-dishes .slider .slider-content li{
+	float: left;
+	margin-right: 58px;
+}
