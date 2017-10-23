@@ -7,19 +7,18 @@
 		 url('fonts/aleo-regular-webfont.ttf') format('truetype'),/* Safari, Android, iOS */
 		 url('fonts/aleo-regular-webfont.svg#aleoRegular') format('svg');/* Legacy iOS */
 	font-weight: normal; 
-	font-style: normal;	
+	font-style: normal;	 
 }
 @font-face{
-	/* font-family: 'Aleo-lightitalic'; */ 
-	font-family: 'Aleo'; 
+	/* font-family: 'Aleo'; */ 
+	font-family: 'Aleo-light'; 
 	src: url('fonts/aleo-light-webfont.eot'); /* IE9+ */
 	src: url('fonts/aleo-light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
 		 url('fonts/aleo-light-webfont.woff') format('woff'), /* 现代浏览器 */
 		 url('fonts/aleo-light-webfont.woff2') format('woff2'),
 		 url('fonts/aleo-light-webfont.ttf') format('truetype'),/* Safari, Android, iOS */
 		 url('fonts/aleo-light-webfont.svg#aleoRegular') format('svg');/* Legacy iOS */
+	
 	font-weight: lighter; 
-	font-style: italic;	 
-	/* font-weight: normal; 
-	font-style: normal;	 */
+	font-style: normal;
 }

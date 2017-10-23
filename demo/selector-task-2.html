@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>纯CSS实现评分</title>
+	<style>
+		/* 实现原理：最下面的背景都是黄星，通过覆盖灰星背景，实现评分。
+		1、点击后的状态保存  由单选框保存 核心代码  :checked ~ label
+		2、鼠标滑过时 先清除掉 以上点击状态 的背景，然后 用 :hover ~ label（注意优先级） 实现这里的背景变化; */
+		.stars{
+
+			overflow: hidden;
+			width: 60px;	
+			height: 13px;
+			margin: 300px 200px;
+			background: url(images/star-yellow.png) repeat-x;
+			/* transform: scale(5) */
+		}		
+		label{
+			float: left;
+			/* display: inline-block; */
+			width: 12px;
+			height: 13px;
+			/* background: url(images/star-grey.png) */
+		}
+		.score{
+			display: none
+		}
+		.score:checked ~ label{
+			background: url(images/star-grey.png)
+		}
+		.score:checked + label{
+			background: url(images/star-yellow.png)
+		}
+
+
+		#start_1:hover ~ label{
+			background: url(images/star-grey.png)
+		}
+		#start_2:hover ~ label{
+			background: url(images/star-grey.png)
+		}
+		#start_3:hover ~ label{
+			background: url(images/star-grey.png)
+		}
+		#start_4:hover ~ label{
+			background: url(images/star-grey.png)
+		}
+		#start_5:hover ~ label{
+			background: url(images/star-grey.png)
+		}
+
+		/* 鼠标滑过时 将后面的灰色背景清空，这个背景由 hover控制 */
+		.stars:hover .score:checked ~ label{
+			background: none;		
+		}
+	</style>
+</head>
+<body>
+	<div class="stars">
+		<!-- (input[type=radio][id=start$][value=$][class=score score_$][name=score]+label[for=start$][class=start_$])*5 -->
+		<input type="radio" id="start1" value="1" class="score score_1" name="score">
+		<label for="start1" class="start_1" id="start_1"></label>
+		<input type="radio" id="start2" value="2" class="score score_2" name="score">
+		<label for="start2" class="start_2" id="start_2"></label>
+		<input type="radio" id="start3" value="3" class="score score_3" name="score">
+		<label for="start3" class="start_3" id="start_3"></label>
+		<input type="radio" id="start4" value="4" class="score score_4" name="score">
+		<label for="start4" class="start_4" id="start_4"></label>
+		<input type="radio" id="start5" value="5" class="score score_5" name="score">
+		<label for="start5" class="start_5" id="start_5"></label>
+	</div>
+</body>
+</html>
