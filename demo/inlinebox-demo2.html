@@ -9,13 +9,21 @@
 			background: #f00;
 		}
 		span{
-			font-size: 200px;
+			/* font-size: 200px; */
+			display: inline-block;
+			vertical-align: middle;			
+			/* 计算式： fontsize * (2703/2048) * (1549/2703)  = 200px */
+			font-size: 264px;			
+			/* 计算式: B上面高度 2703 - 1549 - 536 = 618; B下面高度 536
+			则下边要补的高度 264 *  (1549 + 618 + 618 ) / 2048 - 264 * 2703 /2048 = 264* 82 /2048  =10.58px
+			 */
+			margin-bottom: 11px;
 			
 		}
 
 		img{
 			height: 200px;
-			/* vertical-align: middle; */
+			vertical-align: middle;
 		}
 	</style>
 </head>

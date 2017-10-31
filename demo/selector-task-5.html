@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>纯CSS实现评分(可以实现半颗星)</title>
+	<!-- 参考来源：youtube 台湾的某个前端 -->
+	<style>
+		body{
+			font-family: Arial,"宋体"
+		}
+		ul,li{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.stars{
+			direction: rtl;
+			text-align: left;
+			font-size: 0;
+		}
+		.stars li{
+			display: inline-block;
+			width: 0.5em;
+			overflow: hidden;
+			transition: all 0.5s;
+			cursor: pointer;
+			font-size: 36px;
+		}
+		.stars li:nth-child(even){
+			text-indent: -0.5em;
+		}
+		.stars li:hover,.stars li:hover ~ li,.stars li.cur ~ li{
+			color: #f00
+		}
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".stars li").on("click",function(){
+				$(this).addClass("cur").siblings().removeClass("cur");
+				var index = $(this).index();
+				// console.log($(this).index())
+				var score = (10 - index) /2;
+				console.log("评分："+score);
+			})
+		})
+	</script>
+</head>
+<body>
+	
+	<ul class="stars">
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+	</ul>
+
+	
+</body>
+</html>
