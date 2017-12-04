@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>纯CSS实现评分 2</title>
 	<style>
-		/* 实现原理：最下面的背景都是灰星，通过label 不同宽度的覆盖来实现 。
+		/* 实现原理：父元素stars的背景都是灰星，通过子元素label 不同宽度的覆盖来实现 。
 		1、点击后的状态保存  由单选框保存  点击后 对应后面的label改变宽度来实现，改变的这个元素 的Z值（1）是较低于 未改变的元素 保证其他（z-index=3）可点。
 		2、鼠标滑过时 先清除所有的label背景，然后根据谁hover 改变其对应的宽度 left=0 且z-index=2 保证可点 ; */
 		.stars{
@@ -108,7 +108,7 @@
 		<label for="start1" class="start start_1" id="start_1"></label>
 		<input type="radio" id="start2" value="2" class="score score_2" name="score">
 		<label for="start2" class="start start_2" id="start_2"></label>
-		<input type="radio" id="start3" value="3" class="score score_3" name="score" checked="checked">
+		<input type="radio" id="start3" value="3" class="score score_3" name="score" >
 		<label for="start3" class="start start_3" id="start_3"></label>
 		<input type="radio" id="start4" value="4" class="score score_4" name="score">
 		<label for="start4" class="start start_4" id="start_4"></label>

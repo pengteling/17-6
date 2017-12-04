@@ -29,20 +29,26 @@
 		.stars li:nth-child(even){
 			text-indent: -0.5em;
 		}
-		.stars li:hover,.stars li:hover ~ li,.stars li.cur ~ li{
+		.stars li:hover,.stars li:hover ~ li,.stars li.cur ~ li,.stars li.cur{
 			color: #f00
 		}
 	</style>
 	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			var curIndex = 0;
 			$(".stars li").on("click",function(){
 				$(this).addClass("cur").siblings().removeClass("cur");
-				var index = $(this).index();
+				curIndex = $(this).index();
 				// console.log($(this).index())
-				var score = (10 - index) /2;
+				var score = (10 - curIndex) /2;
 				console.log("评分："+score);
 			})
+			// .on("mouseover",function(){
+			// 	$(this).parent().find(".cur").removeClass("cur");
+			// }).on("mouseleave",function(){				
+			// 	$(this).parent().children().eq(curIndex).addClass("cur");
+			// })
 		})
 	</script>
 </head>
