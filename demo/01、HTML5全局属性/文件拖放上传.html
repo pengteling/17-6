@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5拖动文件上传...</title>
+    <style type="text/css">
+    .container {
+        width: 800px;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        border: #333 2px dashed;
+    }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">请将文件拖入此区域</div>
+    <div class="preview"></div>
+</body>
+</html>
+<script type="text/javascript">
+    
+    var container = document.querySelector(".container");
+    var preview = document.querySelector(".preview");
+
+    container.ondragover = function(e){
+        e.preventDefault();
+    }
+    container.ondrop = function(e){
+        e.preventDefault();
+        // console.log(e);
+        //console.log(e.dataTransfer.files);
+        handleFiles(e.dataTransfer.files);
+    }
+
+
+    function handleFiles(files){
+        for(let i = 0; i<files.length; i++){
+            var file = files[i];
+            //console.log(file);
+            var img =document.createElement("img");
+
+            preview.appendChild(img);
+
+
+            //html5 文件操作api
+            var reader = new FileReader();
+            reader.onload =  function(e) { 
+                img.src = e.target.result; 
+            }; 
+            reader.readAsDataURL(file);
+
+            var reader2 = new FileReader();
+            reader2.readAsBinaryString(file);
+            var filebinary;
+            
+            reader2.onload = function(e){
+                //console.log(e.target.result)
+                filebinary = e.target.result;
+                console.log(filebinary);
+                //uploads[i] = filebinary;
+
+                //上传处理函数
+                xhrUpload(filebinary);
+            }
+
+        }
+    }
+
+    function xhrUpload(filebinary){
+        var xhr = new XMLHttpRequest();
+        xhr.open("post","http://localhost:276/web/meitu/upload.asp", true);
+
+        Array.prototype.sendAsBinary = XMLHttpRequest.prototype.sendAsBinary = function(datastr) {
+            function byteValue(x) {
+                return x.charCodeAt(0) & 0xff;
+            }
+            var ords = Array.prototype.map.call(datastr, byteValue);
+            var ui8a = new Uint8Array(ords);
+            this.send(ui8a.buffer);
+        }
+
+        xhr.sendAsBinary(filebinary);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    console.log("上传成功");                    
+                }
+            }
+        }
+    }
+
+
+
+</script>

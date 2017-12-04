@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 拖放</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			background: #d0d;
+		}
+		#container{
+			width: 200px;
+			height: 200px;
+			background: #dd0
+		}
+	</style>	
+</head>
+<body>
+	<div id="box">	
+		<img src="images/mm1.jpg" alt="" id="dragImg">		
+	</div>
+
+	<!-- <a href="">链接</a>
+	<img src="images/mm1.jpg" alt="">
+	<p>文字测试拖放</p> -->
+	<div id="container"></div>
+	<script type="text/javascript">
+		var box = document.getElementById("box");
+		var container = document.getElementById("container");	
+		var dragImg = document.getElementById("dragImg");
+
+		dragImg.ondragstart = function(e){
+			e.dataTransfer.setData("id",e.target.id);
+		}
+		box.ondragover = container.ondragover = function(e){
+			e.preventDefault();
+		}
+		box.ondrop = container.ondrop = function(e){
+			var dragId = e.dataTransfer.getData("id");
+			console.log(e.target)
+			this.appendChild(document.getElementById(dragId));
+			// e.target.appendChild(document.getElementById(dragId));
+		}
+
+		
+	</script>
+	
+</body>
+</html>

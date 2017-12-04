@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>hidden</title>
+	</head>
+	<body>		
+		<div>dsafdsaf</div>		
+		<input type="button" id="btn" value="切换显示">
+		<form action="" method="get">
+			<label for="userName">用户名</label><input type="text" name="userName" id="userName" value="" />
+			<!--  元素的隐藏，  隐藏域提交数据  -->
+			<input type="hidden" value="隐藏的值" name="hid">
+
+			<input type="text" name="isInput" id="isInput" value="" hidden />
+			<input type="submit" value="提交"/>
+		</form>
+		
+	</body>
+	<script>
+		var btn = document.getElementById("btn");
+		btn.onclick =function(){
+			var div = document.querySelector("div");
+			console.log(div);
+			if(div.getAttribute("hidden")){
+				div.removeAttribute("hidden");
+			}else{
+				div.setAttribute("hidden","true");
+			}
+		}
+	</script>
+	
+</html>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tabindex</title>
+		<style>
+			input{
+				width: 200px;
+				height: 50px;
+				margin:0 20px;				
+			}
+			input:focus{
+				outline: 10px solid #00f
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			按住tab 键的时候   默认是第一个input（可编辑的元素）
+			设置tab切换的顺序
+			tabindex = number;
+		-->
+		<input tabindex="3"  value="3"/>
+		<input tabindex="4"  value="4"/>
+		<input tabindex="1"  value="1"/>
+		<input tabindex="2"   value="2"/>
+	</body>
+</html>
