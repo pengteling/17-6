@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    	ul,li{
+    		list-style: none;
+    		padding: 0;
+    		margin:0;
+    	}
+    	li{
+    		float: left;
+    		width: 100px;
+    		height: 100px;
+    		margin:10px;
+    		background: #ddd;
+    	}
+    	ul{
+    		/*display: flex;*/
+    		width: 1000px;
+    		height: 200px;
+    		border:#333 2px dashed;
+    	}
+    </style>
+</head>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<body>    
+    <ul>
+        <li>第1项</li>
+        <li>第2项</li>
+        <li>第3项</li>
+        <li>第4项</li>
+    </ul>
+</body>
+<script>
+$(function(){
+	$("ul li").prop("draggable","true");
+	$("ul").on("dragstart","li",function(event){
+		//e.preventDefault();
+		var e = event.originalEvent;
+		e.dataTransfer.setData("text",$(this).index());
+        console.log(e.clientX);
+	}).on("dragover","li",function(e){
+		e.preventDefault();
+	}).on("drop","li",function(event){
+		var e = event.originalEvent;
+		console.log(e.dataTransfer.getData("text"));
+		var mid = e.dataTransfer.getData("text") ;
+		console.log($(e.target).index());		
+		var tid = $(e.target).index() ;
+
+		//交换位置
+		// var tempm = $("ul li").eq(mid).clone();
+		// var tempt = $("ul li").eq(tid).clone();
+		// $("ul li").eq(mid).html($(tempt).html());
+		// $("ul li").eq(tid).html($(tempm).html());
+
+        // 移动元素
+        /*var tempm = $("ul li").eq(mid);
+        var tempt = $("ul li").eq(tid);
+        //$("ul").find(tempm).remove();
+        tempm.insertBefore($("ul").find(tempt));*/
+
+        
+
+
+
+		
+
+	}).on("dragover",function(event){
+        event.preventDefault();
+    }).on("drop",function(event){
+        //拖放插空排序
+        var e = event.originalEvent;
+        console.log(e.clientX);
+
+    })
+})
+
+
+
+</script>
+
+</html>

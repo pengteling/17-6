@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>进度条</title>
+    <style>
+    progress {
+        width: 160px;
+        border: 1px solid #0064B4;
+        background-color: #e6e6e6;
+        color: #0064B4;
+    }
+
+    progress::-moz-progress-bar {
+        background-color: #0064B4;
+    }
+
+    progress::-webkit-progress-bar {
+        background-color: #e6e6e6;
+    }
+
+    progress::-webkit-progress-value {
+        background-color: #0064B4;
+    }
+    </style>
+</head>
+
+<body>
+    <progress max="100" value="20"></progress>
+    <span>0%</span>
+</body>
+
+</html>
+<script type="text/javascript">
+var pro = document.querySelector("progress");
+var span = document.querySelector("span");
+console.log(pro.value);
+pro.value = 0;
+var timer1 = setInterval(function() {
+    if (pro.value < 100) {
+        var num = Math.random() * 20;
+        pro.value += num;
+        span.innerHTML = pro.value + "%";
+    }else{
+    	pro.value=100;
+    	console.log(pro.value);
+    	clearInterval(timer1);
+    }
+}, 500)
+</script>

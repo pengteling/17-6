@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		    /*修改meter标签默认的颜色设置*/
+     	meter::-webkit-meter-bar {
+		  background: #ccc;
+		}
+		meter::-webkit-meter-optimum-value {
+		  background: green;
+		}
+		meter::-webkit-meter-suboptimum-value {
+		  background: orange;
+		}
+		meter::-webkit-meter-even-less-good-value {
+		  background: red;
+		}  
+	</style>
+</head>
+<body>
+	<meter min="0" max="100" low="20" high="80" optimum="100" value="81"></meter>
+	<br>
+	<meter min="0" max="100" low="20" high="80" optimum="100" value="79"></meter><br>
+	<meter min="0" max="100" low="20" high="80" optimum="100" value="19"></meter>
+	<br>
+	温度：<br>
+	<meter min="-50" max="50" low="5" high="30" optimum="23" value="35"></meter><br>
+	<meter min="-50" max="50" low="5" high="30" optimum="23" value="-5"></meter><br>
+	<meter min="-50" max="50" low="5" high="30" optimum="23" value="50"></meter><br>
+
+	
+
+</body>
+</html>

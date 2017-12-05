@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>来回拖动</title>
+	<style>
+		.box2{
+			width: 200px;
+			height: 600px;
+			border: 1px solid #00CC33;
+			background-color: coral;
+			padding: 8px;
+			margin: 0 20px;
+			float: left;
+		}
+		.box1{
+			width: 200px;
+			height: 600px;
+			border: 1px solid #63A35C;
+			background-color: #ADD8E6;
+			padding: 8px;
+			margin: 0 20px;
+			float: left;
+		}
+		.box2 div,.box1 div{
+			width: 120px;
+			height: 120px;
+			margin: 20px auto;
+
+		}
+
+		#move0,#move1,#move2,#move3{
+			width: 100px;
+			height: 100px;
+			margin-top: 0 auto;
+			z-index: 10;
+			position: relative;
+		}
+	</style>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<div class="box1" id="box1">
+		<!--<div ondragover="dragOver(event)" ondrop = "dragdrop(event)">-->
+			<div draggable="true" id="move0" style="background-color: yellow"></div>
+		<!--</div>-->
+		<!--<div ondragover="dragOver(event)" ondrop = "dragdrop(event)">-->
+			<div draggable="true" id="move1" style="background-color: green"></div>
+		<!--</div>-->
+		<!--<div ondragover="dragOver(event)" ondrop = "dragdrop(event)">-->
+			<div draggable="true" id="move2" style="background-color: red"></div>
+		<!--</div>-->
+		<!--<div ondragover="dragOver(event)" ondrop = "dragdrop(event)">-->
+			<div draggable="true" id="move3" style="background-color: pink"></div>
+		<!--</div>-->	
+	</div>
+	<div class="box2" id="box2">
+		<!--<div ondragover="dragOver(event)" ondrop = "dragdrop(event)"></div>
+		<div ondragover="dragOver(event)" ondrop = "dragdrop(event)"></div>
+		<div ondragover="dragOver(event)" ondrop = "dragdrop(event)"></div>
+		<div ondragover="dragOver(event)" ondrop = "dragdrop(event)"></div>-->
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+
+	$(function(){
+		$("#box1 div").each(function(i,el){
+			// console.log(el)
+			//console.log(el);
+			el.ondragstart = function(e){
+				e.dataTransfer.setData("text",e.target.id);
+				//console.log(e.dataTransfer.getData("text"))
+			}
+			// el.ondrop = function(e){
+			// 	e.preventDefault();
+			// 	e.stopPropagation();
+			// }
+		})
+
+		$("#box1")[0].ondragover =$("#box2")[0].ondragover = function(e){			
+			e.preventDefault();			
+		}
+		// $("#box1").on("dragover",function(event){
+		// 	//console.log(event);
+		// 	var e = event.originalEvent;
+		// 	console.log(e.dataTransfer);
+		// });
+		$("#box1")[0].ondrop = $("#box2")[0].ondrop = function(e){
+			// e.target.appendChild(document.getElementById(e.dataTransfer.getData("text")));
+			this.appendChild(document.getElementById(e.dataTransfer.getData("text")));
+			//console.log(e.dataTransfer.getData("text"))
+			// $("#box2").append($("#"+e.dataTransfer.getData("text")));
+		}
+		
+
+	})
+</script>
