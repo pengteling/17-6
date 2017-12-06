@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- <input type="range" min="0" max="100" value="60" id="volume">
+    <canvas id="box" width="800" height="600"></canvas> -->
+</body>
+
+</html>
+<script type="text/javascript">
+
+var dogBarkingBuffer = null;
+function loadDogSound(url,func) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.responseType = 'arraybuffer';
+
+
+    //下面就是对音频文件的异步解析
+    request.onload = function() {
+        context.decodeAudioData(request.response, function(buffer) {
+            dogBarkingBuffer = buffer;
+            func();
+        }, function(err){
+            console.log(err)
+        });
+    }
+
+    request.send();
+
+}
+loadDogSound("./test.mp3",playSound);
+
+
+var context = new AudioContext();
+
+function playSound() {
+    var source = context.createBufferSource();
+    source.buffer = dogBarkingBuffer;
+    //重低音
+    lowpassFilter = context.createBiquadFilter();
+
+    waveShaper = context.createWaveShaper();
+    panner = context.createPanner();
+
+    panner.setOrientation(0,0,0,0,1,0); //方向朝向收听者
+    var a=0,r=8;
+    setInterval(function(){
+      //然声源绕着收听者以8的半径旋转  回音绕梁
+      //不仅声源可以设置运动，收听者也可以。同样使用这些方法，但它是在context.listener对象上设置的。
+      panner.setPosition(Math.sin(a/100)*r,0,Math.cos(a/100)*r);
+      a++;
+    },16);
+
+    compressor = context.createDynamicsCompressor();
+    reverb = context.createConvolver();
+    
+    gainNode = context.createGain();
+    gainNode.gain.value = 1; //音量
+    // source.connect(context.destination);
+    //source.connect(panner);
+    
+    //panner.connect(gainNode);
+    source.connect(lowpassFilter);
+    lowpassFilter.connect(gainNode);
+    gainNode.connect(context.destination)
+    source.start(0);
+
+
+}
+// setTimeout(function(){
+//     console.log("等待异步获取结束")
+//     playSound();
+// },2000);
+
+
+</script>

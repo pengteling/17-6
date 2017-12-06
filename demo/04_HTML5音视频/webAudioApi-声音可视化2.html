@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="range" min="0" max="100" value="60" id="volume">
+    <canvas id="box" width="800" height="600"></canvas>
+</body>
+
+</html>
+<script type="text/javascript">
+var ac = new(window.AudioContext || window.webkitAudioContext)();
+var xhr = new XMLHttpRequest();
+var gainNode = ac[ac.createGain?"createGain":"createGainNode"]();
+gainNode.connect(ac.destination);
+var analyser = ac.createAnalyser();
+var size =128;
+analyser.fftSize = size *2;
+analyser.connect(gainNode);
+
+var cavans = $("#box")[0];
+
+var ctx = cavans.getContext("2d");
+// var line = ctx.createLinearGradient(0,0,0,600);
+// line.addColorStop(0,"red");
+// line.addColorStop(0.5,"yellow");
+// line.addColorStop(1,"green");
+// ctx.fillStyle = line;
+
+var Dots = [];
+
+
+function random(m,n){
+    return Math.round(Math.random()*(n-m) +m);
+}
+function getDots(arr){
+    for (var i=0; i<size;i++){
+        var x = random(0,800);
+        var y = random(0,600);
+        var color = "rgb("+random(0,255)+","+random(0,255)+","+random(0,255)+")";
+        Dots.push({
+            x:x,
+            y:y,
+            color:color
+        });
+
+
+    }
+}
+
+
+function load(url) {
+    xhr.open("GET", url);
+    xhr.responseType = "arraybuffer";
+    xhr.onload = function() {
+        ac.decodeAudioData(xhr.response, function(buffer) {
+            var bufferSource = ac.createBufferSource();
+            bufferSource.buffer = buffer;
+            bufferSource.connect(analyser);
+            //bufferSource.connect(ac.destination);
+            bufferSource[bufferSource.start? "start" : "noteOn"](0);//可以播放了
+            //console.log(bufferSource)
+            //visualizer();
+
+
+        }, function(err) {
+            console.log(err);
+        })
+    }
+    xhr.send();
+}
+
+
+function draw(arr){
+    ctx.clearRect(0,0,800,600);
+    var w = 800 /size;
+    for(var i=0;i<size;i++){
+        var r=arr[i]/256 * 50;
+        var o = Dots[i];
+        ctx.beginPath();
+        ctx.arc(o.x,o.y,r,0,Math.PI*2,true);
+
+        //ctx.strokeStyle ="#f00";
+        //ctx.stroke();
+        var g = ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,r);
+        g.addColorStop(0,"#fff");
+        g.addColorStop(1,o.color);
+        ctx.fillStyle =g;
+        ctx.fill()
+    }
+}
+function visualizer(){
+    var arr = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(arr);
+    //console.log(arr);
+    getDots(arr);
+    requestAnimationFrame = window.requestAnimationFrame ||
+                            window.webkitRequestAnimastionFrame ||
+                            window.mozRequestAnimastionFrame ;
+                            
+    function v(){
+        analyser.getByteFrequencyData(arr);
+        //console.log(arr);
+        draw(arr);
+        requestAnimationFrame(v);
+    }
+    requestAnimationFrame(v);
+}
+
+visualizer();
+
+
+function changeVolume(percent) {
+    // body...
+    gainNode.gain.value = percent; //percent*percent
+}
+$("#volume")[0].onchange = function(){
+    changeVolume(this.value / this.max);
+}
+$("#volume")[0].onchange();
+load("test.mp3")
+</script>

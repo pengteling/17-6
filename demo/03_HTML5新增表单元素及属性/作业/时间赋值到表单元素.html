@@ -1,23 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>将当前时间赋值到两个日期表单元素中</title>
-	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>将当前时间赋值到两个日期表单元素中</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
-	<!-- novalidate -->
-	<form action="" >
-		
-		<input type="datetime-local" id="datetime-local">
-		<input type="week" id="week"><br>
-		
-	</form>
-	
+    <!-- novalidate -->
+    <form action="">
+        <input type="datetime-local" id="datetime-local">
+        <input type="week" id="week">
+        <br>
+    </form>
 </body>
-</html>
 
+</html>
 <script type="text/javascript">
-	
+var timer = document.getElementById("datetime-local");
+var week = document.getElementById("week");
+var now = new Date();
+
+var str = now.getFullYear() + "-" + fix((now.getMonth() + 1), 2) + "-" + fix(now.getDate(), 2) + "T" + fix(now.getHours(), 2) + ":" + fix(now.getMinutes(), 2);
+
+timer.value = str;
+console.log(str);
+function fix(num, length) {//补0
+	//return num
+    return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+}
+
+//判断当前日期为当年第几周
+var getYearWeek = function (a, b, c) {
+    //date1是当前日期
+    //date2是当年第一天
+    //d是当前日期是今年第多少天
+    //用d + 当前年的第一天的周差距的和在除以7就是本年第几周
+    var date1 = new Date(a, parseInt(b) - 1, c), date2 = new Date(a, 0, 1),
+        d = Math.ceil((date1.valueOf() - date2.valueOf()) / 86400000);    
+    return Math.ceil((d + ((date2.getDay() + 1) - 1)) / 7);
+};
+
+var getYearWeek2 = function(a,b,c){
+	var date1 = new Date(a, parseInt(b) - 1, c), date2 = new Date(a, 0, 1);
+	//中国：包括第一个星期四的才是第一周
+	if(date2.getDay()>4 ){ //第一天为星期五、六，则1号所在的这一周不是第一周，下一周星期一才是第一周
+		date_start = date2.valueOf() + (7+1-(date2.getDay()))* 86400000;
+	}else if(date2.getDay()==0){
+		//第一天为星期天，则第二天为第一周
+		date_start = date2.valueOf() + 1* 86400000;
+	}else{		
+		//第一天为 星期一、二、三，则当周为第一周
+		date_start = date2.valueOf() - (date2.getDay()-1)* 86400000;
+	}
+	// return date_start
+	console.log(new Date(date_start));
+	var weekvalue = Math.floor((date1.valueOf() - date_start.valueOf())/86400000/7) +1;
+	return weekvalue;
+}
+var getYearWeek3 = function(a,b,c){
+    //根据包括1月4号的是第一周
+    var date1 = new Date(a, parseInt(b) - 1, c), date2 = new Date(a, 0, 4);
+    // 计算第一周的星期一 
+    var date_start = date2.valueOf() - (date2.getDay()-1) *86400000;
+    var weekvalue = Math.floor((date1.valueOf() - date_start.valueOf())/86400000/7) +1;
+    return weekvalue;
+}
+var weekvalue= now.getFullYear() + "-W" +getYearWeek2(now.getFullYear(),now.getMonth()+1,now.getDate());
+//var weekvalue= now.getFullYear() + "-W" +fix(getYearWeek2(2016,1,10),2);
+week.value = weekvalue;
+console.log(weekvalue);
 </script>

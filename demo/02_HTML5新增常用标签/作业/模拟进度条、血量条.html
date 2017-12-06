@@ -19,6 +19,40 @@
 <script type="text/javascript">
 	var pro = document.getElementById("pro");
 	var start = document.getElementById("start");
-	
+		var pro = document.getElementById("pro");
+	var start = document.getElementById("start");
+	var timer = null;
+	start.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			if(pro.value < 100){
+				pro.value ++;
+				document.getElementsByTagName("span")[0].innerHTML = pro.value + " % ";
+			}
+			if(pro.value == 100){
+				document.getElementsByTagName("span")[0].innerHTML = "加载完成";
+				clearInterval(timer);
+			}		
+		},100);
+	}
+
+	var meter = document.getElementsByTagName("meter")[0];
+	var debuff = document.getElementById("debuff");
+	var blow = document.getElementById("blow");
+	debuff.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			if(meter.value > 0){
+				meter.value -= 5;
+			}
+			if(meter.value == 0){
+				document.getElementsByTagName("span")[1].innerHTML = "You're dead";
+				clearInterval(timer);
+			}
+		},500);
+	}
+	blow.onclick = function(){
+		meter.value -= Math.round(Math.random()*10);
+	}
 </script>
 </html>

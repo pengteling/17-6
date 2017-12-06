@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义视频播放器</title>
+</head>
+<body>
+	<video id="video"></video>
+	<button id="play">播放</button>
+	<button id="fullscreen">全屏</button>
+</body>
+</html>
+<script type="text/javascript">
+	var video = document.getElementById("video");
+	video.src ="resource/movie.mp4";
+	video.poster = "resource/dog.png";
+
+	play.onclick = function(){
+		if(video.paused){
+			video.play();
+			this.innerText = "暂停";
+		}else{
+			video.pause();
+			this.innerText = "播放";
+		}		
+	}
+	
+	fullscreen.onclick = function(){		
+		video.webkitRequestFullScreen() ||video.RequestFullScreen()||video.RequestFullScreen();
+		
+	}
+
+</script>

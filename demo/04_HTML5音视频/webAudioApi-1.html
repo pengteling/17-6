@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.container i{
+			float: left;
+			width: 5px;
+			margin:0 2px;
+			background-color: #0f0;
+		}
+	</style>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+<body>
+<input type="range" id="volume" min="0" max="100">
+<div class="container">
+	
+</div>
+  <script type="text/javascript">
+  	function load(url,func){
+  		var xhr = new XMLHttpRequest();
+  		xhr.open("get",url);
+  		//返回arraybuffer类型
+  		xhr.responseType = "arraybuffer";
+  		xhr.onload = function(){
+  			console.log(xhr.response);
+  			
+  			func(xhr.response);
+  		}
+  		xhr.send();
+  	}
+  	load("test.mp3",playSong);
+  	var ac = new window.AudioContext();
+  	// var ac = new(window.AudioContext || window.webkitAudioContext)();
+  	
+
+  	function playSong(arraybuffer){
+  		var bufferSource = ac.createBufferSource();
+  		ac.decodeAudioData(arraybuffer,function(buffer){
+  			console.log("解码成功");
+  			bufferSource.buffer = buffer;
+  			console.log(buffer);
+  			bufferSource.connect(analyser);
+  			bufferSource.start(0);
+  		},function(err){
+  			console.log(err);
+  		})
+  		// 
+  	}
+
+  	var gainNode = ac.createGain();
+  	gainNode.connect(ac.destination);
+  	
+  	$(function(){
+  		function changeVolume(value){  		
+	  		gainNode.gain.value = value;  		
+	  	}
+  		$("#volume").on("change",function(){
+  			changeVolume($("#volume").val() / 100);
+  		})
+  	})
+  	
+  	var analyser = ac.createAnalyser();
+  	analyser.fftSize = 256;
+  	analyser.connect(gainNode);
+
+
+  	function visualizer(){
+  		var arr = new Uint8Array(analyser.frequencyBinCount);
+  		analyser.getByteFrequencyData(arr);
+  		
+  		requestAnimationFrame(v);
+  		function v(){
+  			analyser.getByteFrequencyData(arr);
+  			//console.log(arr);
+  			draw(arr);
+  			requestAnimationFrame(v);
+  		}
+  	}
+  	visualizer();
+  	function draw(arr){
+  		$(".container").html("");
+  		arr.forEach(function(i,v){
+  			//console.log(i);
+  			$(".container").append("<i style='height:"+i+"px'></i>");
+  		})
+  	}
+  </script>
+
+</body>
+</html>
