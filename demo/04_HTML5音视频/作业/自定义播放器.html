@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易播放器 - 腾讯视频</title>
+	<style type="text/css">
+		div{
+			width: 400px;
+			height: 400px;
+			margin: 0 auto;
+			text-align:center;
+		}
+		.nav{
+			width: 400px;
+			height: 10px;
+			margin: 0 auto;
+			text-align:left;
+		}
+	</style>
+</head>
+<body>
+<div class="nav">
+	<span><a href="https://v.qq.com/?ptag=qqbsc">首页</a></span>
+	<span><a href="https://v.qq.com/?ptag=qqbsc">电视剧</a></span>
+	<span><a href="https://v.qq.com/?ptag=qqbsc">综艺</a></span>
+	<span><a href="https://v.qq.com/?ptag=qqbsc">VIP影院</a></span>
+</div>
+<div>
+	<video id="video" controls="controls">
+		<source src="../resource/Wildlife.mp4" type="video/mp4">
+		<source src="../resource/Wildlife.ogg" type="video/ogg">
+	</video><br>
+	<button id="suoxiao">缩小</button>
+	<button id="fangda">放大</button>
+	<button id="load">重新加载</button>
+	<button id="kuaibo">快进</button>
+	<button id="man">慢速</button>
+</div>	
+</body>
+</html>
+<script type="text/javascript">
+	video.width=400;
+	video.height=400;
+	video.poster="../resource/psb.jpg";
+	suoxiao.onclick = function (){
+		video.width-= 10;
+	}
+
+	fangda.onclick = function (){
+		video.width+= 10;
+	}
+		
+	load.onclick = function(){
+		video.load();
+	}
+
+	kuaibo.onclick = function(){
+		video.playbackRate+=0.1;
+	}
+
+	man.onclick = function(){
+		video.playbackRate-=0.1;
+	}
+</script>

@@ -63,7 +63,10 @@ var getYearWeek3 = function(a,b,c){
     //根据包括1月4号的是第一周
     var date1 = new Date(a, parseInt(b) - 1, c), date2 = new Date(a, 0, 4);
     // 计算第一周的星期一 
-    var date_start = date2.valueOf() - (date2.getDay()-1) *86400000;
+    var date_start = date2.valueOf() - (date2.getDay()==0 ? 7:date2.getDay()-1) *86400000;
+    // 如果1月4号是星期日 则第一周应该是往前数的周一
+
+
     var weekvalue = Math.floor((date1.valueOf() - date_start.valueOf())/86400000/7) +1;
     return weekvalue;
 }

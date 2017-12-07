@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas画七巧板</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="800"></canvas>
+	
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas');
+	var context = canvas.getContext("2d");
+
+	var box = {
+		pos:[
+			{x:0,y:0},
+			{x:800,y:0},
+			{x:400,y:400}
+		],
+		color:"#ed8120"
+	}
+
+	var boxes = [ 
+		{pos:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#ed8120"},
+		{pos:[{x:800,y:0},{x:400,y:400},{x:800,y:800}],color:"#68BCE7"},
+		{pos:[{x:400,y:800},{x:600,y:600},{x:800,y:800}],color:"#EAE500"},
+		{pos:[{x:200,y:600},{x:400,y:400},{x:600,y:600},{x:400,y:800}],color:"#00E5A5"},
+		{pos:[{x:0,y:400},{x:400,y:800},{x:0,y:800}],color:"#0EA00E"},
+		{pos:[{x:200,y:200},{x:400,y:400},{x:200,y:600}],color:"#0040E5"},
+		{pos:[{x:0,y:0},{x:200,y:200},{x:200,y:600},{x:0,y:400}],color:"#E500CE"}
+	]
+
+	function draw(obj){		
+		context.beginPath();
+		var pos = obj.pos;
+		pos.forEach(function(v,i){
+			context.lineTo(v.x,v.y);
+		});
+		context.closePath();
+		context.fillStyle = obj.color;
+		context.fill();
+		context.stroke();
+	}
+	//draw(box);
+	boxes.forEach(function(v){
+		draw(v);
+	})
+
+</script>
+</html>

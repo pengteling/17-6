@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		function drawRect(x,y,w,h){
+			context.beginPath();
+			context.moveTo(x,y);
+			context.lineTo(x+w,y);
+			context.lineTo(x+w,y+h);
+			context.lineTo(x,y+h);
+			context.closePath();
+		}
+		// drawRect(100,100,200,100);
+		// context.rect(400,200,200,100);
+		// context.stroke();
+
+		function fillRect(x,y,w,h){
+			context.beginPath();
+			context.moveTo(x,y);
+			context.lineTo(x+w,y);
+			context.lineTo(x+w,y+h);
+			context.lineTo(x,y+h);
+			context.closePath();
+			context.fill();
+		}
+
+		// fillRect(100,100,200,100);
+		// context.fillRect(400,200,200,100);
+
+
+		function strokeRect(x,y,w,h){
+			context.beginPath();
+			context.moveTo(x,y);
+			context.lineTo(x+w,y);
+			context.lineTo(x+w,y+h);
+			context.lineTo(x,y+h);
+			context.closePath();
+			context.stroke();
+		}
+
+		strokeRect(100,100,200,100);
+		context.strokeRect(400,200,200,100);
+		
+		
+	</script>
+</body>
+</html>

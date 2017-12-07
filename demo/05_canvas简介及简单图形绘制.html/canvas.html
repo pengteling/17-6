@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		context.beginPath();
+		context.moveTo(100,100);
+		context.lineTo(200,500);
+		context.lineTo(100,500);
+		//context.lineTo(100,100);
+		context.strokeStyle = "#00f";
+		context.lineWidth = 10;
+		context.fillStyle ="#f00";
+		// context.closePath();
+
+		//context.fill();
+		context.lineJoin = "round";
+
+		context.stroke();
+
+		context.beginPath();
+		context.moveTo(200,100);
+		context.lineTo(300,500);
+		// context.strokeStyle = "rgba(0,255,0,0.2)";
+		context.strokeStyle = "#0f0";
+		context.stroke();
+
+	</script>
+</body>
+</html>

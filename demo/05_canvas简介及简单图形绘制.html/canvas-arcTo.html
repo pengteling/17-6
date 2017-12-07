@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		
+		context.beginPath();
+
+		context.moveTo(100,100);
+		// context.arcTo(200,100,200,200,220);
+		context.arcTo(200,100,200,200,50);
+		context.stroke();
+
+		context.beginPath();
+		context.lineTo(200,200);
+		context.lineTo(200,100);
+		context.lineTo(100,100);
+		context.strokeStyle = "rgba(2,255,0,0.3)";
+		context.stroke();
+
+
+	</script>
+</body>
+</html>

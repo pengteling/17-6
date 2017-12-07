@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1;
+    }
+
+    video {
+        width: 500px;
+        height: 300px;
+    }
+
+    .container {
+        width: 500px;
+        height: 300px;
+        position: relative;
+    }
+
+    .wrap {
+        width: 500px;
+        height: 50px;
+        box-shadow: 0px 0px 25px 0px rgba(220, 200, 190, 0.5);
+        background: rgba(10, 10, 10, 0.5);
+        position: absolute;
+        bottom: 3.5%;
+    }
+
+    .wrap:after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .controlBox {
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        box-shadow: 0px 0px 5px 0px rgba(190, 190, 190, 0.5);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 1%;
+        margin: auto 0;
+        z-index: auto;
+        cursor: pointer;
+    }
+
+    .controlBox:hover {
+        box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.5);
+        background: rgba(100, 100, 100, 0.1);
+    }
+
+    .controlBtn {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .controlBtn1 {
+        box-sizing: border-box;
+        height: 20px;
+        width: 20px;
+        border-left: 20px solid #ccc;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+
+    .controlBtn2 {
+        height: 20px;
+        width: 10px;
+        border-left: 5px solid #333;
+        border-right: 5px solid #333;
+    }
+
+    #timeBox {
+        position: relative;
+        display: inline-block;
+        width: 300px;
+        border-radius: 3px;
+        background: rgba(200, 200, 200, 0.8);
+        margin-left: 100px;
+        vertical-align: middle;
+        font-size: 0;
+        cursor: pointer;
+    }
+
+    i {
+        display: inline-block;
+        height: 3px;
+        background: rgba(20, 25, 20, 0.5);
+    }
+
+    span {
+        display: inline-block;
+        width: 50px;
+        font-size: 5px;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    #fullscreen {
+        float: right;
+        color: #fff
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <video id="videoAccess">
+            <source src="../resource/movie.mp4">
+        </video>
+        <div class="wrap">
+            <div class="controlBox">
+                <div class="controlBtn controlBtn1"></div>
+            </div>
+            <div id="timeBox">
+                <i id="timeAx"></i>
+            </div>
+            <span></span>
+            <div id="fullscreen">全屏</div>
+        </div>
+    </div>
+</body>
+<script>
+var videoAccess = document.getElementById("videoAccess");
+var timeAx = document.getElementById("timeAx");
+var w = document.querySelector("#timeBox").offsetWidth;
+var controlBox = document.querySelector(".controlBox");
+var controlBtn = document.querySelector(".controlBtn");
+var wrap = document.querySelector(".wrap");
+var container = document.querySelector(".container");
+var span = document.querySelector("span");
+
+videoAccess.onloadedmetadata = function(e) {
+    console.log(e);
+    //requestAnimationFrame(videoPro);
+    wrap.style.display = "none";
+}
+
+function videoPro() {
+    timeAx.style.width = videoAccess.currentTime / videoAccess.duration * w + "px";
+    //span.innerHTML = videoAccess.currentTime - videoAccess.currentTime/videoAccess.duration;
+    //if(videoAccess.)
+    span.innerHTML = videoAccess.currentTime;
+
+    if (videoAccess.paused) {
+        controlBtn.className = "controlBtn " + "controlBtn" + 1;
+    } else {
+        controlBtn.className = "controlBtn " + "controlBtn" + 2;
+    }
+
+    requestAnimationFrame(videoPro);
+}
+controlBox.onclick = controlV;
+container.onmouseover = showControl;
+container.onmouseout = hideControl;
+
+function showControl() {
+    wrap.style.display = "block";
+}
+
+function hideControl() {
+    wrap.style.display = "none";
+}
+
+function controlV() {
+    console.log(videoAccess.paused)
+    if (videoAccess.paused) {
+        controlBtn.className = "controlBtn " + "controlBtn" + 2;
+        videoAccess.play();
+    } else {
+        controlBtn.className = "controlBtn " + "controlBtn" + 1;
+        videoAccess.pause();
+    }
+}
+videoAccess.ontimeupdate = function() {
+    // bug 播放完时间进度未走完
+    console.log(videoAccess.currentTime)
+    span.innerHTML = formatTime(videoAccess.currentTime);
+    timeAx.style.width = videoAccess.currentTime / videoAccess.duration * w + "px";
+}
+// videoAccess.addEventListener("timeupdate",function(){
+// 	console.log(videoAccess.currentTime)
+// })
+timeBox.onclick = function(e) {
+    console.log(e);
+    var ml = timeBox.getBoundingClientRect().x;
+    var w = timeBox.getBoundingClientRect().width;
+    var x = e.clientX - ml;
+    //根据比例播放 时间 
+    var cur = x /w * videoAccess.duration;
+    videoAccess.currentTime = cur;
+    console.log(x);
+}
+
+fullscreen.onclick = function() {
+    videoAccess.webkitRequestFullScreen();
+}
+
+function formatTime(t) {
+    let timestr = ""
+    let t1 = parseInt(t);
+    let mm = parseInt(t1 / 60)
+    let ss = parseInt(t1 % 60)
+    let ms = ((t+"").split(".")[1]).slice(0,2);
+    ss = ss < 10 ? `0${ss}` : ss
+    return mm + ':' + ss +' '+ ms;
+}
+</script>
+
+</html>
