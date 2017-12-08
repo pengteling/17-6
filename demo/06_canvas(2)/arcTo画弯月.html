@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		
+		context.beginPath();
+		context.arc(400,400,300,Math.PI *1.5,Math.PI *0.5);
+		context.stroke();
+
+		//context.moveTo(400,100);
+		//context.arcTo(1200,400 ,400,700,320);
+
+		drawArcTo(400,100,1200,400,400,700, dis(400,100,1200,400) * 300 /800 );
+		
+		context.stroke();
+
+
+
+		function drawArcTo(x0,y0,x1,y1,x2,y2,r){
+			context.beginPath();
+
+			context.moveTo(x0,y0);
+			// context.arcTo(200,100,200,200,220);
+			context.arcTo(x1,y1,x2,y2,r);
+			context.stroke();
+
+			context.beginPath();
+			context.lineTo(x0,y0);
+			context.lineTo(x1,y1);
+			context.lineTo(x2,y2);
+			context.strokeStyle = "rgba(2,255,0,0.3)";
+			context.stroke();
+		}
+
+		function dis(x1,y1,x2,y2){
+			return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+		}
+
+	</script>
+</body>
+</html>

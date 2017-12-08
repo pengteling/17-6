@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		
+		
+		function drawStar(x,y,R,r,rot){
+			//rot为顺时针旋转rot角
+		
+			/*var R = 300;
+			var r = 150;
+			//var r = R/2.61803;
+			var x = 300;
+			var y = 300;*/
+			context.beginPath();
+			
+			for(var i=0; i<5; i++){
+
+				context.lineTo(  Math.cos( (18 + 72 *i - rot) / 180 * Math.PI) *R + x , - Math.sin( (18 + 72 *i - rot) / 180 * Math.PI) *R  +y );
+				context.lineTo(  Math.cos( (54 + 72 *i - rot) / 180 * Math.PI) *r + x , - Math.sin( (54 + 72 *i - rot) / 180 * Math.PI) *r  +y );
+			}
+			context.closePath();
+			context.stroke();
+
+		}
+
+		drawStar(300,300,300,150,18);
+		drawStar(500,500,50,20,275);
+
+		function drawPositvieStar(x,y,R,rot){
+			var r = R / 2.61803;
+
+			context.beginPath();
+			
+			for(var i=0; i<5; i++){
+
+				context.lineTo(  Math.cos( (18 + 72 *i - rot) / 180 * Math.PI) *R + x , - Math.sin( (18 + 72 *i - rot) / 180 * Math.PI) *R  +y );
+				context.lineTo(  Math.cos( (54 + 72 *i - rot) / 180 * Math.PI) *r + x , - Math.sin( (54 + 72 *i - rot) / 180 * Math.PI) *r  +y );
+			}
+			context.closePath();
+			context.stroke();
+		}
+
+
+
+
+
+	</script>
+</body>
+</html>

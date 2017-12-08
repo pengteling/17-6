@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		
+		
+		function drawRoundRect(x,y,w,h,radius){
+			context.beginPath();
+			context.arc( x + radius, y+radius, radius,  Math.PI,Math.PI*1.5);
+			context.lineTo(x + w - radius, y);
+			context.arc(x +w - radius ,y + radius, radius, Math.PI*1.5, 0);
+			context.lineTo(x+w ,y + h -radius);
+			context.arc(x +w - radius ,y +h - radius, radius, 0, Math.PI*0.5);
+			context.lineTo(x +radius ,y + h );
+			context.arc(x + radius ,y +h - radius, radius,  Math.PI*0.5,  Math.PI*1);
+			context.closePath();				
+
+			//context.stroke();
+			context.fill();
+		}
+
+		/*drawRoundRect(80,80,500,500,60);
+		drawRoundRect(30,30,200,100,20);*/
+
+		// 画2048棋盘
+
+		
+
+		drawRoundRect(80,80,500,500,8);
+		context.fillStyle = "#bbada0";
+		context.fill();
+
+		context.fillStyle = "#ccc0b3";
+
+		for(var i=0; i<4; i++){
+			for(var j=0; j<4; j++){
+				drawRoundRect(100 + 120*i, 100+120*j,100,100,8 );
+			}
+		}
+		
+		
+
+
+
+	</script>
+</body>
+</html>
