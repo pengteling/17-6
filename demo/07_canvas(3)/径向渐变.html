@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		 #canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		} 
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		
+		
+		context.beginPath();
+		//context.rect(100,100,400,300);
+
+		//var grd = context.createRadialGradient(300,300,50, 300,300,300);
+		//var grd = context.createRadialGradient(200,200,50, 300,300,300);
+		// var grd = context.createRadialGradient(300,300,20, 100,100,100);
+		var grd = context.createRadialGradient(600,600,100, 300,300,20);
+
+		grd.addColorStop(0,"#00f");	
+		grd.addColorStop(0.3,"#0f0");			
+		grd.addColorStop(1,"#f0f");
+
+		context.fillStyle = grd ;
+		//context.fill();
+
+		context.fillRect(0,0,canvas.width,canvas.height);
+		
+
+
+
+	</script>
+</body>
+</html>

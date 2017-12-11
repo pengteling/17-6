@@ -22,7 +22,19 @@
 		canvas.height = window.innerHeight;
 		var context = canvas.getContext("2d");
 
-		
+		/*var linearGradient = context.createLinearGradient(0,0,0,canvas.height);
+		linearGradient.addColorStop(0,"#000");
+		linearGradient.addColorStop(1,"#035");
+		context.fillStyle = linearGradient;*/
+
+
+		var radialGradient = context.createRadialGradient(canvas.width /2 , canvas.height, 0, canvas.width/2, canvas.height, canvas.width );
+		radialGradient.addColorStop(0,"#035");
+		radialGradient.addColorStop(1,"#000");
+		context.fillStyle = radialGradient;
+
+
+
 		context.fillRect(0,0,canvas.width,canvas.height);
 		for (var i = 0 ; i<200; i++){
 			var x = randomIntFromRange(0, canvas.width);

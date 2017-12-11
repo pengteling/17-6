@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		context.font = "bolder 40px 微软雅黑";
+
+	/*	context.textAlign = "left";
+		context.fillText("这里canvas在线学习课程",400,100);
+
+		context.textAlign = "center";
+		context.fillText("这里canvas在线学习课程",400,200);
+
+		context.textAlign = "right";
+		context.fillText("这里canvas在线学习课程",400,300);
+
+
+		//辅助线
+		context.moveTo(400,0);
+		context.lineTo(400,600);
+		context.stroke();
+*/
+		
+		context.textBaseline =  "top";
+		drawText("这里canvas在线学习课程",100);
+		/*context.fillText("这里canvas在线学习课程",400,100);
+		context.beginPath();
+		context.moveTo(0,100);
+		context.lineTo(1000,100);
+		context.stroke();*/
+
+		context.textBaseline =  "middle";
+		drawText("这里canvas在线学习课程",200);
+
+		context.textBaseline =  "bottom";
+		drawText("这里canvas在线学习课程",300);
+
+		context.textBaseline =  "alphabetic";
+		drawText("这里canvas在线学习课程",400);
+
+		context.textBaseline =  "ideographic";
+		drawText("这里canvas在线学习课程",500);
+
+		context.textBaseline =  "hanging";
+		drawText("这里canvas在线学习课程",600);
+
+		console.log(context.measureText("这里canvas在线学习课程").width);
+		
+		function drawText(txt,h){
+			context.fillText(txt,400,h);
+			context.beginPath();
+			context.moveTo(0,h);
+			context.lineTo(1000,h);
+			context.stroke();
+		}
+
+
+		
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		context.font = "italic 40px 宋体";
+		//context.fillText("这里canvas在线学习课程",100,100,300);
+		context.strokeText("这里canvas在线学习课程",100,100);
+
+
+
+		var linearGrad = context.createLinearGradient(0,0,1000,0);
+		linearGrad.addColorStop(0,"#f00");
+		linearGrad.addColorStop(0.25,"#f0f");
+		linearGrad.addColorStop(0.5,"#00f");
+		linearGrad.addColorStop(0.75,"#0ff");
+		linearGrad.addColorStop(1,"#00f");
+
+		context.fillStyle = linearGrad;
+		context.fillText("这里canvas在线学习课程",300,300);
+		//context.fillRect(0,400,1000,100);
+
+
+		var img = new Image();
+		img.src = "resource/eg_tulip.jpg";
+		
+		context.font = "bolder 100px 微软雅黑";
+
+		//必须异步执行才能成功 
+		img.onload = function(){
+			var pat = context.createPattern(img,"repeat");
+			context.fillStyle = pat; 
+			context.fillText("这里canvas在线学习课程",20,400);
+		}
+
+		/*var pat = context.createPattern(img,"repeat");
+			context.fillStyle = pat; 
+			context.fillText("这里canvas在线学习课程",20,400);
+		*/
+
+	</script>
+</body>
+</html>

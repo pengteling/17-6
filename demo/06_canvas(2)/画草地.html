@@ -22,7 +22,10 @@
 		canvas.height = window.innerHeight;
 		var context = canvas.getContext("2d");
 
-		
+		var linearGradient = context.createLinearGradient(0,0,0,canvas.height);
+		linearGradient.addColorStop(0,"#000");
+		linearGradient.addColorStop(1,"#035");
+		context.fillStyle = linearGradient;
 		context.fillRect(0,0,canvas.width,canvas.height);
 		for (var i = 0 ; i<200; i++){
 			var x = randomIntFromRange(30, canvas.width - 30);
@@ -40,7 +43,13 @@
 		context.lineTo(canvas.width,canvas.height);
 		context.lineTo(0,canvas.height);
 		context.closePath();
-		context.fillStyle = "#580";
+
+		linearGradient = context.createLinearGradient(0,canvas.height * 0.6 ,0,canvas.height);
+		linearGradient.addColorStop(0,"#030");
+		linearGradient.addColorStop(1,"#580");
+		context.fillStyle = linearGradient;
+
+		//context.fillStyle = "#580";
 		context.fill();
 
 
