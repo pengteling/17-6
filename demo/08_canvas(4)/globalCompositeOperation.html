@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			/* background: url(resource/coordinate.png) no-repeat; */
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+
+		context.fillStyle = "blue";
+		context.fillRect(100,200,400,400);
+
+
+
+
+		context.beginPath();
+		context.moveTo(400,300);
+		context.lineTo(650,700);
+		context.lineTo(150,700);
+		context.closePath();
+
+		context.fillStyle = "red";
+
+
+		context.globalCompositeOperation = "source-over";
+		context.globalCompositeOperation = "destination-over";
+
+		context.globalCompositeOperation = "source-atop";
+		context.globalCompositeOperation = "destination-atop";
+
+		context.globalCompositeOperation = "source-in";
+		context.globalCompositeOperation = "destination-in";
+
+		context.globalCompositeOperation = "source-out";
+		context.globalCompositeOperation = "destination-out";
+
+		context.globalCompositeOperation = "lighter";
+		context.globalCompositeOperation = "copy"; //只显示 源图形
+		context.globalCompositeOperation = "xor"; //异或
+
+		context.fill();
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+
+		// context.globalAlpha=0.6;
+
+		context.globalCompositeOperation = "lighter";
+		//context.globalCompositeOperation = "copy"; //只显示 源图形
+		context.globalCompositeOperation = "xor"; //异或
+
+		for(var i=0;i<200;i++){
+			var x = randomIntFromRange(0,canvas.width);
+			var y = randomIntFromRange(0,canvas.height);
+			var r = randomIntFromRange(10,100);
+
+			var R = randomIntFromRange(0,255);
+			var G = randomIntFromRange(0,255);
+			var B = randomIntFromRange(0,255);
+
+			context.beginPath();
+
+			context.arc(x,y,r,0,Math.PI*2);
+			context.fillStyle = `rgb(${R},${G},${B})`;
+			context.fill();
+			context.stroke();
+		}
+		
+
+		//Math.random()
+		function randomIntFromRange(min,max){
+			return Math.floor( Math.random() * (max - min + 1) +min );
+		}
+
+
+	</script>
+</body>
+</html>

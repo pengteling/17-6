@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}		
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+		
+		context.globalCompositeOperation = "lighter";
+		//context.globalCompositeOperation = "copy"; //只显示 源图形
+		context.globalCompositeOperation = "xor"; //异或
+
+		var x_arr = [];
+		var y_arr = [];
+		var r_arr = [];
+		var R_arr = [];
+		var G_arr = [];
+		var B_arr = [];
+		var dx_arr = [];
+		var dy_arr = [];
+
+		//var balls = [];
+
+
+
+		for(var i = 0 ;i<200; i++){
+			// 水平、垂直方向的速度
+			var dx = (Math.random() - 0.5) *4 ; 
+			var dy = (Math.random() - 0.5) *4;
+
+			// x,y 圆心坐标 
+			var x = randomIntFromRange(0, canvas.width);
+			var y = randomIntFromRange(0, canvas.height);
+			var r = randomIntFromRange(10,50);
+
+			var R = randomIntFromRange(0,255);
+			var G = randomIntFromRange(0,255);
+			var B = randomIntFromRange(0,255);	
+
+			x_arr.push(x);
+			y_arr.push(y);
+			r_arr.push(r);
+			R_arr.push(R);
+			G_arr.push(G);				
+			B_arr.push(B);
+			dx_arr.push(dx);
+			dy_arr.push(dy);
+		
+		}
+		
+
+
+		requestAnimationFrame(animate);
+		function animate(){
+
+			context.clearRect(0,0,canvas.width,canvas.height);
+
+			for(var i=0; i<200;i++){
+				x_arr[i] = x_arr[i] +dx_arr[i] ;
+				y_arr[i] = y_arr[i] +dy_arr[i] ;
+				if(x_arr[i]>canvas.width - r_arr[i]  || x_arr[i] < r_arr[i]) dx_arr[i] = -dx_arr[i];
+				if(y_arr[i]>canvas.height - r_arr[i] || y_arr[i] < r) dy_arr[i] = -dy_arr[i];
+				context.beginPath();
+				context.arc(x_arr[i],y_arr[i],r_arr[i],0,Math.PI*2);
+				context.fillStyle = `rgb(${R_arr[i]},${G_arr[i]},${B_arr[i]})`;
+				context.fill();
+			}
+
+			
+
+			requestAnimationFrame(animate);
+		}
+
+
+
+		
+
+		//Math.random()
+		function randomIntFromRange(min,max){
+			return Math.floor( Math.random() * (max - min + 1) +min );
+		}
+
+
+
+
+	</script>
+</body>
+</html>

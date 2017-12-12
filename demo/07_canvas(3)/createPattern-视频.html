@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	
+	<!-- <img src="resource/lamp.gif" id="img"> -->
+	<canvas id="canvas" width="1900" height="600"></canvas>
+	<video src="resource/30M.mp4" id="video" controls="controls" width="200"></video>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		
+		
+		//context.beginPath();
+
+		/*var img = document.getElementById('img');*/
+
+		// 图片
+		/*var img = new Image();
+		img.src = "resource/lamp.gif";
+
+		img.onload = function(){
+			var pat = context.createPattern( img, "repeat-x");
+			context.fillStyle = pat;
+			//context.fillRect(0,0,canvas.width,canvas.height);
+
+			context.fillRect(100,0,200,200);
+		}
+*/
+		// canvas
+
+		/*createBackCanvas(function(backCanvas){
+			var pat = context.createPattern( backCanvas ,"repeat" );
+			context.fillStyle = pat;
+			context.fillRect(0,0,canvas.width,canvas.height);
+		});			
+
+		function createBackCanvas(func){
+			var backCanvas =  document.createElement("canvas");
+			
+			backCanvas.width = 500;
+			backCanvas.height = 500;
+			var context = backCanvas.getContext("2d");
+
+			var img = new Image();
+			img.src = "resource/lamp.gif";
+
+			img.onload = function(){
+				var pat = context.createPattern(img, "repeat");
+				context.fillStyle = pat;
+				context.fillRect(0,0,400,300);
+				console.log("text");
+				func(backCanvas);
+				//return backCanvas;
+			}			
+			//context.fillRect(0,0,400,300);			
+		}*/
+
+		
+		
+		
+		//视频
+
+		//var video = document.getElementById('video');
+
+		//video.onloadedmetadata = function(){
+		/*video.onplay = function(){			
+
+			function v(){
+				context.clearRect(0,0,800,800);
+				var pat = context.createPattern(video, "repeat");
+				context.fillStyle = pat;
+				context.fillRect(0,0,800,800);
+				console.log(video);
+				if(!video.paused){
+					requestAnimationFrame(v);
+				}
+			
+			}
+			
+			
+		}
+*/
+		var video = document.getElementById('video');
+
+
+		video.onloadedmetadata = video.onplay= function(){
+			video.play();
+			
+			context.clearRect(0,0,800,800);
+
+			//setInterval(v,200);
+			requestAnimationFrame(v);			
+			function v(){
+				context.clearRect(0,0,canvas.width,canvas.height);
+				/*var pat = context.createPattern(video,"no-repeat");
+				context.fillStyle = pat;
+				context.fillRect(100,100,800,800);*/				
+
+				context.drawImage(video, 0, 0, 640, 480);
+				//console.log(video);
+				if(!video.paused){
+					requestAnimationFrame(v);
+				}
+				
+			}
+		}
+
+
+
+
+	</script>
+</body>
+</html>

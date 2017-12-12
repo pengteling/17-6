@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}		
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+		
+		//context.globalCompositeOperation = "lighter";
+		//context.globalCompositeOperation = "copy"; //只显示 源图形
+		context.globalCompositeOperation = "xor"; //异或
+
+		var colorArray = [
+			'#2D5F73',
+			'#538EA6',
+			'#F2D1B3',
+			'#F2B8A2',
+			'#F28C8C'
+		];
+		
+		function Ball(x,y,r,dx,dy,color){
+			this.x = x;
+			this.y = y;
+			this.dx = dx;
+	        this.dy = dy;
+	        this.r = r;
+	        /*this.R = R;
+	        this.G = G;
+	        this.B = B;*/
+	        this.color = color;
+
+	        this.draw = function(){
+
+	        	context.beginPath();
+				context.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+            	context.fillStyle = this.color;            
+				context.fill();	        	
+	        }
+	        this.update = function(){
+	        	if (this.x + this.r > canvas.width || this.x - this.r < 0) {
+                	this.dx = -this.dx;
+	            }
+	            this.x += this.dx;
+
+	            //同理 Y方向也做同样的变化
+	            if (this.y + this.r > canvas.height || this.y - this.r < 0) {
+	                this.dy = -this.dy;
+	            }
+	            this.y += this.dy;
+	            this.draw();
+
+
+	            /*x = x +dx ;
+				y = y +dy ;
+				if(x>canvas.width - r  || x < r) dx = -dx;
+				if(y>canvas.height - r || y < r) dy = -dy;*/
+	        }
+
+		}
+		
+
+		var ball_arr = [];
+
+
+
+		for(var i = 0 ;i<200; i++){
+			// 水平、垂直方向的速度
+			var dx = (Math.random() - 0.5) *4 ; 
+			var dy = (Math.random() - 0.5) *4;
+
+			// x,y 圆心坐标 
+			var x = randomIntFromRange(0, canvas.width);
+			var y = randomIntFromRange(0, canvas.height);
+			var r = randomIntFromRange(10,50);
+
+			/*var R = randomIntFromRange(0,255);
+			var G = randomIntFromRange(0,255);
+			var B = randomIntFromRange(0,255);	*/
+
+			var color = colorArray[randomIntFromRange(0,4)];
+
+			ball_arr.push(new Ball(x,y,r,dx,dy,color));
+
+
+		}
+		console.log(ball_arr);
+
+		//ball_arr[0].draw();ball_arr[1].draw();
+		
+
+
+		requestAnimationFrame(animate);
+		function animate(){
+
+			context.clearRect(0,0,canvas.width,canvas.height);			
+
+			/*for(var i=0; i<ball_arr.length; i++){
+
+				//ball_arr[i].draw();
+				ball_arr[i].update();
+			}
+*/
+			
+			ball_arr.forEach(function(ball){
+				ball.update();
+			});			
+
+			requestAnimationFrame(animate);
+		}
+
+
+
+		
+
+		//Math.random()
+		function randomIntFromRange(min,max){
+			return Math.floor( Math.random() * (max - min + 1) +min );
+		}
+
+
+
+
+	</script>
+</body>
+</html>

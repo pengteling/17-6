@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+
+
+		// 水平、垂直方向的速度
+		var dx = 1; 
+		var dy = 1;
+
+		// x,y 圆心坐标 
+		var x = canvas.width /2;
+		var y = canvas.height /2;
+
+		var r = 150;
+
+		requestAnimationFrame(animate);
+		function animate(){
+
+			context.clearRect(0,0,canvas.width,canvas.height);
+
+			context.save();
+
+			context.fillRect(0,0,canvas.width,canvas.height);
+
+			context.beginPath();
+
+
+			x = x + dx;
+			y = y + dy;
+
+
+			if(x > canvas.width - r || x < r){dx = -dx };
+			if(y > canvas.height - r || y < r){dy = -dy };
+
+			context.arc(x , y, r,0,Math.PI*2);
+
+			context.fillStyle = "#fff";
+			context.fill();
+			
+			context.clip();
+
+			context.font = "bolder 100px 微软雅黑";
+			context.textAlign = "center";
+			context.textBaseline  = "middle";
+
+			context.fillStyle = "#058";
+
+			context.fillText("CANVAS", canvas.width/2, canvas.height/6 *2);
+			context.fillText("CANVAS", canvas.width/2, canvas.height/2);
+			context.fillText("CANVAS", canvas.width/2, canvas.height/6 * 4);
+
+			context.restore();
+
+			console.log(x);
+
+			requestAnimationFrame(animate);
+		}
+
+
+
+		
+
+
+
+
+	</script>
+</body>
+</html>
