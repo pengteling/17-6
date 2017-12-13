@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		/*
+		1 0 0
+		0 1 0
+		0 0 1
+
+		a c e
+		b d f
+		0 0 1
+		*/
+		context.save();
+		context.setTransform(1,0,0,1,0,0);
+		
+		context.setTransform(1,0,0,1,100,100);
+
+		context.setTransform(2,0,0,2,0,0);
+		context.setTransform(1,0,0.5,1,0,0);
+
+		var rot = 18/180 *Math.PI;
+		context.setTransform(Math.cos(rot),Math.sin(rot) ,- Math.sin(rot),Math.cos(rot),0,0);
+
+		context.fillRect(200,200,200,200);
+		context.restore();
+
+
+	</script>
+</body>
+</html>

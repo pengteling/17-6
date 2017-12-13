@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");
+
+		
+		var dx = 1;
+		var dy = 1;
+		var r =150;
+		var x = canvas.width/2;		
+		var y = canvas.height/2;
+		//var rot = 0 ;
+		animate();
+		function animate(){
+
+			requestAnimationFrame(animate);
+			//console.log("test");
+
+
+			//console.log(canvas.width);
+			context.clearRect(0,0,canvas.width,canvas.height);
+			
+
+			context.save();
+
+			context.beginPath();
+			context.fillStyle = "black";			
+			context.fillRect(0,0,canvas.width,canvas.height);
+			context.beginPath();
+
+			
+
+			x = x + dx;
+			y = y + dy;
+			if(x>canvas.width - r  || x < r) dx = -dx;
+			if(y>canvas.height - r || y < r) dy = -dy;
+			//console.log(x);
+			//context.arc(x, y,r,0,Math.PI*2);
+			//rot = rot + 0.5;
+			drawStar(canvas.width/2,canvas.height/2,x,x/2,0);//动态改变五角星的两个半径
+			//context.stroke();
+			context.fillStyle = "#fff";			
+			context.fill();
+			context.clip();
+
+			context.fillStyle = "#058";
+			context.font = "bolder 100px 微软雅黑";	
+			context.textBaseline =  "middle";
+			context.textAlign = "center";
+
+			context.fillText("CANVAS", canvas.width/2, canvas.height/6 *2);
+			context.fillText("CANVAS", canvas.width/2, canvas.height/2);
+			context.fillText("CANVAS", canvas.width/2, canvas.height/6 *4);
+
+			context.restore();
+
+
+		}
+
+		function drawStar(x,y,R,r,rot){
+			//rot为顺时针旋转rot角
+		
+			/*var R = 300;
+			var r = 150;
+			//var r = R/2.61803;
+			var x = 300;
+			var y = 300;*/
+			context.beginPath();
+			
+			for(var i=0; i<5; i++){
+
+				context.lineTo(  Math.cos( (18 + 72 *i - rot) / 180 * Math.PI) *R + x , - Math.sin( (18 + 72 *i - rot) / 180 * Math.PI) *R  +y );
+				context.lineTo(  Math.cos( (54 + 72 *i - rot) / 180 * Math.PI) *r + x , - Math.sin( (54 + 72 *i - rot) / 180 * Math.PI) *r  +y );
+			}
+			context.closePath();
+			context.stroke();
+
+		}
+		
+
+
+
+
+
+	</script>
+</body>
+</html>

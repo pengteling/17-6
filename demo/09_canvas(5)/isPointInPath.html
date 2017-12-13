@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		 #canvas{
+		 	display: block;
+		 	margin:0 auto;
+			background: url(resource/coordinate.png) no-repeat;
+		} 
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="800" height="600"></canvas>tet
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");	
+
+		context.beginPath();
+		context.rect(100,100,500,200);		
+		context.arc(500,150,40,Math.PI *2.5,Math.PI *0.5,true);
+		
+
+		//context.closePath();
+
+		context.shadowColor="rgba(0,0,0,0.8)";
+     	context.shadowOffsetX=12;
+     	context.shadowOffsetY=12;
+     	context.shadowBlur=15;
+
+		//context.stroke();
+		context.fillStyle = "rgba(100,140,230,0.9)";//???
+		context.fill();
+
+		var x ;
+		var y;
+		window.addEventListener("mouseup",function(e){
+			console.log(e);
+			x = e.clientX - canvas.getBoundingClientRect().left;
+			y = e.clientY - canvas.getBoundingClientRect().top;
+
+			if(context.isPointInPath(x,y)){
+				console.log("in path");
+			}
+			else{
+				console.log("not in path");
+			}
+		});
+
+		
+
+	</script>
+</body>
+</html>

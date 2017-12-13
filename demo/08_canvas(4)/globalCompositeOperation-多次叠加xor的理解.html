@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		#canvas{
+			 background: url(resource/coordinate.png) no-repeat; 
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="1000"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+
+		context.globalCompositeOperation = "xor"; //异或
+
+		context.fillStyle = "blue";
+		context.fillRect(100,200,400,400);
+
+
+
+
+		context.beginPath();
+		context.moveTo(400,300);
+		context.lineTo(650,700);
+		context.lineTo(150,700);
+		context.closePath();
+
+		
+
+		context.fillStyle = "red";
+		context.fill();
+
+		context.beginPath();
+		context.arc(450,500,200,0,Math.PI *2);
+		context.fillStyle = "orange";
+
+
+
+		
+		
+
+		context.fill();
+
+
+	</script>
+</body>
+</html>

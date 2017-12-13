@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var context = canvas.getContext("2d");
+
+    //context.globalCompositeOperation = "lighter";
+    //context.globalCompositeOperation = "copy"; //只显示 源图形
+    context.globalCompositeOperation = "xor"; //异或
+
+    var colorArray = [
+        '#2D5F73',
+        '#538EA6',
+        '#F2D1B3',
+        '#F2B8A2',
+        '#F28C8C'
+    ];
+
+    function Ball(x, y, x2,y2,x3,y3,x4,y4,r, dx, b, color) {
+        this.x = x;
+        this.y = y;
+        this.x2 = x2;
+        this.y2 = y2;
+        this.x3 = x3;
+        this.y3 = y3;
+        this.x4 = x4;
+        this.y4 = y4;
+        this.dx = dx;
+        this.b = b;
+        this.r = r;
+        /*this.R = R;
+        this.G = G;
+        this.B = B;*/
+        this.color = color;
+
+        this.x0 = this.x;
+        this.y0 = this.y;
+        this.t = 1;
+
+		
+        this.draw = function() {        	 
+            context.beginPath();
+            context.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+            context.fillStyle = this.color;
+            context.fill();
+        }
+        this.update = function() {
+            /*if (this.x + this.r > canvas.width || this.x - this.r < 0) {
+                this.dx = -this.dx;
+            }
+
+
+            //同理 Y方向也做同样的变化
+            if (this.y + this.r > canvas.height || this.y - this.r < 0) {
+                //this.dy = -this.dy;
+                this.dx = -this.dx;
+            }*/
+            //this.x += this.dx;
+            //this.y += this.dy;
+            //this.y = 0.001 * (this.x) * (this.x) + this.x * this.b + 0;
+
+            if(this.t<0 || this.t > canvas.width ){
+            	this.dx = -this.dx;
+            }
+
+            var cp=[  
+		    	new Point2D(this.x0, this.y0), new Point2D(this.x2,this.y2), new Point2D(this.x3,this.y3), new Point2D(this.x4, this.y4) 
+			];  
+			this.t += this.dx;
+			this.x  = PointOnCubicBezier(cp,  this.t/canvas.width).x;
+			this.y  = PointOnCubicBezier(cp,  this.t/canvas.width).y;
+			
+			console.log(this.t);
+
+            this.draw();
+
+
+            /*x = x +dx ;
+				y = y +dy ;
+				if(x>canvas.width - r  || x < r) dx = -dx;
+				if(y>canvas.height - r || y < r) dy = -dy;*/
+        }
+
+    }
+
+
+    var ball_arr = [];
+
+
+
+    for (var i = 0; i < 1; i++) {
+        // 水平、垂直方向的速度
+        var dx = (Math.random() - 0.5) * 4;
+        //var dy = (Math.random() - 0.5) * 4;
+        //var dx = 10;
+
+        // x,y 圆心坐标 
+        var x = randomIntFromRange(0, canvas.width);
+        var y = randomIntFromRange(0, canvas.height);
+        var x2 = randomIntFromRange(0, canvas.width);
+        var y2 = randomIntFromRange(0, canvas.height);
+        var x3 = randomIntFromRange(0, canvas.width);
+        var y3 = randomIntFromRange(0, canvas.height);
+        var x4 = randomIntFromRange(0, canvas.width);
+        var y4 = randomIntFromRange(0, canvas.height);
+        var r = randomIntFromRange(10, 50);
+
+        /*var R = randomIntFromRange(0,255);
+        var G = randomIntFromRange(0,255);
+        var B = randomIntFromRange(0,255);	*/
+
+        var b = randomIntFromRange(0, 100) / 100;
+
+        var color = colorArray[randomIntFromRange(0, 4)];
+
+        ball_arr.push(new Ball(x, y,x2,y2,x3,y3,x4,y4, r, dx, b, color));
+
+
+    }
+    console.log(ball_arr);
+
+    //ball_arr[0].draw();ball_arr[1].draw();
+
+
+
+    requestAnimationFrame(animate);
+
+    function animate() {
+
+        //context.clearRect(0, 0, canvas.width, canvas.height);        
+
+        ball_arr.forEach(function(ball) {
+            ball.update();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+
+
+
+
+    //Math.random()
+    function randomIntFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+
+
+    /*  
+参考维基百科  
+http://zh.wikipedia.org/wiki/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A  
+*/
+    function Point2D(x, y) {
+        this.x = x || 0.0;
+        this.y = y || 0.0;
+    }
+    /*  
+     cp在此是四個元素的陣列:  
+     cp[0]為起始點，或上圖中的P0  
+     cp[1]為第一個控制點，或上圖中的P1  
+     cp[2]為第二個控制點，或上圖中的P2  
+     cp[3]為結束點，或上圖中的P3  
+     t為參數值，0 <= t <= 1  
+    */
+    function PointOnCubicBezier(cp, t) {
+        var ax, bx, cx;
+        var ay, by, cy;
+        var tSquared, tCubed;
+        var result = new Point2D;
+
+        /*計算多項式係數*/
+
+        cx = 3.0 * (cp[1].x - cp[0].x);
+        bx = 3.0 * (cp[2].x - cp[1].x) - cx;
+        ax = cp[3].x - cp[0].x - cx - bx;
+
+        cy = 3.0 * (cp[1].y - cp[0].y);
+        by = 3.0 * (cp[2].y - cp[1].y) - cy;
+        ay = cp[3].y - cp[0].y - cy - by;
+
+        /*計算位於參數值t的曲線點*/
+
+        tSquared = t * t;
+        tCubed = tSquared * t;
+
+        result.x = (ax * tCubed) + (bx * tSquared) + (cx * t) + cp[0].x;
+        result.y = (ay * tCubed) + (by * tSquared) + (cy * t) + cp[0].y;
+
+        return result;
+    }
+
+    /*  
+     ComputeBezier以控制點cp所產生的曲線點，填入Point2D結構的陣列。  
+     呼叫者必須分配足夠的記憶體以供輸出結果，其為<sizeof(Point2D) numberOfPoints>  
+    */
+
+    function ComputeBezier(cp, numberOfPoints, curve) {
+        var dt;
+        var i;
+
+        dt = 1.0 / (numberOfPoints - 1);
+
+        for (i = 0; i < numberOfPoints; i++)
+            curve[i] = PointOnCubicBezier(cp, i * dt);
+    }
+
+    
+
+
+    </script>
+</body>
+
+</html>

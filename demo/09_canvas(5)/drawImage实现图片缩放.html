@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		 #canvas{
+		 	display: block;
+		 	margin:0 auto;
+			/* background: url(resource/coordinate.png) no-repeat; */
+			background-color: #ccc
+		} 
+		#range{
+			display: block;
+			width: 800px;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<input type="range" id ="range" min="0.5" max="3" step="0.01" value="1">
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");	
+
+		var img = new Image();
+		img.src = "resource/eg_tulip.jpg"	;
+
+		img.onload = function(){
+			context.drawImage(img,0,0,canvas.width,canvas.height); 
+		}
+
+		var range =document.getElementById('range');
+
+		range.onchange = function(){
+			
+			drawImg();
+		}
+
+		function drawImg(){
+			var scale = range.value;
+			console.log(scale);
+			var imgW  = scale * canvas.width;
+			var imgH  = scale * canvas.height;
+
+			var x = canvas.width /2 - imgW/2;
+			var y = canvas.height /2 - imgH/2;
+
+			context.clearRect(0,0,canvas.width,canvas.height);
+			context.drawImage(img, x,y,imgW,imgH);
+
+		}
+		
+
+	</script>
+</body>
+</html>

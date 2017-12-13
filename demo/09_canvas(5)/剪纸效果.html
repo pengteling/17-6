@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		 #canvas{
+			background: url(resource/coordinate.png) no-repeat;
+		} 
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");		
+
+		
+		
+		context.beginPath();
+		context.rect(100,100,500,200);		
+		context.arc(500,150,40,Math.PI *2.5,Math.PI *0.5,true);
+		context.arc(500,230,40,-Math.PI *0.5,Math.PI *1.5,true);
+
+		context.moveTo(250,140);
+		context.bezierCurveTo(200,140, 200,260,  250,260);
+		context.bezierCurveTo(300,260, 300,140,  250,140);
+		
+		context.closePath();
+
+		context.shadowColor="rgba(0,0,0,0.8)";
+     	context.shadowOffsetX=12;
+     	context.shadowOffsetY=12;
+     	context.shadowBlur=15;
+
+		//context.stroke();
+		context.fillStyle = "rgba(100,140,230,0.9)";//???
+		context.fill();
+
+		
+		
+
+
+
+	</script>
+</body>
+</html>

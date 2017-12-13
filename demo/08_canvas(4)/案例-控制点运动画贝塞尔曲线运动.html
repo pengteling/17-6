@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var context = canvas.getContext("2d");
+
+    var height = canvas.height,
+        width =  canvas.width,
+        px = [],  //画贝塞尔曲线相关点的x坐标
+        py = [],  //画贝塞尔曲线相关点的y坐标
+        mx = [],  //各个点对应的x方向的速度
+        my = [],  //各个点对应的y方向的速度
+        count;
+
+
+    (init = function() {
+        count = 1;
+        for (var i = 0; i < 4 * count; i++) {
+            px[i] = Math.random() * width, py[i] = Math.random() * height;
+            //四个控制点的随机 运动速度 -1 ~ 1
+            mx[i] = Math.round(Math.random() * 5 - 1), my[i] = Math.round(Math.random() * 5 - 1);
+        }
+    })();
+    
+    
+    requestAnimationFrame(v);
+
+
+    function v() {
+        for (i = 0; i < 4 ; i++) {
+             px[i] += mx[i], py[i] += my[i];
+            //px[i] += 1; py[i]+=1;
+            if (px[i] > width || px[i] < 0) mx[i] *= -1;
+            if (py[i] > height || py[i] < 0) my[i] *= -1;
+        }
+        context.clearRect(0, 0, width, height);
+        context.fillStyle = "#000000";
+        context.fillRect(0, 0, width, height);
+        
+        context.moveTo(px[0], py[0]);
+        context.beginPath();
+        context.lineWidth = 2;
+        context.strokeStyle = 'rgb(255, 255, 66)';
+        context.bezierCurveTo(px[1], py[1], px[2], py[2], px[3], py[3]);       
+        context.stroke();
+       
+
+        requestAnimationFrame(v);
+
+
+    };
+    </script>
+</body>
+
+</html>
