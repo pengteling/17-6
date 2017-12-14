@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}		
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+
+		// 三处：1、监听  2、封装init 3、init里面 ball_arr先要清空
+		window.addEventListener("resize",function(){
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			init();
+		});
+
+		var mouse = {
+			x:0,
+			y:0
+		}
+
+		var maxRadius = 50; //变化的最大半径
+		var rangRadius = 50; //鼠标落点画圆为rangRadius的范围
+		window.addEventListener("mousemove",function(e){
+			//console.log(e.clientX);
+			mouse.x = e.clientX;
+			mouse.y = e.clientY;
+
+		})
+		
+		//context.globalCompositeOperation = "lighter";
+		//context.globalCompositeOperation = "copy"; //只显示 源图形
+		context.globalCompositeOperation = "xor"; //异或
+
+		var colorArray = [
+			'#2D5F73',
+			'#538EA6',
+			'#F2D1B3',
+			'#F2B8A2',
+			'#F28C8C'
+		];
+		
+		function Ball(x,y,r,dx,dy,color){
+			this.x = x;
+			this.y = y;
+			this.dx = dx;
+	        this.dy = dy;
+	        this.r = r;
+	        this.minRadius = this.r;
+	        /*this.R = R;
+	        this.G = G;
+	        this.B = B;*/
+	        this.color = color;
+
+	        this.draw = function(){
+
+	        	context.beginPath();
+				context.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+            	context.fillStyle = this.color;            
+				context.fill();	        	
+	        }
+	        this.update = function(){
+	        	if (this.x + this.r > canvas.width || this.x - this.r < 0) {
+                	this.dx = -this.dx;
+	            }
+	            this.x += this.dx;
+
+	            //同理 Y方向也做同样的变化
+	            if (this.y + this.r > canvas.height || this.y - this.r < 0) {
+	                this.dy = -this.dy;
+	            }
+	            this.y += this.dy;
+
+	            var distance = dis(this.x,this.y, mouse.x,mouse.y) ;
+	            if(distance <= rangRadius ){
+	            	if( this.r < maxRadius){
+	            		this.r = this.r + 1; 
+	            	}	            	
+	            }else if(this.r > this.minRadius){
+	            	this.r = this.r - 1;
+	            }
+	            this.draw();
+
+
+	            /*x = x +dx ;
+				y = y +dy ;
+				if(x>canvas.width - r  || x < r) dx = -dx;
+				if(y>canvas.height - r || y < r) dy = -dy;*/
+	        }
+
+		}
+		
+
+		//var ball_arr = [];
+
+		var ball_arr;
+
+
+		function init(){
+			ball_arr = [];
+			for(var i = 0 ;i<800; i++){
+				// 水平、垂直方向的速度
+				var dx = (Math.random() - 0.5) *1 ; 
+				var dy = (Math.random() - 0.5) *1;
+
+				// x,y 圆心坐标 
+				var x = randomIntFromRange(0, canvas.width);
+				var y = randomIntFromRange(0, canvas.height);
+				//var r = randomIntFromRange(2,5);
+				var r = Math.random() * 3 +2;
+
+				/*var R = randomIntFromRange(0,255);
+				var G = randomIntFromRange(0,255);
+				var B = randomIntFromRange(0,255);	*/
+
+				var color = colorArray[randomIntFromRange(0,4)];
+
+				ball_arr.push(new Ball(x,y,r,dx,dy,color));
+
+			}
+			console.log(ball_arr);
+
+		//ball_arr[0].draw();ball_arr[1].draw();
+		}
+		
+		
+
+		init();
+		requestAnimationFrame(animate);
+		function animate(){
+
+			context.clearRect(0,0,canvas.width,canvas.height);			
+
+			/*for(var i=0; i<ball_arr.length; i++){
+
+				//ball_arr[i].draw();
+				ball_arr[i].update();
+			}
+*/
+			
+			ball_arr.forEach(function(ball){
+				ball.update();
+			});			
+
+			requestAnimationFrame(animate);
+		}
+
+
+
+		
+
+		//Math.random()
+		function randomIntFromRange(min,max){
+			return Math.floor( Math.random() * (max - min + 1) +min );
+		}
+
+		function dis(x1,y1,x2,y2){
+			return Math.sqrt( Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
+		}
+
+
+
+
+	</script>
+</body>
+</html>

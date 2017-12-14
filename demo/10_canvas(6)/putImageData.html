@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		canvas{
+			/* background-color: #333; */
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="400" height="266"></canvas>
+	<canvas id="canvas2" width="400" height="266"></canvas>
+	
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		var canvas2 = document.getElementById('canvas2');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");		
+		var context2 = canvas2.getContext("2d");		
+		
+		var img = new Image();
+		img.src = "resource/eg_tulip.jpg";
+		
+
+		img.onload =function(){
+			context.drawImage(img,0,0);
+			//用web服务器打开
+			console.log(context.getImageData(0,0,400,266));
+			var imgData = context.getImageData(0,0,400,266);
+
+			context2.putImageData(filter(imgData), 0,0, 0,0,400,266);
+			//context2.putImageData(filter(imgData), 0,0, 50,50,400 -100,266 -100); //这种情况 虽然 第2、3坐标是绘图的起点 但因为数据里面有位置信息，实际还是从50，50开始绘制
+			//context2.putImageData(filter(imgData), 50,50, 50,50,400 -100,266 -100);//这个时候偏移了100  跟drawImage(img,x,y) 里面的x,y表示不一样
+
+
+
+
+		}
+		//一维数组 前面四个 表示第1个点
+		//第x行 第y列 的元素值即可以为
+		/*i = x *width +y
+		r = pixelData[4*i+0]
+		g = pixelData[4*i+1]
+		b = pixelData[4*i+2]
+		a = pixelData[4*i+3]*/
+
+		//变成纯色
+
+		function filter(imageData){
+			var pixelData = imageData.data;
+
+			for(var i=0; i< canvas.width * canvas.height ; i++){
+				pixelData[4*i] = 0;
+				pixelData[4*i+1] = 255;
+				pixelData[4*i+2] = 0;
+				pixelData[4*i+3] = 255;
+				//console.log("Te")
+			}
+			
+			return imageData;
+		}
+
+		//只将红色通道设为0
+
+		function filter(imageData){
+			var pixelData = imageData.data;
+
+			for(var i=0; i< canvas.width * canvas.height ; i++){
+				pixelData[4*i] = 0;
+				/*pixelData[4*i+1] = 255;
+				pixelData[4*i+2] = 0;
+				pixelData[4*i+3] = 255;*/
+				//console.log("Te")
+			}
+			
+			return imageData;
+		}
+
+		//灰度滤镜
+		function filter(imageData){
+			var pixelData = imageData.data;
+
+			for(var i=0; i< canvas.width * canvas.height ; i++){
+
+
+				var r = pixelData[4*i] ;
+				var g = pixelData[4*i+1] ;
+				var b = pixelData[4*i+2] ;
+				var a = pixelData[4*i+3] ;
+
+				var grey = r*0.3 + g *0.59 +b*0.11;
+
+				pixelData[4*i] = grey;
+				pixelData[4*i+1] = grey;
+				pixelData[4*i+2] = grey;
+				pixelData[4*i+3] = a;
+
+				//console.log("Te")
+			}
+			
+			return imageData;
+		}
+
+
+
+		//黑白滤镜
+		function filter(imageData){
+			var pixelData = imageData.data;
+
+			for(var i=0; i< canvas.width * canvas.height ; i++){
+
+
+				var r = pixelData[4*i] ;
+				var g = pixelData[4*i+1] ;
+				var b = pixelData[4*i+2] ;
+				var a = pixelData[4*i+3] ;
+
+				var grey = r*0.3 + g *0.59 +b*0.11;
+
+				if(grey > 255/2){
+					grey = 255
+				}else{
+					grey =0
+				}
+
+				pixelData[4*i] = grey;
+				pixelData[4*i+1] = grey;
+				pixelData[4*i+2] = grey;
+				pixelData[4*i+3] = 255;
+
+				//console.log("Te")
+			}
+			
+			return imageData;
+		}
+
+
+		//反色滤镜
+		function filter(imageData){
+			var pixelData = imageData.data;
+
+			for(var i=0; i< canvas.width * canvas.height ; i++){
+
+
+				var r = pixelData[4*i] ;
+				var g = pixelData[4*i+1] ;
+				var b = pixelData[4*i+2] ;
+				var a = pixelData[4*i+3] ;
+
+				
+
+				pixelData[4*i] = 255 - r;
+				pixelData[4*i+1] = 255 -g;
+				pixelData[4*i+2] = 255-b;
+				pixelData[4*i+3] = 255;
+
+				//console.log("Te")
+			}
+			
+			return imageData;
+		}
+
+		// //模糊滤镜
+		function filter(imageData){
+			var tempDate = context.getImageData(0,0,400,266).data;
+			var pixelData = imageData.data;
+
+			var cur ;
+			var tempcur;
+			var tempR;
+			var tempG;
+			var tempB;
+			var tempA;
+
+			var blur = 3;
+			for(var i =0 ;i<canvas.width;i++){
+				for(var j =0 ;j<canvas.width;j++){
+
+					cur = i *canvas.width + j;
+					
+					tempA=0;
+					tempB=0;
+					tempR=0;
+					tempG=0;
+
+					for(var dx = -blur;dx<=blur;dx++){
+						for(var dy = -blur;dy<=blur;dy++){
+							//i + dx, i+dy
+
+							tempcur = (i +dx) *canvas.width + j +dy;
+							tempR +=tempDate[tempcur*4 +0 ];
+							tempG +=tempDate[tempcur*4 +1 ];
+							tempB +=tempDate[tempcur*4 +2 ];
+							tempA +=tempDate[tempcur*4 +3 ];
+
+
+						}
+					}
+
+					var blurNum = (2*blur+1)*(2*blur+1);
+					pixelData[cur*4 +0 ] = tempR /blurNum;
+					pixelData[cur*4 +1 ]= tempG /blurNum;
+					pixelData[cur*4 +2 ]= tempB /blurNum;
+					pixelData[cur*4 +3 ]= tempA /blurNum;
+
+					//再模糊一点换成25 前面dx =2
+
+
+				}
+			}
+			
+			return imageData;
+		}
+
+
+		//马赛克滤镜
+		function filter(imageData){
+			// var tempDate = context.getImageData(0,0,400,266).data;
+			// var pixelData = imageData.data;
+
+			// var cur ;
+			// var tempcur;
+			// var tempR;
+			// var tempG;
+			// var tempB;
+			// var tempA;
+
+			// var blur = 16;
+
+			// //var size = 9;
+
+			// for(var i =0 ;i<canvas.width;i+=blur){
+			// 	for(var j =0 ;j<canvas.width;j+=blur){
+
+			// 		cur = i *canvas.width + j;
+					
+			// 		tempA=0;
+			// 		tempB=0;
+			// 		tempR=0;
+			// 		tempG=0;
+
+			// 		for(var dx = 0 ; dx<=blur;dx++){
+			// 			for(var dy = 0;dy<=blur;dy++){
+			// 				//i + dx, i+dy
+
+			// 				tempcur = (i +dx) *canvas.width + j +dy;
+			// 				tempR +=tempDate[tempcur*4 +0 ];
+			// 				tempG +=tempDate[tempcur*4 +1 ];
+			// 				tempB +=tempDate[tempcur*4 +2 ];
+			// 				tempA +=tempDate[tempcur*4 +3 ];
+
+
+			// 			}
+			// 		}
+
+			// 		var blurNum = blur*blur;
+
+					
+			// 		//再循环一次
+
+			// 		for(var dx = 0;dx<=blur;dx++){
+			// 			for(var dy = 0;dy<=blur;dy++){
+			// 				//i + dx, i+dy
+
+			// 				tempcur = (i +dx) *canvas.width + j +dy;
+			// 				pixelData[cur*4 +0 ] = tempR /blurNum;
+			// 				pixelData[cur*4 +1 ]= tempG /blurNum;
+			// 				pixelData[cur*4 +2 ]= tempB /blurNum;
+			// 				pixelData[cur*4 +3 ]= tempA /blurNum;
+			// 				//console.log("test")
+
+
+
+			// 			}
+			// 		}
+
+
+			// 	}
+			// }
+			
+			// return imageData;
+
+			var tmpPixelData = context.getImageData(0,0,400,266).data;
+			var pixelData = imageData.data;
+
+            var size = 16
+            var totalnum = size*size
+            for( var i = 0 ; i < canvas.height ; i += size )
+                for( var j = 0 ; j < canvas.width ; j += size ){
+
+                    var totalr = 0 , totalg = 0 , totalb = 0
+                    for( var dx = 0 ; dx < size ; dx ++ )
+                        for( var dy = 0 ; dy < size ; dy ++ ){
+
+                            var x = i + dx
+                            var y = j + dy
+
+                            var p = x*canvas.width + y
+                            totalr += tmpPixelData[p*4+0]
+                            totalg += tmpPixelData[p*4+1]
+                            totalb += tmpPixelData[p*4+2]
+                        }
+
+                    var p = i*canvas.width+j
+                    var resr = totalr / totalnum
+                    var resg = totalg / totalnum
+                    var resb = totalb / totalnum
+
+                    for( var dx = 0 ; dx < size ; dx ++ )
+                        for( var dy = 0 ; dy < size ; dy ++ ){
+
+                            var x = i + dx
+                            var y = j + dy
+
+                            var p = x*canvas.width + y
+                            pixelData[p*4+0] = resr
+                            pixelData[p*4+1] = resg
+                            pixelData[p*4+2] = resb
+                        }
+            }
+            return imageData
+		}
+
+
+
+		
+
+
+
+
+	</script>
+</body>
+</html>

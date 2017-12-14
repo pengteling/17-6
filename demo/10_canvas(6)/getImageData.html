@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:0;
+			overflow: hidden;
+		}
+		canvas{
+
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" width="400" height="266"></canvas>
+	<canvas id="canvas2" width="400" height="266"></canvas>
+	
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		var canvas2 = document.getElementById('canvas2');
+		/*canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;*/
+		var context = canvas.getContext("2d");		
+		var context2 = canvas2.getContext("2d");		
+		
+		var img = new Image();
+		img.src = "resource/eg_tulip.jpg";
+		
+
+		img.onload =function(){
+			context.drawImage(img,0,0);
+			//用web服务器打开
+			console.log(context.getImageData(100,100,200,200));
+			var imgData = context.getImageData(0,0,400,266);
+
+			context2.putImageData(imgData, 0,0, 0,0,400,266);
+		}
+
+		
+
+
+
+
+	</script>
+</body>
+</html>
