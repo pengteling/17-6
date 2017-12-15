@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    #box {
+        height: 200px;
+        width: 800px;
+        font-size: 20px;
+        text-align: center;
+        line-height: 200px;
+        border: 1px dashed #0064B4;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="box">拖动上传文件！</div>
+    <p id="text"></p>
+    <script type="text/javascript">
+    var drapBox = document.getElementById("box");
+
+    drapBox.ondragover = function(e) {
+        e.preventDefault();
+    }
+    drapBox.ondrop = function(e) {
+        e.preventDefault();
+        console.log(e.dataTransfer.files);
+        //上传
+        upload(e.dataTransfer.files);
+    }
+
+
+    function upload(files){
+    	var file = files[0];
+    	var formData = new FormData(); 
+        formData.append("webmasterfile", file); //input type=file
+	    
+        formData.append("filename", "文件名.doc"); //input type=text
+        formData.append("name", "value");
+	    var xhr = new XMLHttpRequest();
+        //xhr.responseType = "";
+	    xhr.open("POST", "http://localhost:276/web/meitu/mx_upfile_flash.asp");
+	    xhr.send(formData);
+    }
+    
+    </script>
+</body>
+
+</html>

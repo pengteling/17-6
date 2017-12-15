@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box {
+	        height: 200px;
+	        width: 800px;
+	        font-size: 20px;
+	        text-align: center;
+	        line-height: 200px;
+	        border: 1px dashed #0064B4;
+    }
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="preview"></div>
+	<script type="text/javascript">
+		var box = document.getElementById('box');
+		var preview = document.getElementById('preview');
+
+		box.ondragover = function(e){
+			e.preventDefault();
+		}
+		box.ondrop = function(e){
+			e.preventDefault();
+			console.log(e.dataTransfer.files);
+
+			var file = e.dataTransfer.files[0];
+			readFile(file);
+		}
+
+		function readFile(file){
+			var img = document.createElement("img");
+			img.src = window.URL.createObjectURL(file);
+			preview.appendChild(img);
+		}
+
+		function readFile(file){
+			var img = document.createElement("img");
+
+			var reader = new FileReader();
+			reader.readAsText(file);
+
+			reader.onload = function(){
+				console.log(reader.result);
+				/*img.src = "";
+				preview.appendChild(img);*/
+			}
+			
+		}
+
+		function readFile(file){
+			var img = document.createElement("img");
+
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+
+			reader.onload = function(e){
+				//console.log(reader.result);
+				console.log(e);
+				//img.src = reader.result;
+				img.src = e.target.result;
+				preview.appendChild(img);
+			}
+			
+		}
+
+		function readFile(file){
+			var img = document.createElement("img");
+
+			var reader = new FileReader();
+			reader.readAsArrayBuffer(file);
+
+			reader.onload = function(e){
+				console.log(reader.result);
+				
+				//img.src = reader.result;
+				//img.src = e.target.result;
+				//preview.appendChild(img);
+			}
+			
+		}
+
+		function readFile(file){
+			var img = document.createElement("img");
+
+			var reader = new FileReader();
+			reader.readAsBinaryString(file);
+
+			reader.onload = function(e){
+				console.log(reader.result);
+				
+				//img.src = reader.result;
+				//img.src = e.target.result;
+				//preview.appendChild(img);
+			}
+			
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>

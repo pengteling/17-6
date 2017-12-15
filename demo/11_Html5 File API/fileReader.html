@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    #box {
+        height: 200px;
+        width: 800px;
+        font-size: 20px;
+        text-align: center;
+        line-height: 200px;
+        border: 1px dashed #0064B4;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="box">拖动上传文件！</div>
+    <p id="text"></p>
+	<div id="preview"></div>
+    <script type="text/javascript">
+    var drapBox = document.getElementById("box");
+
+    drapBox.ondragover = function(e) {
+        e.preventDefault();
+    }
+    drapBox.ondrop = function(e) {
+        e.preventDefault();
+        console.log(e.dataTransfer.files);
+//        upload(e.dataTransfer.files);
+		readFile(e.dataTransfer.files)
+    }
+
+
+
+
+    function readFile(files){
+
+    	var file = files[0];
+	    var reader = new FileReader();
+
+	    reader.readAsText(file);
+	    reader.onload = function(e){
+	    	//如果是图片
+	    	//img.src =""
+	    	//base64编码
+	    	console.log (reader.result);
+
+	    }
+    }
+
+    function readFile(files){
+
+    	var file = files[0];
+	    var reader = new FileReader();
+
+	    reader.readAsDataURL(file);
+	    reader.onload = function(e){
+	    	//如果是图片
+	    	//img.src =""
+	    	//base64编码
+	    	console.log (reader.result);
+	    	var img = document.createElement("img");            
+	        img.src = reader.result; 	                   
+	        preview.appendChild(img);
+	    }
+    }
+
+	/*function readFile(files){
+
+    	var file = files[0];
+	    //var reader = new FileReader();
+	    
+	    
+    	var img = document.createElement("img");            
+        //img.src = reader.result; 
+        
+        img.src = window.URL.createObjectURL(file);           
+        preview.appendChild(img);
+	    
+    }*/
+    
+
+    function readFile(files){
+
+    	var file = files[0];
+	    var reader = new FileReader();
+	    
+	    reader.readAsBinaryString(file);
+	    reader.onload = function(e){
+	    	
+	    	console.log (reader.result);
+	    	xhrUpload(reader.result);       
+         
+	    }
+    }
+
+    /*function readFile(files){
+
+    	var file = files[0];
+	    var reader = new FileReader();
+	    
+	    reader.readAsArrayBuffer(file);
+	    reader.onload = function(e){
+	    	
+	    	console.log (reader.result);
+	    	
+	    	       
+         
+	    }
+    }*/
+
+   /* function upload(files){
+    	var file = files[0];
+    	var formData = new FormData(); 
+        formData.append("webmasterfile", file);
+	    formData.append("filename", "文件名.doc");
+	    var request = new XMLHttpRequest();
+	    request.open("POST", "http://localhost:276/web/meitu/mx_upfile_flash.asp");
+	    request.send(formData);
+    }
+    */
+
+    function xhrUpload(filebinary){
+        let xhr = new XMLHttpRequest();
+        xhr.open("post", "http://localhost:276/web/meitu/upload.asp", true);
+        Array.prototype.sendAsBinary = XMLHttpRequest.prototype.sendAsBinary = function(datastr) {
+            function byteValue(x) {
+                return x.charCodeAt(0) & 0xff;
+            }
+            var ords = Array.prototype.map.call(datastr, byteValue);
+            var ui8a = new Uint8Array(ords);
+            this.send(ui8a.buffer);
+        }
+        xhr.sendAsBinary(filebinary);
+       
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    console.log("上传成功")                    
+                }
+            }
+        }
+        
+    }
+    </script>
+</body>
+
+</html>

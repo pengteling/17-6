@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    	progress{
+    		width: 1000px;
+    	}
+    </style>
+</head>
+
+<body>
+    <input type="file" multiple="multiple" id="file">
+    <input type="button" value="点击上传" id="btn">
+    <input type="button" value="终止上传" id="abort"><br>
+    <progress min="0" max="100" value="0"></progress><span></span>
+    <script type="text/javascript">
+    var el_file = document.getElementById('file');
+    var btn = document.getElementById('btn');
+    var abort = document.getElementById('abort');
+    var progress = document.querySelector("progress");
+    var span = document.querySelector("span");
+
+    var fileSize ;
+    var reader = new FileReader();
+    var spliceSize = 50 * 1024 *1024; // 分段的大小
+    var curSize = 0; //已经读取的大小
+
+    btn.onclick = function(){
+    	var file = el_file.files[0];
+    	fileSize = file.size;
+    	console.log(fileSize)
+    	
+        //readFile(file);
+        splitFile(file);
+    }
+    abort.onclick = function(){
+    	reader.abort();
+    }
+    reader.onabort = function(e){
+    	console.log(`你在进度为${e.loaded / fileSize *100}%时终止了上传`);
+    }
+
+    function splitFile(file){
+        var blob =  file.slice( curSize, curSize + spliceSize );
+        readFile(blob,file);
+    }
+    function readFile(blob,file){
+    	
+    	reader.readAsArrayBuffer(blob);
+    	reader.onload = function(e){
+            curSize += spliceSize;
+    		console.log(e);
+            if(curSize < fileSize){
+                splitFile(file);
+            }else{
+                console.log("上传成功");
+                curSize = fileSize;
+            }
+
+    	}
+    	/*reader.onloadstart = function(e){
+    		console.log(e);
+    	}*/
+
+
+    	reader.onprogress = function(e){
+    		//console.log(e.loaded);
+
+    		var percent = (curSize +e.loaded) / fileSize *100;
+            //var percent = (curSize ) / fileSize *100;
+    		progress.value = percent;
+    		span.innerText = percent.toFixed(2) +"%";
+    	}
+    }
+   
+
+
+
+    function fileSize(size){
+		var tip = ["B","KB","MB","GB","TB","PB","EB","ZB","YB","BB","NB","DB"];
+		i = 0;
+		while(size /1024 >= 1){
+			i = i+1;
+			size = size /1024;
+		}
+		return size.toFixed(2) +""+ tip[i];
+	}
+
+    </script>
+</body>
+
+</html>

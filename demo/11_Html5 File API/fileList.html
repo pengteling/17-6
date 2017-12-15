@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" multiple="multiple" id="file">
+	<input type="button" value="文件上传" id="btn">
+	<script type="text/javascript">
+		var iptfile = document.getElementById('file');
+		var btn = document.getElementById('btn');
+		btn.onclick = function(){
+			var files = iptfile.files;
+			console.log(files)
+			
+			for(var i=0;i<files.length;i++){
+				console.log(files[i].name,fileSize( files[i].size));
+			}
+		}
+
+		//文件大小
+		function fileSize(size){
+			var tip = ["B","KB","MB","GB","TB","PB","EB","ZB","YB","BB","NB","DB"];
+			i = 0;
+			
+			while(size / 1024 >= 1){
+				size = size / 1024;
+				i = i +1;
+			}		 
+			
+			return size.toFixed(2)+ "" + tip[i];
+		}
+
+	</script>
+</body>
+</html>

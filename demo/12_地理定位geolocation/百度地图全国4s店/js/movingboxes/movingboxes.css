@@ -1,0 +1,115 @@
+#wrapper {
+    width: 1070px;
+    margin: 25px auto;
+	
+	position:absolute; 
+	height:660px; 
+	top:50%;
+	margin-top:-330px;
+	left:50%;
+	margin-left:-535px;
+	
+	
+}
+
+#intro {
+    padding-bottom: 10px;
+}
+
+#slider {
+    width: 1070px;
+    margin: 0 auto;
+    position: relative;
+	border: 0px solid #ccc;
+}
+
+.scroll {
+	overflow: hidden;
+	width: 1070px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scrollContainer {
+	position: relative;
+}
+
+.scrollContainer div.panel {
+    padding: 24px;
+    width: 280px;
+	height: 424px;
+}
+
+#left-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 12px;
+	bottom: 0;
+	/* background: url(../images/leftshadow.png) repeat-y; */
+}
+
+#right-shadow {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 12px;
+	bottom: 0;
+	/* background: url(../images/rightshadow.png) repeat-y; */
+}
+
+.inside {
+	padding: 00px;
+	border: 0px solid #999;
+}
+
+.inside img {
+	display: block;
+	border: 5px solid #fde9ce;
+	margin: 0 0 10px 0;
+	width: 270px;
+	box-shadow:2px 2px 5px #eee;
+	-moz-box-shadow:2px 2px 5px #eee;
+	-webkit-box-shadow:2px 2px 5px #eee;
+}
+
+.inside h2 {
+	font-weight: normal;
+	color: #111;
+	font-size: 16px;
+	margin: 0 0 8px 0;
+	opacity:0;
+}
+
+.inside p {
+	font-size: 14px;
+	color: #555555;
+	opacity:100;
+	
+	text-align:left;
+	line-height:28px;
+}
+
+.inside p a{color: #443831;}
+.scrollButtons {
+    position: absolute;
+    top: 127px;
+    cursor: pointer;
+}
+
+.scrollButtons.left {
+    left: -45px;
+}
+
+.scrollButtons.right {
+    right: -45px;
+}
+
+.hide {
+    display: none;
+}
+
+.logo3 { position: absolute; left: 50%; top: 30px; width: 257px; height: 65px; margin-left: -149px; text-indent: -9999px; overflow: hidden;}
+
+.left3 { position: absolute; left: -200%; top: 50%; width: 602px; height: 244px; margin: -122px 0 0 -50px; }
+.right3 { position: absolute; left: 200%; top: 50%; width: 519px; height: 630px; margin: -315px 0 0 50px; }

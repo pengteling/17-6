@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>秦汉胡同</title>
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="school">
+    <div class="head head-school">
+        <div class="mb">
+            <a href="school.asp?id=21" class="logo2"><img src="images/logo-21.png" alt=""></a>
+            <div class="tel"><a href="tel:400-080-1518">400-080-1518</a></div>
+        </div>
+    </div>
+    <div class="nav">
+        <ul>
+            <li class="select"><a href="?">首页</a></li>
+            <li><a href="course.asp?id=25">书画</a></li>
+            <li><a href="course.asp?id=26">古筝</a></li>
+            <li><a href="course.asp?id=27">古琴</a></li>
+            <li><a href="course.asp?id=37">国学</a></li>
+            <li><a href="course.asp?id=38">语文</a></li>
+            <li><a href="course.asp?id=39">书法</a></li>
+            <li><a href="javascript:;">其他课程</a>
+                <div class="xiala"><a href="course.asp?id=40">国画</a><a href="course.asp?id=41">围棋</a><a href="course.asp?id=42">茶艺</a><a href="course.asp?id=43">竹笛</a><a href="course.asp?id=44">二胡</a><a href="course.asp?id=45">葫芦丝</a></div>
+            </li>
+        </ul>
+    </div>
+    <div class="ibanner">
+        <div class="main">
+            <img src="images/i-banner.jpg" alt="">
+        </div>
+    </div>
+    <div class="greybg">
+        <div class="main pt26">
+            <div class="boxline ml school-intro">
+                <div class="subtit">
+                    <div class="tit">学校简介</div>
+                </div>
+                <div class="con">
+                    <p>秦汉胡同（即：上海秦汉胡同艺术品公司）是经上海长宁区教委所认可批准的非学历教育机构。</p>
+                    <p>学校旨在打造中国“泛国学•大国学”教育第一领导品牌。学校本着弘扬传统经典、传播人文智慧的宗旨，针对现代家庭，专业从事国学类课程教学培训。学校依托极致的艺术境教和文化浸泡，凭藉彰显专业、创造力、优雅的教师与服务团队，开展《三字经》、《弟子规》、《千字文》、《千家诗》等蒙学系列以及琴、棋、书、画、印、茶艺、葫芦丝等国学泛国学课程培训，将学校所提倡的艺术气质、文艺精神、学术抱负通过中国式书斋文化体验，传递给广大青少年儿童和成年人，让传统文化极致奢华，让世界柔软。</p>
+                    <p>学校取当前语文教育崛起之大势，依托《少儿故事阅读》、《汉字拼音》、《汉字拼写》、《作文》、《古文》、《诗词鉴赏与写作》、《视文视听》、《民国来信》等“大语文”系列课程，一站式解决孩子在语文应试教育当中的诸多难题，同时为当代青少儿植入道德文章与家国情怀。</p>
+                    <p>目前，学校已在上海拥有多个教学点以及在建教学点，累积学员20000余人，且持续爆发式增长，在业界奠定了绝对领先优势。</p>
+                </div>
+            </div>
+            <div class="mr">
+                <div class="boxline whitebg">
+                    <div class="subtit">在线报名</div>
+                    <div class="form-right">
+                        <form action="apply.asp" id="frmApply">
+                            <input type="text" name="xm" id="xm" class="ipt-txt" placeholder="姓名">
+                            <input type="text" name="mobile" id="mobile" class="ipt-txt" placeholder="手机">
+                            <select name="area" id="area" class="ipt">
+                                <option value="">选择校区</option>
+                                <option value="秦汉胡同镇坪教学点">镇坪教学点</option>
+                                <option value="秦汉胡同田林教学点">田林教学点</option>
+                            </select>
+                            <select name="course" id="course" class="ipt">
+                                <option value="">选择课程</option>
+                                <option value="书画">书画</option>
+                                <option value="古筝">古筝</option>
+                                <option value="古琴">古琴</option>
+                                <option value="国学">国学</option>
+                                <option value="语文">语文</option>
+                                <option value="书法">书法</option>
+                                <option value="国画">国画</option>
+                                <option value="围棋">围棋</option>
+                                <option value="茶艺">茶艺</option>
+                                <option value="竹笛">竹笛</option>
+                                <option value="二胡">二胡</option>
+                                <option value="葫芦丝">葫芦丝</option>
+                            </select>
+                            <input type="button" class="btn" value="提交申请" id="applycourse">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="main schoolmap boxline">
+            <div class="subtit">
+                <div class="tit">教学网点</div>
+            </div>
+            <div class="mapcontainer">
+                <div id="map"><img src="images/map.jpg" alt=""></div>
+                <div class="map-right">
+                    <div class="line1">
+                        <h5>校区选择</h5>
+                        <select name="selectschool" id="selectschool">
+                            <option value="0">镇坪教学点</option>
+                            <option value="1">田林教学点</option>
+                        </select>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="line2">
+                        <h5>详细地址</h5>
+                        <p class="map_address"></p>
+                    </div>
+                    <div class="map-form">
+                        <h5>查询学校路线</h5>
+                        <form action="http://api.map.baidu.com/direction" target="_blank">
+                            <div class="mb10">选择出行方式：
+                                <input type="radio" id="bus" name="mode" value="transit" checked="checked">
+                                <label name="man" for="bus" class="checked">公交</label>
+                                <input type="radio" id="drive" name="mode" value="driving">
+                                <label name="woman" for="drive">驾车</label>
+                                <input type="radio" id="walk" name="mode" value="walking">
+                                <label name="woman" for="walk">步行</label>
+                            </div>
+                            <div>出发地点：
+                                <input type="text" value="" id="start_place" name="origin" class="search_place">
+                                <input type="hidden" value="" id="end_place" name="destination">
+                                <input type="hidden" name="output" value="html">
+                                <input type="hidden" name="src" value="chuniao">
+                                <input type="hidden" name="region" value="上海">
+                                <input class="search_query" type="submit" id="result" value="查询">
+                            </div>
+                            <!-- <div id="r-result" style="max-height: 270px;overflow-y: auto; overflow-x: hidden;"></div>
+                    <div id="r-result1" style="max-height: 270px;overflow-y: auto; overflow-x: hidden;"></div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h75"></div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="js/msgbox.js"></script>
+    <script src="js/comm.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Q8RLI4a3wcZBWTjKSrgd7jqG"></script>
+    <Script>
+    var opts = {
+
+        title: "", // 信息窗口标题
+        enableMessage: true //设置允许信息窗发送短息
+    };
+
+    //var data = [{"schoolname":"镇坪教学点","addr":"上海市石化龙凯街10号3楼（近卫清西路）","pos":"116.404, 39.915"},{"schoolname":"田林教学点","addr":"上海市徐汇区宜山路700号 （近桂林路） ","pos":"116.404, 40.915"}];
+
+    var data = [{ "schoolname": "镇坪教学点", "addr": "上海市石化龙凯街10号3楼（近卫清西路）" }, { "schoolname": "田林教学点", "addr": "上海市徐汇区宜山路700号 （近桂林路）" }];
+    var map = new BMap.Map("map");
+    map.addControl(new BMap.NavigationControl());
+    //map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_HYBRID_MAP]}));     //2D图，卫星图
+    map.addControl(new BMap.OverviewMapControl());
+    //map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);      
+    // 创建地址解析器实例     
+    var myGeo = new BMap.Geocoder();
+
+    function showarea(i) {
+        // 将地址解析结果显示在地图上，并调整地图视野    
+        $(".map_address").text(data[i].addr);
+        var content = "<p style='margin:0 0 0px 0; font-size:14px;font-weight: bold;padding:0px 0; color:#CC5522;line-height:1.5;'>" + data[i].schoolname + "</p><p style='margin:0;font-size:12px;line-height:1.5;padding:3px 0'>" + data[i].addr + "</p>";
+        myGeo.getPoint(data[i].addr, function(point) {
+            console.log(point)
+            if (point) {
+                map.centerAndZoom(point, 16);
+                var marker = new BMap.Marker(point);
+                map.addOverlay(marker);
+                marker.addEventListener("click", openInfo.bind(null, content));
+                map.openInfoWindow(new BMap.InfoWindow(content, opts), point); //开启信息窗口
+                $("#end_place").val("latlng:" + point.lat + "," + point.lng + "|name:" + data[i].addr);
+
+            }
+        }, "");
+    }
+
+    function openInfo(content, e) {
+        console.log(this)
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
+        map.openInfoWindow(infoWindow, point); //开启信息窗口
+    }
+    showarea(0);
+    $(function() {
+        $("#selectschool").on("change", function() {
+            showarea($(this).val());
+            //alert($(this).val())
+        })
+    })
+    </script>
+</body>
+
+</html>

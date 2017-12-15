@@ -5,16 +5,22 @@
 	<title>自定义视频播放器</title>
 </head>
 <body>
-	<video id="video"></video>
+	<video id="video" controls></video>
 	<button id="play">播放</button>
 	<button id="fullscreen">全屏</button>
 </body>
 </html>
 <script type="text/javascript">
+	/*https://www.w3.org/2010/05/video/mediaevents.html*/
 	var video = document.getElementById("video");
-	video.src ="resource/movie.mp4";
+	//video.src ="resource/movie.mp4";
+	video.src ="http://media.w3.org/2010/05/bunny/trailer.mp4";
 	video.poster = "resource/dog.png";
+	video.volume =0;
 
+	/*event:
+	waiting  视频需要缓冲再播放下一帧时触发。 在播放过程中等待播放时
+*/
 	play.onclick = function(){
 		if(video.paused){
 			video.play();
@@ -22,6 +28,8 @@
 		}else{
 			video.pause();
 			this.innerText = "播放";
+			console.log(video.played.end(0) )
+			console.log(video.currentTime )
 		}		
 	}
 	
