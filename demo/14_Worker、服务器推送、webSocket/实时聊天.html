@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+
+
+</head>
+<body>
+
+	<input type="text" id="con">
+	<input type="button" id="btn" value="发送">
+
+	<div id="result">
+		
+	</div>
+	<script type="text/javascript">
+		var ws = new WebSocket("ws://localhost:8001");
+		ws.onopen =  function(){
+			console.log("连接成功");
+		}
+
+		btn.onclick = function(){
+			ws.send(con.value);
+		}
+
+		ws.onmessage = function(e){
+			console.log("服务器返回："+e.data);
+			result.innerHTML += e.data +"<br>";
+
+		}
+
+		ws.onclose = function(){
+			console.log("连接关闭")
+		}
+	</script>
+</body>
+</html>

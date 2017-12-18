@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.localStorage.setItem("username","zhang san");
+		window.localStorage.setItem("username2","wang wu");
+		window.localStorage.setItem("age",24);
+		window.localStorage.setItem("edu","college");
+
+		//window.localStorage.username3 = "Li shi";
+		//console.log( localStorage.getItem("username"))
+		console.log( localStorage.key(0));
+		console.log( localStorage.key(1));
+		console.log( localStorage.key(2));
+
+		for (var i=0;i<localStorage.length;i++){
+			var key = localStorage.key(i);
+			console.log( `${key}：${localStorage.getItem(key)}`);
+		}
+
+		//localStorage.removeItem("edu");
+		//localStorage.clear();
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var obj = {
+			"id":1,
+			"name":"zs",
+			"age":25
+		}
+
+		//1、先把对象转换为字符串
+		localStorage.setItem("username", JSON.stringify(obj));
+
+		//2、取出时再把字符串转回js对象
+
+		var obj2 = JSON.parse(localStorage.getItem("username"));
+		console.log(obj2);
+
+
+	</script>
+	
+</body>
+</html>

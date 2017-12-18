@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<fieldset>
+		<legend>添加通讯录</legend>
+		<label for="username">姓名：</label><input type="text" id="username" >
+		<label for="tel">手机：</label><input type="text" id="tel" >
+		<input type="button" id="btn" value="添加">
+	</fieldset>
+
+	<fieldset>
+		<legend>查询</legend>
+		<label for="sname">姓名：</label><input type="text" id="sname">
+		<input type="button" id="search" value="查询">
+
+	</fieldset>
+	<div id="result"></div>
+
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var username = document.getElementById('username');
+		var tel = document.getElementById('tel');
+		var sname = document.getElementById('sname');
+		var search = document.getElementById('search');
+		var result = document.getElementById('result');
+
+		btn.onclick = function(){
+			localStorage.setItem(username.value , tel.value );
+		}
+		search.onclick = function(){
+			var tel = localStorage.getItem(sname.value);
+			if(tel){
+				result.innerHTML = `${sname.value}的电话是:${tel}`;
+			}else{
+				result.innerHTML = `查不到此人`;
+			}
+			
+
+
+		}
+	</script>
+
+
+</body>
+</html>
