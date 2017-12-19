@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>区别 child 和 of-type</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="js/google-code-prettify/prettify.css">
+	<script src="js/google-code-prettify/prettify.js"></script>
+	<script>
+		$(function(){
+			$("#first").on("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$(".child").attr("class"," first child");
+				$(".of-type").attr("class"," first of-type");
+			});
+
+			$("#last").on("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$(".child").attr("class"," last child");
+				$(".of-type").attr("class","last of-type ");
+			});
+
+			$("#only").on("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$(".child").attr("class"," only child");
+				$(".of-type").attr("class","only of-type ");
+			});
+
+			$("#nth").on("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$(".child").attr("class","nth child ");
+				$(".of-type").attr("class","nth of-type ");
+			});
+
+			$("#nth-last").on("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$(".child").attr("class","nth-last child ");
+				$(".of-type").attr("class","nth-last of-type ");
+			});
+
+			var clonediv = $(".child").clone();
+			clonediv.attr("class","of-type");
+			$("body").append(clonediv);
+			$(".source").html( $(clonediv)[0].innerHTML.replace(/</g,"&lt;").replace(/>/g,"&gt;") );
+
+			prettyPrint();
+		})
+		
+	</script>
+	<style>
+		.source{			
+			position: absolute;
+			right: 0;
+			width: calc(100% - 500px);
+			white-space: pre;
+			font-size: 20px;
+			background: #eee;
+		}
+		.source::before{
+			content: "源文件";
+			display: block;
+			font-weight: bolder;
+			color: #00f;
+		}
+		.child,.of-type{
+			float: left;
+			width: 200px;
+			margin-top: 30px;
+		}
+		.child::before,.of-type::before{
+			content: attr(class);
+			display: block;
+			font-weight: bolder;
+			color: #00f;
+		}
+	
+		.child.first p:first-child{
+			color: #f00;
+		}
+
+		.of-type.first p:first-of-type{
+			color: #f00;
+		}
+
+		.child.last p:last-child{
+			color: #f00;
+		}
+
+		.of-type.last p:last-of-type{
+			color: #f00;
+		}
+
+		.child.only p:only-child{
+			color: #f00;
+		}
+
+		.of-type.only p:only-of-type{
+			color: #f00;
+		}
+
+		.child.nth p:nth-child(2){
+			color: #f00;
+		}
+
+		.of-type.nth p:nth-of-type(2){
+			color: #f00;
+		}
+
+		.child.nth-last p:nth-last-child(2){
+			color: #f00;
+		}
+
+		.of-type.nth-last p:nth-last-of-type(2){
+			color: #f00;
+		}
+		.attrs a{
+			margin: 0 10px;
+			font-size: 20px;
+			font-weight: bolder;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<code class="source prettyprint"></code>
+	
+	<div class="attrs">
+		<a href="first" id="first">first</a>
+		<a href="last" id="last">last</a>
+		<a href="only" id="only">only</a>
+		<a href="nth" id="nth">nth(2)</a>
+		<a href="nth-last" id="nth-last">nth-last(2)</a>
+	</div>
+
+	<div class="child">		
+		<div>
+			<p>p1</p>
+			<p>p2</p>
+			<p>p3</p>
+		</div>
+		<div>
+			<div class="inner">
+				<p>inner-p1</p>
+				<p>inner-p2</p>
+			</div>
+			<p>p11</p>
+			<p>p22</p>
+		</div>
+		<div>
+			<div>div1</div>
+			<p>p-only</p>
+			<div>div3</div>
+		</div>
+		<div>
+			<div>div1</div>
+			<p>p-two</p>
+			<div>div3</div>
+			<p>p-two</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,li{
+			list-style: none;
+			margin:0;
+			padding: 0;
+		}
+		ul {
+			width: 640px;
+			margin:0 auto;
+			background-color: lightblue
+		}
+		li{
+			overflow: hidden;
+			padding: 20px;
+		}
+		.thumb-left,.tip-left{
+			float: left;
+		}
+		.thumb-right,.tip-right{
+			float: right;
+		}
+		
+		.thumb img{
+			width: 80px;			
+		}
+
+		.tip{
+			position: relative;
+			padding: 20px;
+			margin:0 30px;
+			background: #fff;
+		}
+		.tip-left::before{
+			content: "";
+			position: absolute;
+			left: -15px;
+			top: 13px;
+			border-width: 15px 0px 0 15px;
+			border-color: #fff transparent transparent transparent;
+			border-style:solid;
+
+		}
+		.tip-right::before{
+			content: "";
+			position: absolute;
+			right: -15px;
+			top: 13px;
+			border-width: 15px 15px 0 0px;
+			border-color: #fff transparent transparent transparent;
+			border-style:solid;
+
+		}
+
+	</style>
+</head>
+<body>
+	
+	<ul>
+		<li>
+			<div class="thumb thumb-left"><img src="images/mm1.jpg" alt=""></div>
+			<div class="tip tip-left">你好，今天天气如何？</div>			
+		</li>
+		<li>
+			<div class="thumb thumb-right"><img src="images/mm1.jpg" alt=""></div>
+			<div class="tip tip-right">晴，27度.</div>
+		</li>
+		<li>
+			<div class="thumb thumb-left"><img src="images/mm1.jpg" alt=""></div>
+			<div class="tip tip-left">你好，今天天气如何？</div>			
+		</li>
+		<li>
+			<div class="thumb thumb-right"><img src="images/mm1.jpg" alt=""></div>
+			<div class="tip tip-right">晴，27度.</div>
+		</li>
+		<li>
+			<div class="thumb thumb-left"><img src="images/mm1.jpg" alt=""></div>
+			<div class="tip tip-left">你好，今天天气如何？</div>			
+		</li>
+		<li>
+			<div class="thumb thumb-right"><img src="images/mm1.jpg" alt=""></div>
+			<div class="tip tip-right">晴，27度.</div>
+		</li>
+	</ul>
+</body>
+</html>

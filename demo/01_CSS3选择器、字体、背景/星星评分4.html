@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		body{
+			font-family: Arial,"宋体"
+		}
+		ul,li{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.stars{
+			direction: rtl;
+			text-align: left;
+			font-size: 0;
+		}
+		.stars li{
+			display: inline-block;
+			width: 18px;
+			overflow: hidden;
+			transition: all 0.5s;
+			cursor: pointer;
+			font-size: 36px;
+		}
+		.stars li:nth-child(even){
+			text-indent: -18px;
+		}
+
+		.stars li:hover,.stars li:hover ~ li{
+			color: #f00
+		}
+	</style>
+</head>
+<body>
+	<ul class="stars">
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+		<li>★</li>
+	</ul>
+</body>
+</html>

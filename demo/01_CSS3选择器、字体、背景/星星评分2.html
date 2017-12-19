@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>纯CSS实现评分 2</title>
+	<style>
+		/* 实现原理：父元素stars的背景都是灰星，通过子元素label 不同宽度的覆盖来实现 。
+		1、点击后的状态保存  由单选框保存  点击后 对应后面的label改变宽度来实现，改变的这个元素 的Z值（1）是较低于 未改变的元素 保证其他（z-index=3）可点。
+		2、鼠标滑过时 先清除所有的label背景，然后根据谁hover 改变其对应的宽度 left=0 且z-index=2 保证可点 ; */
+		.stars{
+			position: relative;
+			z-index: 0;
+			overflow: hidden;
+			width: 60px;	
+			height: 13px;
+			margin: 300px 200px;
+			background: url(images/star-grey.png) repeat-x;
+			/* transform: scale(5) */
+		}		
+		label{
+			/* display: none; */
+			position: absolute;		
+			/* 保证在最上面 */
+			z-index: 3;				
+			top: 0;
+			width: 12px;
+			height: 13px;
+			
+		}
+
+
+		.start_1{
+			left: 0
+		}
+		.start_2{
+			left: 12px
+		}
+		.start_3{
+			left: 24px
+		}
+		.start_4{
+			left: 36px
+		}
+		.start_5{
+			left: 48px
+		}
+		
+
+		.score{
+			display: none
+		}
+
+		.score:checked + label{
+			z-index: 1;
+			left: 0;
+			background: url(images/star-yellow.png) repeat-x;
+
+		}
+		
+		.score_1:checked ~ .start_1{
+			width: 12px;
+		}
+		.score_2:checked ~ .start_2{
+			width: 24px;
+		}
+		.score_3:checked ~ .start_3{
+			width: 36px;
+		}
+		.score_4:checked ~ .start_4{
+			width: 48px;
+		}
+		.score_5:checked ~ .start_5{
+			width: 60px;
+		}
+
+
+		/*hover状态下先 清除 点击状态改变的背景 */
+		.stars:hover .start {  background-image: none; }
+		/* 保证优先级 */
+		.stars:hover .start:hover{ 
+			z-index: 2;
+			left: 0;
+			background: url(images/star-yellow.png) repeat-x;
+		}
+		
+		.start_1:hover{
+			width: 12px;	
+		}
+		.start_2:hover{
+			width: 24px;	
+		}
+		.start_3:hover{
+			width: 36px;	
+		}
+		.start_4:hover{
+			width: 48px;	
+		}
+		.start_5:hover{
+			width: 60px;	
+		}
+
+	</style>
+</head>
+<body>
+	<div class="stars">
+		<!-- (input[type=radio][id=start$][value=$][class=score score_$][name=score]+label[for=start$][class=start_$])*5 -->
+		<input type="radio" id="start1" value="1" class="score score_1" name="score"><!-- checked="checked" -->
+		<label for="start1" class="start start_1" id="start_1"></label>
+		<input type="radio" id="start2" value="2" class="score score_2" name="score">
+		<label for="start2" class="start start_2" id="start_2"></label>
+		<input type="radio" id="start3" value="3" class="score score_3" name="score" >
+		<label for="start3" class="start start_3" id="start_3"></label>
+		<input type="radio" id="start4" value="4" class="score score_4" name="score">
+		<label for="start4" class="start start_4" id="start_4"></label>
+		<input type="radio" id="start5" value="5" class="score score_5" name="score">
+		<label for="start5" class="start start_5" id="start_5"></label>
+	</div>
+</body>
+</html>

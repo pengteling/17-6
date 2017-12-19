@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* 最下面的背景是黄星,点击后由单选框保存状态，当前这个星和后面的星变灰 */
+		.stars{
+
+			overflow: hidden;
+			width: 60px;	
+			height: 13px;
+			margin: 300px 200px;
+			background: url(images/star-yellow.png) repeat-x;
+			/* transform: scale(5) */
+		}		
+		.score{
+			display: none
+		}
+		label{
+			float: left;
+			/* display: inline-block; */
+			width: 12px;
+			height: 13px;
+			/* background: url(images/star-grey.png) */
+		}
+		.score:checked ~ label{
+			background: url(images/star-grey.png) 
+		}
+		.score:checked + label{
+			background: url(images/star-yellow.png) 
+		}
+
+
+		#start_1:hover ~ label{
+			background: url(images/star-grey.png) 
+		}
+		#start_2:hover ~ label{
+			background: url(images/star-grey.png) 
+		}
+		#start_3:hover ~ label{
+			background: url(images/star-grey.png) 
+		}
+		#start_4:hover ~ label{
+			background: url(images/star-grey.png) 
+		}
+		#start_5:hover ~ label{
+			background: url(images/star-grey.png) 
+		}
+
+		.stars:hover .score:checked ~ label{
+			background: none 
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	
+	<div class="stars">
+		<input type="radio" id="start1" value="1" class="score score_1" name="score">
+		<label for="start1" class="start_1" id="start_1"></label>
+		<input type="radio" id="start2" value="2" class="score score_2" name="score">
+		<label for="start2" class="start_2" id="start_2"></label>
+		<input type="radio" id="start3" value="3" class="score score_3" name="score">
+		<label for="start3" class="start_3" id="start_3"></label>
+		<input type="radio" id="start4" value="4" class="score score_4" name="score">
+		<label for="start4" class="start_4" id="start_4"></label>
+		<input type="radio" id="start5" value="5" class="score score_5" name="score">
+		<label for="start5" class="start_5" id="start_5"></label>
+	</div>
+
+
+</body>
+</html>

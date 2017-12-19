@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.haorooms {
+		    position:relative;
+		    display:inline-block;
+		    font-size:180px; /*  任何宽度都可以 */
+		    color: black; /* 任何颜色，或透明 */
+		    overflow:hidden;		    
+		}
+		.haorooms::before {		    
+		    position:absolute;
+		    z-index:1;
+		    top:0;
+		    left:0;
+		    width: 55%;
+		    content: attr(data-content); /* 伪元素的动态获取内容 */
+		    overflow:hidden;
+		    color: #f00;
+		    text-shadow: 0px 0px 3px  #000;		    
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<div>
+		<span class="haorooms" data-content="前">前</span>
+		<span class="haorooms" data-content="端">端</span>
+		<span class="haorooms" data-content="技">技</span>
+		<span class="haorooms" data-content="术">术</span>
+	</div>
+
+	
+</body>
+</html>
