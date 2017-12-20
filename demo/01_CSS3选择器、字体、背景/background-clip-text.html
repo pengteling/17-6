@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .masked {
+    	font-size: 100px;
+    	font-weight: bolder;
+        background-image: linear-gradient(to left, #147B96 0, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96 100%);
+        /* -webkit-text-fill-color: transparent; */
+        color: transparent;
+        -webkit-background-clip: text;
+        background-size: 200% 100%;
+        /*animation: masked-animation 4s infinite linear;*/
+    }
+
+
+    @keyframes masked-animation {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -100% 0;
+        }
+    }
+
+    .karaoke{
+        font-size: 100px;
+        font-weight: bolder;
+        background-image: linear-gradient(to left, #f00 0, #f00 100%) ;
+        background-color: #00f;
+        background-repeat: no-repeat;
+        background-size: 200% 100%;
+        background-position:100% 100%;  /* 百分比计算公式 (容器 - 背景图片)* percent */
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        animation: masked-animation 4s infinite linear;
+
+    }
+    </style>
+</head>
+
+<body>
+    <span class="masked ">绿色智慧市政综合管控平台</span>
+    <div class="karaoke">     
+        轻解罗裳，独上兰舟。        
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,li{
+			padding: 0;
+			margin:0;
+		}
+		ul{
+			width: 600px; 
+			display: table;
+			/* border-collapse: collapse;  */
+			 border-collapse: separate; 
+		}
+		li{			
+			display: table-cell;
+			width: 100px;
+			height: 50px;
+
+			/*border:1px solid;		*/ 	
+			border-bottom: 1px solid;
+			border-right: 1px solid;
+			
+			border-radius: 10px;
+			text-align: center;
+			line-height: 50px;
+			background: lightblue;
+			
+		}
+		
+		ul div{
+			display: table-row;
+		}
+		ul div:first-child li{
+			border-top: 1px solid
+		}
+		ul li:first-child{
+			border-left: 1px solid
+		}
+	</style>
+</head>
+<body>
+
+	<ul>
+		<div class="table-row">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</div>
+		<div class="table-row">
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</div>
+		<div class="table-row">
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</div>
+	</ul>
+	
+</body>
+</html>
