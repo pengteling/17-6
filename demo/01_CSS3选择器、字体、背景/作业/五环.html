@@ -4,32 +4,29 @@
 	<meta charset="UTF-8">
 	<title>奥运五环</title>
 	<style>
-		.container .circle{
-			position: absolute;
-				
+		.container .circle,.container .circle::before{
+			position: absolute;				
 			width: 150px;
 			height: 150px;
-			border: 15px solid;
+			/*border:15px solid; */ /* 坑 */
+			border-style:  solid;
+			border-width: 15px; 
 			border-radius: 50%;
 		}		
+		.circle::before{
+			content: "";	
+			left: -15px;
+			top: -15px;
+		}
 
 		.circle-1{
 			left: 0;
 			top: 0;
 			color: blue;
 		}
-		.circle-1::before{
-			content: "";
-			position: absolute;
-			z-index: 5;
-			left: -15px;
-			top: -15px;
-			display: block;
-			width: 150px;
-			height: 150px;
-			border: 15px solid;
-			border-color: transparent blue;
-			border-radius: 50%;
+		.circle-1::before{						
+			z-index: 5;					
+			border-color: transparent blue;			
 		}
 	
 		.circle-2{
@@ -38,31 +35,30 @@
 			color: yellow;
 		}
 
-		.circle-2::before{
-			content: "";
-			position: absolute;
-			z-index: 4;
-			left: -15px;
-			top: -15px;
-			display: block;
-			width: 150px;
-			height: 150px;
-			border: 15px solid;
-			border-color: yellow transparent transparent;
-			border-radius: 50%;
-		}
+		.circle-2::before{		
+			z-index: 4;			
+			border-color: yellow transparent transparent;			
+		} 
 		
 		.circle-3{
 			left: 195px;
 			top: 0;
 			color: black;
 		}
+		.circle-3::before{		
+			z-index: 5;			
+			border-color: transparent  black transparent transparent;			
+		} 
 		
 		.circle-4{
 			left: 295px;
 			top: 90px;
 			color: green;
 		}
+		.circle-4::before{		
+			z-index: 4;			
+			border-color: green transparent  transparent ;			
+		} 
 		
 		.circle-5{
 			left: 390px;
