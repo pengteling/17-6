@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/* 理论上 任何CSS里面可以写url(图片)的地方 可以用渐变 */
+		.border-image{
+			width: 500px;
+			height: 200px;
+			border:20px solid;
+			border-image: linear-gradient(#f00,#00f)  20 ;
+		}
+		li{
+			list-style-image: linear-gradient(#f00,#00f) ;
+			list-style-type:disc;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="border-image"></div>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	
+</body>
+</html>
