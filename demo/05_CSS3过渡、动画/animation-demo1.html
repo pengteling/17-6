@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			/*transition:all 3s ease 2s ;*/
+			animation: move 3s ease 2s 3 paused;		
+			animation-iteration-count:  3;
+			animation-play-state: running;
+		}
+		
+		@keyframes move{
+			0%{
+				margin-left: 100px;
+				background-color:#0f0;
+			}
+			50%{
+				margin-left: 200px;
+				background-color: #f0f;
+			}
+			100%{
+				margin-left: 500px;
+				background-color: #00f;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<button id="btn1">暂停</button>
+	<button id="btn2">继续</button>
+	<script>
+		var div = document.querySelector("div");
+		btn1.onclick =function(){
+			div.style.animationPlayState = "paused";
+		}
+		btn2.onclick =function(){
+			div.style.animationPlayState = "running";
+		}
+	</script>
+</body>
+</html>

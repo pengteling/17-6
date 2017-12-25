@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .transform-style .container {
+        width: 500px;
+        height: 300px;
+        margin: 10px auto;
+        position: relative;
+    }
+
+    .transform-style .inner {
+        width: 142px;
+        height: 200px;
+        position: absolute;
+    }
+
+    @keyframes inner {
+        0% {
+            transform: rotateY(0deg)
+        }
+        100% {
+            transform: rotateY(360deg)
+        }
+    }
+
+    .transform-style:hover .inner {
+        animation: inner 5s linear infinite;
+    }
+
+    .transform-style .rotate {
+        background: url("http://images2015.cnblogs.com/blog/561794/201604/561794-20160412230412973-1641353956.jpg") no-repeat center;
+        border: 5px solid hsla(50, 50%, 50%, .9);
+        transform: perspective(200px) rotateY(45deg);
+        backface-visibility: hidden;
+    }
+
+    .transform-style .rotate img {
+        border: 1px solid green;
+        transform: rotateX(15deg) translateZ(10px);
+        transform-origin: 0 0 40px;
+        backface-visibility: hidden;
+    }
+
+    .transform-style .three-d {
+        transform-style: preserve-3d;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="transform-style">
+        <h3>鼠标放到图片上面来查看效果哦！(图片反转360度)</h3>
+        <div class="container">
+            <div class="inner">
+                <div class="rotate">
+                    <img src="http://images2015.cnblogs.com/blog/561794/201604/561794-20160412230412973-1641353956.jpg" alt="" width="142" height="200" />
+                </div>
+            </div>
+        </div>
+        <h3>鼠标放到图片上面来查看效果哦！(图片反转360度--使用transform-style: preserve-3d;效果)</h3>
+        <div class="container">
+            <div class="inner">
+                <div class="rotate three-d">
+                    <img src="http://images2015.cnblogs.com/blog/561794/201604/561794-20160412230412973-1641353956.jpg" alt="" width="142" height="200" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
