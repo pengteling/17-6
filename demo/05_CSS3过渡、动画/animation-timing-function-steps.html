@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>animation-timing-function:setps 演示</title>
+    <style>
+    .container {
+        width: 600px;
+        border: #00f 1px solid;
+    }
+
+    .box-1 {
+        width: 100px;
+        height: 100px;
+        background: #333;
+        animation: move 3s infinite 2s reverse;
+        animation-timing-function: steps(2);
+
+        
+        animation-timing-function: step-end;
+        animation-timing-function: steps(1,end);
+        animation-timing-function: steps(1,start);
+        animation-timing-function: step-start;
+    }
+
+    @keyframes move {
+        0% {
+            margin-left: 100px;
+            background: #f0f;
+        }
+        /*25%{
+         				margin-left: 175px;
+         				background:#e0e
+         			}  */
+        50% {
+            margin-left: 250px;
+            background: yellow;
+        }
+        /* 62.5%{} */
+        75% {
+            margin-left: 375px;
+            background: blue;
+        }
+        /* 87.5%{} */
+        100% {
+            margin-left: 500px;
+            background: green;
+        }
+    }
+    </style>
+
+    <body>
+        <div class="container">
+            <div class="box-1"></div>
+        </div>
+        <button id="btn1">暂停</button>
+        <button id="btn2">继续</button>
+        <script>
+        var div = document.querySelector(".box-1");
+        btn1.onclick = function() {
+            div.style.animationPlayState = "paused";
+        }
+        btn2.onclick = function() {
+            div.style.animationPlayState = "running";
+        }
+        </script>
+    </body>
+
+</html>

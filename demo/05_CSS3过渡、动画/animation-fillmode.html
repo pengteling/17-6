@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation-direction 演示</title>
+	<style>
+		.box-1{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			animation: move 3s ease 3s 2 reverse ;
+			
+			animation-fill-mode: forwards;
+
+			/*动画开始前（动画等待的时间）元素的状态变成动画第一帧的状态*/
+			animation-fill-mode: backwards;
+			animation-fill-mode: both;
+		}
+		@keyframes move {
+			0%{margin-left: 200px}
+			100%{margin-left:500px;}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box-1"></div>
+	
+</body>
+</html>

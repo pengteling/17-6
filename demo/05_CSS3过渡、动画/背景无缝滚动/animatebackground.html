@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 48px;
+			background: #000;
+
+		}
+		div#banner{
+			width:1000px;
+			height: 200px;
+			margin: 0 auto;
+			border: #639 1px solid;
+			overflow: hidden;
+		}
+		
+		div#banner > #banner_backdrop{
+			position: relative;
+			background: url("1.png") repeat-x;
+			width:1320px;
+			height: 200px;
+			animation: move1 15s linear infinite;			
+		}
+		div#banner > #banner_content{
+			position: relative;
+			width:96%;
+			height: 160px;
+			margin: 20px auto;
+			top: -200px;
+			color: #fff;
+			font-size: 27px;
+		}
+		@keyframes move {
+			0% {left: 0}
+			100% {left: -320px}
+		}
+		@keyframes move1 {
+			0% {background-position: 0  }
+			100% {background-position: -320px}
+		}
+	</style>
+</head>
+<body>
+	<div id="banner">
+		<div id="banner_backdrop"></div>
+		<div id="banner_content">Put anything you want inside this box...</div>
+	</div>
+</body>
+</html>
