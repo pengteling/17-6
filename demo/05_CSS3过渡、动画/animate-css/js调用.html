@@ -5,7 +5,8 @@
 	<title>Document</title>
 	<link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  	<script src="../run/js/jquery-1.7.2.min.js"></script>
+  	<script src="jquery-1.7.2.min.js"></script>
+    <script src="jquery.appear.js"></script>
   	
   	<script>
 
@@ -20,23 +21,37 @@
   			        return this;
   			    }
   			});
-			/*console.log($);*/
-      $("#btn").on("click",function(){
-        $(".div1").animateCss("zoomIn");
-      });
+  			/*console.log($);*/
+        $("#btn").on("click",function(){
+          $(".div1").animateCss("zoomIn");
+        });
+
+
 			
   		});
-
+     $(function(){
+              $(".div2").appear(function(){
+                $(".div2").animateCss("zoomIn");
+              })
+      })
 
   	</script>
   	<style>
-
+      
   		.div1{
   			width: 200px;
   			height: 200px;
   			margin: 200px;
+        margin-bottom: 2000px;
   			background-color: #f00;
   		}
+      .div2{
+        width: 200px;
+        height: 200px;
+        margin: 200px;
+        margin-bottom: 500px;
+        background-color: #f00;
+      }
   	</style>
 </head>
 <body>
@@ -45,5 +60,8 @@
 		
 	</div>
 	<div id="btn">点击播放动画</div>
+  <div class="div2">
+    
+  </div>
 </body>
 </html>

@@ -4,6 +4,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title></title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <Script>
+    function scroll(obj) {
+        var o = $(obj);
+        o.css("left", o.position().left - 1 + "px");
+        if (o.position().left <= -120) {
+            o.css("left", "0px");
+        }
+    }
+
+    $(function() {
+        setInterval("scroll('#l1')", 120);
+        setInterval("scroll('#l2')", 100);
+        setInterval("scroll('#l3')", 20);
+    });
+    </script>
     <style>
     .bigc {
         width: 120px;
@@ -24,7 +40,6 @@
         width: 240px;
         height: 90px;
         background: url(1.png);
-        animation: myfirst 10s linear infinite;        
     }
 
     .layer2 {
@@ -34,7 +49,6 @@
         width: 240px;
         height: 90px;
         background: url(2.png);
-        animation: myfirst 5s linear infinite;        
     }
 
     .layer3 {
@@ -44,21 +58,7 @@
         width: 240px;
         height: 90px;
         background: url(3.png);
-        animation: myfirst 2s linear infinite;        
     }
-
-
-    @keyframes myfirst {
-        0% {
-            left: 0;
-        }
-        
-        100% {
-            left: -120px;
-        }
-    }
-
-   
     </style>
 </head>
 
