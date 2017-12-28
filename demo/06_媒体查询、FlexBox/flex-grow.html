@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>演示</title>
+    <style>
+    body{
+    	margin: 0;
+    }
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0
+    }
+    .flex {		     
+        display: flex;   
+        flex-direction: row;
+        /*flex-direction: column;*/
+        width: 1000px;
+        height: 100px;
+        margin-top: 0px;
+        border: #f00 1px solid;  
+    }
+
+    .flex li {		
+       
+        /* 
+        flex-grow: 0; //默认值  不扩展
+        flex-grow: 0.1;
+        flex-shrink: 0.2;
+        flex-basis: 300px; 
+         */
+
+
+
+        /*width: 25%; */
+        /*height: 30px; */
+
+        /*flex: 0  1  auto;*/
+        
+        /*flex: 0 auto;
+        flex: 0 1 auto;*/
+
+        /*flex: auto;
+        flex: 1 1 auto;*/
+
+        /*flex:1;
+        flex:0 1 0%;*/
+
+       /* flex:2;
+        flex:2 1 0%;*/
+
+        /*flex:2 1 ;*/
+
+        flex: 100%;
+        flex: 1 1 100%;
+
+    }
+
+    .flex li:nth-child(1) {	
+        /*flex-basis: 600px;       */
+        /*flex-shrink: 2;*/
+        background: #484281;
+    }
+
+    .flex li:nth-child(2) {  
+       
+        background: #5248af;        
+    }
+
+    .flex li:nth-child(3) {    
+      
+        background: #786bfa;
+    }
+
+    .flex li:nth-child(4) {  
+        
+        
+        background: #aba3f9;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="flex">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+</body>
+
+</html>
