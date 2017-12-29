@@ -1,0 +1,58 @@
+@color: #ff0;
+div{
+	.test{
+		color:@color;
+		font-size: 12px;font-weight: bolder;
+	}
+	.test2{
+		.border-radius(2px);
+	}
+}
+
+.border-radius(@r:0px){
+	-webkit-border-radius: @r;
+	-moz-border-radius: @r;
+	-ms-border-radius: @r;
+	border-radius: @r;
+}
+
+body{
+	font-size: 12px;
+}
+
+.container {
+	.border-radius(5px);
+
+}
+.container .inner{
+
+}
+.container .inner .small{
+
+}
+
+
+.container{
+
+	.inner{
+
+		.small{
+
+
+		}
+	}
+}
+
+.fl{
+	float: left;
+	width: 200px;
+	height: 100px;
+}
+/* .div1{
+	&:extend(.fl);
+}
+ */
+ .div1:extend(.fl){
+ 	.fl;
+	// border:1px solid;
+}

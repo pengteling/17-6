@@ -1,0 +1,37 @@
+div .test {
+  color: #ff0;
+  font-size: 12px;
+  font-weight: bolder;
+}
+div .test2 {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+}
+body {
+  font-size: 12px;
+}
+.container {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+.fl,
+.div1 {
+  float: left;
+  width: 200px;
+  height: 100px;
+}
+/* .div1{
+	&:extend(.fl);
+}
+ */
+.div1 {
+  float: left;
+  width: 200px;
+  height: 100px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxlc3MubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQSxHQUNDO0VBQ0MsV0FBQTtFQUNBLGVBQUE7RUFBZ0IsbUJBQUE7O0FBSGxCLEdBS0M7RUFNQSwwQkFBQTtFQUNBLHVCQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTs7QUFHRDtFQUNDLGVBQUE7O0FBR0Q7RUFWQywwQkFBQTtFQUNBLHVCQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTs7QUE4QkQ7QUFTQztFQVJBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsYUFBQTs7Ozs7O0FBTUE7RUFSQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJAY29sb3I6ICNmZjA7XHJcbmRpdntcclxuXHQudGVzdHtcclxuXHRcdGNvbG9yOkBjb2xvcjtcclxuXHRcdGZvbnQtc2l6ZTogMTJweDtmb250LXdlaWdodDogYm9sZGVyO1xyXG5cdH1cclxuXHQudGVzdDJ7XHJcblx0XHQuYm9yZGVyLXJhZGl1cygycHgpO1xyXG5cdH1cclxufVxyXG5cclxuLmJvcmRlci1yYWRpdXMoQHI6MHB4KXtcclxuXHQtd2Via2l0LWJvcmRlci1yYWRpdXM6IEByO1xyXG5cdC1tb3otYm9yZGVyLXJhZGl1czogQHI7XHJcblx0LW1zLWJvcmRlci1yYWRpdXM6IEByO1xyXG5cdGJvcmRlci1yYWRpdXM6IEByO1xyXG59XHJcblxyXG5ib2R5e1xyXG5cdGZvbnQtc2l6ZTogMTJweDtcclxufVxyXG5cclxuLmNvbnRhaW5lciB7XHJcblx0LmJvcmRlci1yYWRpdXMoNXB4KTtcclxuXHJcbn1cclxuLmNvbnRhaW5lciAuaW5uZXJ7XHJcblxyXG59XHJcbi5jb250YWluZXIgLmlubmVyIC5zbWFsbHtcclxuXHJcbn1cclxuXHJcblxyXG4uY29udGFpbmVye1xyXG5cclxuXHQuaW5uZXJ7XHJcblxyXG5cdFx0LnNtYWxse1xyXG5cclxuXHJcblx0XHR9XHJcblx0fVxyXG59XHJcblxyXG4uZmx7XHJcblx0ZmxvYXQ6IGxlZnQ7XHJcblx0d2lkdGg6IDIwMHB4O1xyXG5cdGhlaWdodDogMTAwcHg7XHJcbn1cclxuLyogLmRpdjF7XHJcblx0JjpleHRlbmQoLmZsKTtcclxufVxyXG4gKi9cclxuIC5kaXYxOmV4dGVuZCguZmwpe1xyXG4gXHQuZmw7XHJcblx0Ly8gYm9yZGVyOjFweCBzb2xpZDtcclxufSJdLCJmaWxlIjoibGVzcy5jc3MifQ== */

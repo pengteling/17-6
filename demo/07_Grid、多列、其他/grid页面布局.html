@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			display: grid;
+			height: 100vh;
+			margin:0;
+			grid-template: 150px auto  100px / auto 200px ;
+			grid-template-areas: "header header"
+								"main sidebar"
+								 "footer footer";
+
+		}
+		.header{
+			grid-area: header;
+			background: #f00
+		}
+		.main{
+			grid-area: main;
+			background: #ff0
+		}
+		.sidebar{
+			grid-area: sidebar;
+			background: #f0f
+		}
+		.footer{
+			grid-area: footer;
+			background: #00f
+		}
+	</style>
+</head>
+<body>
+
+	<header class="header">header</header>
+	<main class="main">main</main>
+	<aside class="sidebar">aside</aside>
+	<footer class="footer">footer</footer>
+	
+</body>
+</html>
