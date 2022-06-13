@@ -10,12 +10,14 @@
         height: 300px;
         margin: 10px auto;
         position: relative;
+
     }
 
     .transform-style .inner {
         width: 142px;
         height: 200px;
         position: absolute;
+        backface-visibility: hidden;
     }
 
     @keyframes inner {
@@ -29,20 +31,21 @@
 
     .transform-style:hover .inner {
         animation: inner 5s linear infinite;
+
     }
 
     .transform-style .rotate {
-        background: url("http://images2015.cnblogs.com/blog/561794/201604/561794-20160412230412973-1641353956.jpg") no-repeat center;
+        /*background: url("http://images2015.cnblogs.com/blog/561794/201604/561794-20160412230412973-1641353956.jpg") no-repeat center;*/
         border: 5px solid hsla(50, 50%, 50%, .9);
-        transform: perspective(200px) rotateY(45deg);
-        backface-visibility: hidden;
+        /*transform: perspective(200px) rotateY(45deg);*/
+        /*backface-visibility: hidden;*/
     }
 
     .transform-style .rotate img {
         border: 1px solid green;
         transform: rotateX(15deg) translateZ(10px);
         transform-origin: 0 0 40px;
-        backface-visibility: hidden;
+        /*backface-visibility: hidden;*/
     }
 
     .transform-style .three-d {

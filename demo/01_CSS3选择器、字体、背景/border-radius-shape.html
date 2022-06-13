@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1;
+        /*IE/7/6*/
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+        color: #66595c;
+        background-color: #faf6ec;
+    }
+    /* Start the styles  */
+
+    p {
+        line-height: 1.5;
+    }
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        margin-top: 10px;
+        font-weight: 400;
+        line-height: 1.2;
+    }
+
+    .wrapper {
+        padding: 30px 30px 10px 30px;
+        max-width: 760px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .circle {
+        background-repeat: no-repeat;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI3MzYzRkZEOTM4ODExRTZCNTBERDMyRTlCQTlCMUI3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkI3MzYzRkZFOTM4ODExRTZCNTBERDMyRTlCQTlCMUI3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjczNjNGRkI5Mzg4MTFFNkI1MEREMzJFOUJBOUIxQjciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjczNjNGRkM5Mzg4MTFFNkI1MEREMzJFOUJBOUIxQjciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5egZg7AAAAMFBMVEWSzrGt2sX/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');
+        width: 250px;
+        height: 250px;
+        background-color: #40a977;
+        border-radius: 50%;
+        float: left;
+        shape-outside: circle() margin-box;
+        margin: 30px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="support-css-shapes"></div>
+    <div class="wrapper clearfix">
+        <div class="circle"></div>
+        <h1>Atom</h1>
+        <h2>A hackable text editor for the 21st Century</h2>
+        <p>Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.</p>
+        <p><strong>Cross-platform editing</strong> Atom works across operating systems. You can use it on OS X, Windows, or Linux.</p>
+        <p><strong>Built-in package manager</strong> Search for and install new packages or start creating your own—all from within Atom.</p>
+    </div>
+</body>
+
+</html>

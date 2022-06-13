@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    @font-face{
+      font-family: 'MyFont';
+      src: url('FileName.eot');
+    }
+
+    /* of-type 这个标签只能区分不同的标签，实际使用很局限  nth-child 直接根据父元素下子元素的排列顺序选择，无视标签类型。而nth-of-type 是父元素下筛选相同标签的元素根据顺序选择，class直接无视*/
+    /* .p2:nth-child(2){
+      color:red
+    } */
+    /* .p:nth-of-type(1){
+      color:red
+    } */
+    .p:nth-child(2){
+      color:red
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <p class="p1 p">1</p>
+    <div class="p2 p">1.5</div>
+    <p class="p2 p">2</p>
+    <div>
+      <p class="p1 p">3</p>
+      <p class="p2 p">4</p>
+    </div>
+  </div>
+  
+</body>
+</html>

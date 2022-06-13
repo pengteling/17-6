@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+     /* html { 
+        -webkit-filter: grayscale(100%); 
+        -moz-filter: grayscale(100%); 
+        -ms-filter: grayscale(100%); 
+        -o-filter: grayscale(100%); 
+        filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);  
+        _filter:none;         
+    }  */
+    img {
+
+      /* filter: blur(5px);
+      filter: opacity(30%); */
+      /* opacity: 0.3; */
+      /* 透明度 */
+      /* 加亮 */
+      filter: brightness(200%);
+      /* 调整对比度 */
+      filter: contrast(200%);
+      /* 阴影 */
+      filter: drop-shadow(8px 8px 10px #000);
+      /* 灰度 */
+      filter: grayscale(50%);
+      /* 色相旋转 */
+      filter: hue-rotate(90deg);
+      /* 反转输入图像 底片效果 */
+      filter:invert(100%);
+      /* 饱和度 */
+      filter:saturate(200%);
+      /* 深褐色 */
+      filter:sepia(100%);
+      /* svg浮雕滤镜 */
+      filter:url(relief.svg#relief);
+      /* svg油画滤镜 */
+      filter:url(relief.svg#oilPainting);
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <img src="../static/images/1.jpg" alt="">
+  </div>
+</body>
+
+</html>

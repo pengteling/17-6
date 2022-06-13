@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 540px;
+			height: 420px;
+			border-radius: 100% 2em 40px 49%
+		}
+	</style>
+</head>
+<body>
+	<div id="test"></div>
+	<script type="text/javascript">
+		var div = document.getElementById('test');
+		console.log(getComputedStyle(div).borderTopLeftRadius);
+		console.log(getComputedStyle(div).borderTopRightRadius);
+	</script>
+</body>
+</html>

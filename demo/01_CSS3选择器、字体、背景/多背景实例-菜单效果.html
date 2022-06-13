@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		.border-image-btn{
+			display: inline-block;
+			padding:0 20px ;
+			height: 50px;
+			line-height: 46px;
+			/* border-style: solid; */
+			/* border-width:  0 18px; */
+			background-image: url(images/button_l.png),url(images/button_r.png),url(images/button_m.png);
+			background-position:left center, right center ,  center center;
+			background-repeat: no-repeat,no-repeat,repeat-x; 
+			background-size: 12px 50px ,15px 50px, 13px 50px;
+			/* background-size: 18px 50px, 18px 50px , 18px 50px; */
+			color: #fff;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		.border-image-btn:hover{
+			border-image: url(images/button_sprite.png) ;
+		}
+
+	</style>
+</head>
+<body>
+
+	<a href="" class="border-image-btn ">border-image-btn</a>
+	<a href="" class="border-image-btn " >测试</a>
+</body>
+</html>
