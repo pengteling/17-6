@@ -33,14 +33,20 @@
 			localStorage.setItem(username.value , tel.value );
 		}
 		search.onclick = function(){
-			var tel = localStorage.getItem(sname.value);
-			if(tel){
-				result.innerHTML = `${sname.value}的电话是:${tel}`;
-			}else{
-				result.innerHTML = `查不到此人`;
-			}
-			
-
+			// var tel = localStorage.getItem(sname.value);
+			// if(tel){
+			// 	result.innerHTML = `${sname.value}的电话是:${tel}`;
+			// }else{
+			// 	result.innerHTML = `查不到此人`;
+			// }
+      var tel
+      result.innerHTML =''
+      Object.keys(localStorage).forEach(function(item){
+        if(item.indexOf(sname.value)>=0){
+          tel = localStorage.getItem(item)
+          result.innerHTML += `${item}的电话是:${tel}<br>`;
+        }
+      })
 
 		}
 	</script>

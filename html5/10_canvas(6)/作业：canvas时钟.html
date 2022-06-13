@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>钟表</title>
+	<style type="text/css">
+		canvas{
+			background: url(images/coordinate.png);
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext("2d");
+
+		function shizhong(){
+			ctx.clearRect(0,0,800,600);
+			var now = new Date();
+			var second =now.getSeconds();  
+	        var minute =now.getMinutes();  
+	        var hour1 =now.getHours();  
+	        var hour=hour1+minute/60;  
+	        hour=hour>12 ?hour-12:hour;  
+			var time=now.toLocaleString();
+			console.log(time); 
+
+			ctx.beginPath();
+			ctx.lineWidth = 8;
+			ctx.strokeStyle = "black";
+			ctx.arc(250,250,200,0,Math.PI*2)
+			ctx.stroke();
+			ctx.closePath();
+
+		    for(var i=0;i<12;i++){  
+	            ctx.save();  
+	            ctx.lineWidth=5;   
+	            ctx.strokeStyle="black"   
+	            ctx.translate(250,250);  
+	            ctx.rotate(i*30*Math.PI/180);  
+	            ctx.beginPath();  
+	            ctx.moveTo(0,-180);    
+	            ctx.lineTo(0,-195);  
+	            ctx.closePath();  
+	            ctx.stroke();  
+	            ctx.restore();  
+	        } 
+		    for(var i=0;i<60;i++){  
+	            ctx.save();  
+	            ctx.lineWidth=3;   
+	            ctx.strokeStyle="black"   
+	            ctx.translate(250,250);  
+	            ctx.rotate(i*6*Math.PI/180);  
+	            ctx.beginPath();  
+	            ctx.moveTo(0,-188);    
+	            ctx.lineTo(0,-195);  
+	            ctx.closePath();  
+	            ctx.stroke();  
+	            ctx.restore();  
+	        }
+
+	        ctx.font = '30px 黑体';
+		    ctx.fillStyle = "black";
+		    ctx.textBaseline = "middle";
+            ctx.textAlign = "center"; 
+		    var hours = [3,4,5,6,7,8,9,10,11,12,1,2];
+		    for (var i = 0; i <= 12; i++) {
+		    	for (var n = 0; n < 360; n=n+30) {
+		    		ctx.save();
+		    		ctx.translate(250,250);
+		    		var x = 150*Math.cos(Math.PI/180*n);
+				    var y = 150*Math.sin(Math.PI/180*n);
+				    ctx.fillText(hours[i], x, y);
+		    		i++;
+		    		ctx.beginPath();
+		    		ctx.restore();
+		    	}
+		        
+		    }
+
+	        ctx.beginPath();  
+	        ctx.lineWidth=1;  
+	        ctx.strokeStyle="gold";  
+	        ctx.fillStyle="gold";  
+	        ctx.arc(250,250,4,0,360,false);  
+	        ctx.fill();  
+	        ctx.stroke();   
+	        ctx.closePath();
+
+	        ctx.save();  
+	        ctx.lineWidth=5;  
+	        ctx.strokeStyle="yellow";  
+	        ctx.translate(250,250);  
+	        ctx.rotate(hour*30*Math.PI/180);  
+	        ctx.beginPath();       
+	        ctx.moveTo(0,-120);  
+	        ctx.lineTo(0,10);  
+	        ctx.closePath();  
+	        ctx.stroke();  
+	        ctx.restore();
+
+	        ctx.save();  
+	        ctx.lineWidth=3;  
+	        ctx.strokeStyle="blue";    
+	        ctx.translate(250,250);  
+	        ctx.rotate(minute*6*Math.PI/180);  
+	        ctx.beginPath();       
+	        ctx.moveTo(0,-150);  
+	        ctx.lineTo(0,15);  
+	        ctx.closePath();  
+	        ctx.stroke();  
+	        ctx.restore();
+
+	        ctx.save();  
+	        ctx.lineWidth=2;  
+	        ctx.strokeStyle="red";   
+	        ctx.translate(250,250);  
+	        ctx.rotate(second*6*Math.PI/180);  
+	        ctx.beginPath();       
+	        ctx.moveTo(0,-155);  
+	        ctx.lineTo(0,30);  
+	        ctx.closePath();  
+	        ctx.stroke();  
+	        ctx.restore();
+
+
+        }
+        shizhong();
+        setInterval(shizhong,1000);  
+
+	</script>
+</body>
+</html>

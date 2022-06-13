@@ -58,10 +58,10 @@ $(function(){
 		// $("ul li").eq(tid).html($(tempm).html());
 
         // 移动元素
-        /*var tempm = $("ul li").eq(mid);
+        var tempm = $("ul li").eq(mid);
         var tempt = $("ul li").eq(tid);
         //$("ul").find(tempm).remove();
-        tempm.insertBefore($("ul").find(tempt));*/
+        tempm.insertBefore($("ul").find(tempt));
 
         
 
@@ -71,12 +71,13 @@ $(function(){
 
 	}).on("dragover",function(event){
         event.preventDefault();
-    }).on("drop",function(event){
-        //拖放插空排序
-        var e = event.originalEvent;
-        console.log(e.clientX);
-
     })
+    // .on("drop",function(event){
+    //     //拖放插空排序
+    //     var e = event.originalEvent;
+    //     console.log(e.clientX);
+
+    // })
 })
 
 

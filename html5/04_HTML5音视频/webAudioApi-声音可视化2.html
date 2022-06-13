@@ -10,6 +10,7 @@
 <body>
     <input type="range" min="0" max="100" value="60" id="volume">
     <canvas id="box" width="800" height="600"></canvas>
+    <button id="btn">点击播放</button>
 </body>
 
 </html>
@@ -53,7 +54,9 @@ function getDots(arr){
     }
 }
 
-
+btn.onclick = function() {
+    load("test.mp3")
+}
 function load(url) {
     xhr.open("GET", url);
     xhr.responseType = "arraybuffer";
@@ -123,5 +126,5 @@ $("#volume")[0].onchange = function(){
     changeVolume(this.value / this.max);
 }
 $("#volume")[0].onchange();
-load("test.mp3")
+// load("test.mp3")
 </script>
